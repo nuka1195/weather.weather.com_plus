@@ -1,0 +1,6563 @@
+<!DOCTYPE HTML>
+
+
+
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+		
+			
+		
+	
+
+
+		
+		
+		
+
+
+
+	
+		
+			
+		
+		
+	
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+<TITLE>Barrow Weather Forecast and Conditions</TITLE>
+<META name="Description" CONTENT="Barrow weather forecast and weather conditions. Today’s Barrow weather plus a 36 hour forecast and Doppler radar from weather.com.">
+<META name="Keywords" CONTENT="Barrow weather, Barrow weather forecast, Barrow weather conditions, Barrow weather">
+
+<link href="http://s.imwx.com/v.20100615.171920/js/2.8.0r4/reset-fonts-base-autocomplete.css" type="text/css" rel="stylesheet">
+
+<link href="http://s.imwx.com/v.20100719.135915/img/favicon.ico" rel="shortcut icon">
+<link href="http://s.imwx.com/v.20100719.135915/img/favicon.ico" rel="icon">
+<link rel="stylesheet" type="text/css" href="http://d.imwx.com/css/common.css">
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="http://d.imwx.com/css/common_ie6.css">
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="http://d.imwx.com/css/module.css">
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="http://d.imwx.com/css/module_ie6.css">
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="http://d.imwx.com/css/weather-1-today,weather-2-media,weather-3-apps,weather-4-messaging.css" />
+<style>.ellipsis{position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;-ms-text-overflow:ellipsis;-moz-binding:url('/s/css/ellipsis.xml#ellipsis');}</style>
+
+
+
+<script type="text/javascript" src="http://s.imwx.com/v.20100812.135645/js/yuiloader-header-startup.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+	
+		
+	
+	
+		
+		
+		
+		
+		
+	
+	
+
+
+
+
+	
+
+
+
+
+
+<script>
+var reqt = "";
+
+OAS_spoof="";
+if (typeof wx === "undefined") var wx = {};
+YAHOO.namespace("weather.Events");
+YAHOO.weather.Events.pcoLocChanged = new YAHOO.util.CustomEvent("pcoLocChanged");
+YAHOO.weather.Events.metricsLoaded = new YAHOO.util.CustomEvent("metricsLoaded");
+
+
+function getDeclarationDFP(state){
+	switch(state) {
+	        case"AchesAndPains":            return "fam=hlth;ch=pain";break;
+	        case"Allergies":                return "fam=hlth;ch=algy";break;
+	        case"pollen":                   return "fam=hlth;ch=algy";break;
+	        case"AirQuality":               return "fam=hlth;ch=airq";break;
+	        case"ColdAndFlu":               return "fam=hlth;ch=flu";break;
+	        case"SunSafety":                return "fam=hlth;ch=skin";break;
+	        case"Fitness":                  return "fam=hlth;ch=fit";break;
+	        case"fitness":                  return "fam=hlth;ch=fit";break;
+	        case"Health":                   return "fam=hlth";break;
+	        case"BusinessTravel":           return "fam=trvl;ch=biz";break;
+	        case"flight-status":            return "fam=trvl;ch=biz";break;
+	        case"VacationPlanner":          return "fam=trvl;ch=vac";break;
+	        case"Driving":                  return "fam=drv;ch=istate";break;
+	        case"traffic":                  return "fam=drv;ch=istate";break;
+	        case"SportingEvents":           return "fam=sprts;ch=evt";break;
+	        case"events":		            return "fam=sprts;ch=evt";break;
+	        case"Weddings":                 return "fam=hnf;ch=wed";break;
+	        case"Golf":                     return "fam=sprts;ch=golf";break;
+	        case"golf":                     return "fam=sprts;ch=golf";break;
+	        case"Ski":                      return "fam=sprts;ch=ski";break;
+	        case"BoatAndBeach":             return "fam=outd;ch=bnb";break;
+	        case"marine":		            return "fam=outd;ch=bnb";break;
+	        case"Outdoors":                 return "fam=outd;ch=out";break;
+	        case"fishing":                  return "fam=outd;ch=out";break;
+	        case"HomePlanner":              return "fam=hnf;ch=home";break;
+	        case"home-imp":	                return "fam=hnf;ch=home";break;
+	        case"Lawn":                     return "fam=hnf;ch=lawn";break;
+	        case"garden":                   return "fam=hnf;ch=lawn";break;
+	        case"Pets":                     return "fam=hnf;ch=pets";break;
+	        case"pet-care":                 return "fam=hnf;ch=pets";break;
+	        case"Schoolday":                return "fam=hnf;ch=schd";break;
+	        case"moms-planner":             return "fam=hnf;ch=schd";break;
+	        case "LivingSmart":             return "fam=clim;ch=green";break;
+	        case "Travel":                  return "fam=trvl";break;
+	        case "HealthyLiving" :          return "fam=hlth";break;
+	        case "OutdoorActivity":         return "fam=outd";break;
+	        case "Sports":                  return "fam=sprts";break;
+	        case "Climate":                 return "fam=trvl;ch=vac";break;
+	        case "climate":                 return "fam=trvl;ch=vac";break;
+	        case "Home":                    return "fam=hnf";break;
+	        default:                        return "fam=nl;ch=nl";
+	}
+} 
+</script>
+
+
+
+<script>
+(function(){
+	 function object(o){
+	      function F(){};
+	      F.prototype = o;
+	      return new F();
+	    }
+    		
+	window.TWCI = YAHOO;
+	var Y = YAHOO.util,
+        Lang = YAHOO.lang,
+		Cookie = TWCI.util.Cookie,
+        Get = TWCI.util.Get,
+        Event = TWCI.util.Event,
+        pageID = 62288,
+        Connect = YAHOO.util.Connect,
+        Dom = TWCI.util.Dom,
+		// STRING CONSTANTS
+        IS_EMPTY = 'isEmpty',
+        EMPTY_TEXT = 'emptyText',
+		ELEMENT = 'element',
+
+	    TextBox = function(el, attr) {
+	        attr = attr || {};
+	        TextBox.superclass.constructor.call(this, el, attr);
+	    };
+	   		
+
+					    
+	function getUPSlot(slotNo){
+        var slotValue = Cookie.get("UserPreferences",function(str){
+        	if(str.indexOf("%7C")>0) {
+        		return str.split("%7C")[slotNo];  
+        	} else {
+          		return str.split("|")[slotNo];
+          	}
+        });
+        return slotValue
+      }
+	
+	function getDeclaration(){
+        var declaration = "Undeclared";
+        var oldDecl = getUPSlot(16);
+          
+        if(appsInfo != null && appsInfo.length>0){
+        	//alert("Got 1");
+           declaration = appsInfo[0];
+        }else if(uInfo === "0^noId" && oldDecl !== "Undeclared"){
+          // alert("Got 2");
+           var oldToNew = {"Allergies":"pollen",
+                           "BoatAndBeach":"marine",
+                           "BusinessTravel":"flight-status",
+                           "Driving":"traffic",
+                           "Fitness":"fitness",
+                           "Golf":"golf",
+                           "HomePlanner":"home-imp",
+                           "Lawn":"garden",
+                           "Outdoors":"fishing",
+                           "Pets":"pet-care",
+                           "Schoolday":"moms-planner",
+                           "SportingEvents":"events",
+                           "Climate":"climate"
+                          };
+           if(oldToNew[oldDecl]){
+             declaration = oldToNew[oldDecl];
+           } 
+
+		   if(declaration !== "Undeclared"){
+	           Connect.asyncRequest("POST","/pagelet/apps/"+declaration+"/USAK0025?sub",{
+	                  success: function(o){
+	                  	 if(o.status.toString().match("2[0-9][0-9]")!=null) {
+							  // This member is called by handleSuccess
+							  wx.config.user.apps.push(declaration);
+						  } else {
+							  TWCI.BEACONS.firePageletError(wx.config.page.pageId,"apps",o.status);
+						  }
+	                  	
+	                  },
+	                  failure: function(o){
+	                  	TWCI.BEACONS.firePageletError(wx.config.page.pageId,"apps",o.status);
+	                  }
+	           });
+           }	
+           
+        }
+        return declaration;
+	}
+   		
+     // if(typeof window.wx == "undefined")window.wx = {};
+      if(!wx.config)wx.config = {
+      	page:{},
+      	user:{},
+      	ad:{},
+      	loc:{},
+      	wx:{},
+      	bc:[],
+      	metrics:{acct:"twciwx" }
+      	
+      };
+      
+      wx.config.page = {
+        pageId: "62288",
+        pageURL: "/weather/today/USAK0025",
+        locID: ("USAK0025" === "") ? (Cookie.get("LocID")===null) ? "" : Cookie.get("LocID") : "USAK0025",
+        locType: "1",
+        locName: "Barrow",
+        countryCode: "US",
+        serverdate: "11/4/2010",
+        servertime: "17:55:19",
+        version: "",
+        severe: "",
+        sev: "",
+		startLoad: new Date(),
+        severewxticker: "",
+        pollenticker: "",
+        localseveremod: "",
+        pagination: "",
+        error_page: "",
+        searchTerm: "",
+        searchTermNonLocal: "",
+        resultsnum: "",
+        fv: fv,
+        pif_timeframe:"",
+        fcstToggler:Cookie.get("expdFcstDtl"),
+        env: (location.href.match(/preview/))? ["preview:",location.host.replace(".weather.com","")].join("") : ["live:",location.host.replace(".weather.com","")].join(""),
+        fromStr:Cookie.get("fromStr"),
+ 		
+			 scatter: []
+		
+		     
+		        
+      };
+      
+      
+       // Get PIF nav	
+	  	if(location.href.match("/today/"))		 wx.config.page.pif_timeframe = "today";
+	  	if(location.href.match("/hourbyhour/"))  wx.config.page.pif_timeframe = "hourbyhour";
+	  	if(location.href.match("/wxdetail/")) 	 wx.config.page.pif_timeframe = "wxdetail";
+	  	if(location.href.match("/weekend/")) 	 wx.config.page.pif_timeframe = "weekend";
+	  	if(location.href.match("/tenday/"))	 	 wx.config.page.pif_timeframe = "tenday";
+	  	if(location.href.match("/monthly/")) 	 wx.config.page.pif_timeframe = "monthly";
+	  	if(location.href.match("/map/interactive/")) wx.config.page.pif_timeframe = "imap";
+      
+      //Remove fromStr after pageLoad
+      Cookie.remove("fromStr",{domain:".weather.com",path:"/"});
+      wx.config.page.throwTimeBeacon = function(){
+          if (wx.config.page.domLoad && wx.config.page.pageLoad){
+	    	  var _domReady = wx.config.page.domLoad - wx.config.page.startLoad;
+    		  var _load = wx.config.page.pageLoad - wx.config.page.startLoad;
+    		  var _pageId = wx.config.page.pageId;
+    		  var _o = document.createElement("img");
+	    	  _o.setAttribute("class","yui-hidden");
+    		  _o.src = ["http://b.imwx.com/b/page?type=bottom&pageID=",,_pageId,"&modeID=","userDeclared","&domReady=",_domReady,"&load=",_load].join('');
+    		  document.body.appendChild(_o);
+          }
+      };
+      Event.onDOMReady(function(){
+    	  wx.config.page.domLoad = new Date();
+    	  wx.config.page.throwTimeBeacon();
+      });
+      Event.on(window,"load",function(){
+    	  wx.config.page.pageLoad = new Date();
+    	  wx.config.page.throwTimeBeacon();
+      });
+      
+     function getUPSlot(slotNo){
+        var slotValue = Cookie.get("UserPreferences",function(str){
+        	if(str.indexOf("%7C")>0) {
+        		return str.split("%7C")[slotNo];  
+        	} else {
+          		return str.split("|")[slotNo];
+          	}
+        });
+        return slotValue
+      }
+      
+      /**
+      	Function created to save a new value to userprefs
+      **/
+      function newSetUserPrefs(itemNum, item) {
+      	// set array into slots
+      	var slots = Cookie.get("UserPreferences",function(str){
+        	if(str.indexOf("%7C")>0) {
+        		return str.split("%7C");  
+        	} else {
+          		return str.split("|");
+          	}
+        });
+        if(slots!=null) {
+        	slots[itemNum] = item;
+        } else {
+        	slots = new Array(33);
+        	slots[33] = item;
+        }
+        var uCookie = slots.join("|");
+        YAHOO.util.Cookie.set('UserPreferences', uCookie, {
+					path:'/',
+					expires: new Date("January 1, 2025"),
+					domain:'weather.com'
+		});
+        
+      }
+      
+      function convertAge(dob) {
+      	
+        if(dob != null){
+        	dob = dob.replace("+","");
+        	var d = new Date();
+        	var curr_year = d.getFullYear();
+        	return curr_year-dob;
+	      }else{
+	        return " ";
+	   	}
+      };
+      function findAgeRange(age) {
+        if(age == " ")return [""];
+        var ageRange = [];
+        age = parseInt(age, 10);
+        if (isNaN(age)) {
+            return '';
+        }
+        if (age >= 18 && age <= 24) {
+            ageRange.push('1824');
+        }
+        if (age >= 18 && age <= 34) {
+            ageRange.push('1834');
+        }
+        if (age >= 18 && age <= 49) {
+            ageRange.push('1849');
+        }
+        if (age >= 21 && age <= 34) {
+            ageRange.push('2134');
+        }
+        if (age >= 25 && age <= 49) {
+            ageRange.push('2549');
+        }
+        if (age >= 25 && age <= 54) {
+            ageRange.push('2554');
+        }
+        if (age >= 35 && age <= 54) {
+            ageRange.push('3554');
+        }
+        if (age >= 18 && age <= 99) {
+            ageRange.push('18u');
+        }
+        if (age >= 25 && age <= 99) {
+            ageRange.push('25u');
+        }
+        if (age >= 35 && age <= 99) {
+            ageRange.push('35u');
+        }
+        if (age >= 45 && age <= 99) {
+            ageRange.push('45u');
+        }
+        if (age >= 50 && age <= 99) {
+            ageRange.push('50u');
+        }
+        if (age >= 55 && age <= 99) {
+            ageRange.push('55u');
+        }
+        if (age >= 65 && age <= 99) {
+            ageRange.push('65u');
+        }
+        if (age >= 45 && age <= 65) {
+            ageRange.push('bybm');
+        }
+        if (age >= 30 && age <= 44) {
+            ageRange.push('genx');
+        }
+        if (age >= 21 && age <= 29) {
+            ageRange.push('geny');
+        }
+        if(ageRange.length <= 0){
+          return [];
+        }
+        return ageRange;
+        
+      };
+      function getGender() {
+        //var tempSex = "nl";
+        if(getUPSlot(14) != null) {
+        tempSex = getUPSlot(14).toLowerCase();
+        tempSex = tempSex.replace("+", "");
+        if(tempSex==="f" || tempSex==="m") {
+          return tempSex;
+        } else {
+          return "nl";
+        }
+        } else {
+        	return "nl";
+        }
+      };
+      function getASIValue() {
+        var asiVals = [];
+        var asiCookie = Cookie.get("rsi_segs");
+        if(asiCookie){
+          // split on |
+          var vals1 = asiCookie.split('|');
+          for(i=0;i<vals1.length;i++) {
+            // split on _ (take number 2)
+            var vals2 = vals1[i];
+            var tmp = vals2.split('_');
+            asiVals.push(tmp[1]);
+          }
+        }
+        return asiVals;
+      };
+      
+      
+      
+      var uInfo=Cookie.get("i");
+      if (null==uInfo) uInfo="0^noId";
+      var appsInfo=Cookie.get("a");
+      if(appsInfo === null || ('"' === appsInfo.charAt(1)) ){
+        appsInfo = [];
+      }else if(appsInfo !== ""){
+        appsInfo= appsInfo.split("^");
+       	var appsCompare = new Array(appsInfo.length-1);
+        for(var i=0;i<appsInfo.length;i++){  // Loop through split array
+          if(appsInfo[i] != ""){
+	         var tmp = appsCompare.toString();
+	          if(tmp.indexOf(appsInfo[i]) < 0) {
+	           	 appsCompare[i] = appsInfo[i];
+	          	}
+	         
+          }
+          
+        }
+        appsInfo = appsCompare;
+      }
+      var locInfo=Cookie.get("l");
+      var locs=null; 
+      if (null==locInfo){
+          locs=[];
+      }else{
+          var lastPos=locInfo.length-1;
+          if ('"' == locInfo.charAt(lastPos))
+          {
+              locInfo=locInfo.substring(0,lastPos);
+          }
+          locs=locInfo.split("^");
+          locs.shift();
+      }
+      var baseMapInfo=Cookie.get("b");
+      if (null==baseMapInfo) baseMapInfo="r";
+   	  var unitInfo=Cookie.get("u");
+      if (null==unitInfo) unitInfo="e";
+      
+      wx.config.user = {
+        signature:uInfo,
+        userid: uInfo.split("^")[1],
+        timestamp: uInfo.split("^")[0], 
+        savedLocs: locs,
+        unit: unitInfo,
+        apps: (appsInfo !== null) ? appsInfo:[], 
+        basemap: baseMapInfo,  
+        age: findAgeRange(convertAge(getUPSlot(13))),
+        gender: getGender(),
+        asi: getASIValue(),
+        view: "",
+        cobrand: Cookie.get("partner"),
+        ursId: getUPSlot(2),
+        signedIn: Cookie.get("Ticket_web"),
+        products: (getUPSlot(1) != null)? getUPSlot(1).split("^"):[],
+        rmid: (Cookie.get("RMID")!==null) ? Cookie.get("RMID") : "",
+        entry: "",
+        skin: "",
+        installed: "",
+        claritas: getUPSlot(33)
+      };
+      
+      wx.config.user.decl = getDeclaration();
+      wx.config.user.modeid = getDeclaration();
+      wx.config.user.declar = getDeclarationDFP(getDeclaration());
+      
+      wx.config.ad = {
+        mode:"default",
+        testSite:"twc.test.us.wx",
+        site:"twc.us.wx",
+        zone:"fcst",
+        layout:"lo=wx_41;lo=wx_t3wsf",
+        keywords:["tf=tday","cat=fcst"],
+    			
+        sequence:["WX_Top300Variable","WX_Tile1","WX_Tile2","WX_PageCounter","WX_WindowShade","WX_Hidden","WX_MiniDriver1","WX_MiniDriver2","WX_PaidSearch","WX_Mid300"],
+        positions:{
+        WX_PageCounter:{
+          sizes :["1x1"],
+          keywords :[
+            
+              
+                
+                  "pos=wx_pc",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_Hidden:{
+          sizes :["1x1"],
+          keywords :[
+            
+              
+                
+                  "pos=wx_hdn",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_MiniDriver1:{
+          sizes :["270x75"],
+          keywords :[
+            
+              
+                
+                  "pos=wx_md1",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_MiniDriver2:{
+          sizes :["270x75"],
+          keywords :[
+            
+              
+                
+                  "pos=wx_md2",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_PaidSearch:{
+          sizes :["7x7"],
+          keywords :[
+            
+              
+                
+                  "pos=wx_pds",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_Mid300:{
+          sizes :["300x250"],
+          keywords :[
+            
+              
+                
+                  "preempt=y",
+                
+            
+              
+                
+                  "adnet=y",
+                
+            
+              
+                
+                  "pos=wx_mid300",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_Top300Variable:{
+          sizes :["300x600","300x250"],
+          keywords :[
+            
+              
+                
+                  "preempt=y",
+                
+            
+              
+                
+                  "adnet=y",
+                
+            
+              
+                
+                  "pos=wx_300var",
+                
+            
+            
+            	
+            		"dcopt=ist"
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_Tile1:{
+          sizes :["125x125"],
+          keywords :[
+            
+              
+                
+                  "preempt=y",
+                
+            
+              
+                
+                  "pos=wx_t1",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        WX_Tile2:{
+          sizes :["125x125"],
+          keywords :[
+            
+              
+                
+                  "preempt=y",
+                
+            
+              
+                
+                  "pos=wx_t2",
+                
+            
+            
+            	
+            	
+            	
+            	
+          	
+          ]
+        },
+        
+        
+        
+          WX_WindowShade : {
+            sizes : ["970x66"],
+            keywords : [
+              
+                
+                  
+                    "pos=wx_ws",
+                  
+                  
+              
+              
+            	
+            	
+            		
+            	
+          	
+            ] 
+          }
+        }
+      };
+      wx.config.loc = {
+        gpr: "",
+        country: "",
+        state: "",
+        dma: "",
+        zip: "",
+        locid: "",
+        claritas: ""
+      };
+		
+		
+//If available, pull location data
+
+
+   
+  
+<!-- javax.servlet.jsp.JspException: In &lt;parseNumber&gt;, value attribute can not be parsed: "USAK0025" -->
+        wx.config.loc.gpr= ["NAM"];  //"NAM";
+        wx.config.loc.country="us";
+        wx.config.loc.locname="barrow";
+        wx.config.loc.city ="Barrow";
+        wx.config.loc.state="ak";
+        wx.config.loc.countryName="United States";
+        wx.config.loc.dma="";
+        wx.config.loc.zip="";
+        wx.config.loc.locid="USAK0025:1";
+        wx.config.loc.type = "1";
+        wx.config.loc.claritas = "";
+
+
+
+
+
+// If available, pull weather data (Dynamic Only data)
+
+
+// FAHRENHEIT
+
+// 11
+
+
+wx.config.wx = {
+  debugTemp: "11",
+  realTemp: "11",
+  relativeHumidity: "86",
+  
+  temp: "nl",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  tempR: "icy",
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    cond:"snow",
+  
+  
+  
+    fcast : {
+    
+    
+    
+    
+    tempH: "nl",
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     
+    
+    
+    tempL: "nl",
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+      
+    
+    
+    
+    
+    
+    
+    
+    tempLR: "icy",
+    
+      
+    
+    
+    
+    
+    
+    
+	cond: [
+	
+	
+  	
+  	
+  	
+    		
+		'snow',
+			
+		
+  	
+  	
+  	
+	
+	
+	
+  	
+  	
+  	
+    		
+		'snow',
+			
+		
+  	
+  	
+  	
+	
+	
+	
+  	
+  	
+  	
+    			
+		
+		'snow'
+		
+  	
+  	
+  	
+	
+	]    
+    },
+  
+  
+  
+  
+  
+  
+  wind: "hi",
+    uv: "nl",
+  
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      severe: "wint",
+    
+    
+    
+    
+  
+  
+  
+  	
+  	
+  		hum: "hi"
+  	
+  	
+  
+};
+
+
+	
+	    
+	      wx.config.page.severewxticker="severewxticker";		
+	    
+	
+	
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+// Begin custom modules
+// ***********************  Begin Metrics  ********** //
+// Make JSON call to query metrics ts_omniture_properties table and populate wx.config.metrics
+YAHOO.namespace("metrics");
+
+YAHOO.metrics.createMetrics = function(json){
+    var wcm = wx.config.metrics;
+    wcm.level1=(json.level1 != "") ? json.level1 : "UNCATEGORIZED";
+    wcm.level2=json.level2;
+    wcm.level3=json.level3;
+    wcm.level4=json.level4;
+    wcm.level5=json.level5;
+    wcm.level6=json.level6;
+    wcm.contentType=json.contentType;
+    wcm.detail=json.detail;
+    wcm.title=json.title;
+    wcm.pagename=(json.pagename != "") ? json.pagename : "uncategorized";
+    wcm.adCategory=json.ad_category;
+    wcm.adFamily=json.ad_family;
+    wcm.adChannel=json.ad_channel;
+    wcm.adSubchannel=json.ad_subchannel;
+    wcm.modeId=json.mode_id;
+    YAHOO.weather.Events.metricsLoaded.fire();
+};
+//  *************  End Metrics ********* //
+
+
+// Custom event for updating wx.config.user.savedLocs
+YAHOO.weather.Events.pcoLocChanged.subscribe(function(){
+	s.prop29 = wx.config.user.savedLocs.length + "^" + wx.config.user.savedLocs.join("^") + "^";
+	sc_trackAction(this,"locsave_"+s.prop29, null);
+})
+
+
+
+    YAHOO.extend(TextBox, YAHOO.util.Element, {
+        EMPTY_CLASSNAME: 'empty',
+        ERROR_CLASSNAME: 'twc-error-state',
+
+        toString: function() {
+            var el = this.get(ELEMENT),
+                id = el.id || el.tagName;
+            return "TextBox " + id;
+        },
+
+        initAttributes: function(attr) {
+            attr = attr || {};
+            TextBox.superclass.initAttributes.call(this, attr);
+
+            this.setAttributeConfig(IS_EMPTY, {
+                value: attr.emptyText || this.get('title'),
+                method: function(isEmpty) {
+                    if (isEmpty) {
+                        Dom.addClass(this, this.EMPTY_CLASSNAME);
+                        Dom.removeClass(this, this.ERROR_CLASSNAME);
+                        this.set('value', this.get(EMPTY_TEXT));
+                    } else {
+                        Dom.removeClass(this, this.EMPTY_CLASSNAME);
+                    }
+                },
+                validator: Lang.isBoolean
+            });
+
+            this.setAttributeConfig(EMPTY_TEXT, {
+                value: attr.emptyText || this.get('title')
+            });
+
+            if (this.get(EMPTY_TEXT) === null || this.get(EMPTY_TEXT) === '') {
+                return;
+            }
+
+            this.on('focus', this._handleFocus);
+            this.on('blur', this._checkEmpty);
+            this.on('available',function(){
+            	this.set(IS_EMPTY, (value == this.get(EMPTY_TEXT)));
+            })
+
+            this._checkEmpty();
+        },
+
+        _handleFocus: function() {
+        	this._checkEmpty();
+
+            if (this.get(IS_EMPTY)) {
+                this.set('value', '');
+                this.set(IS_EMPTY, false);
+            } else {
+            	this.get(ELEMENT).select();
+            }
+        },
+
+        _checkEmpty: function() {
+			
+            var value = this.get('value');
+			if(value.toLowerCase()=='password') {
+				this.set('type', 'text');
+			}
+			this.set(IS_EMPTY, (value === "" || value == this.get(EMPTY_TEXT)));
+        }
+    });
+
+    YAHOO.weather.TextBox = TextBox;
+	YAHOO.register("wx-textbox", YAHOO.weather.TextBox, {version: "1.0", build: "1"});
+         
+    var fv = YAHOO.util.Cookie.get('fv');
+	
+	if(fv) {
+		if(fv==1 || fv==2) {
+			fv++;
+			YAHOO.util.Cookie.set('fv', fv, {
+				path:'/',
+				domain:'weather.com'
+			});
+		} else if( fv==3) {
+			fv = -1;
+			YAHOO.util.Cookie.set('fv', fv, {
+				path:'/',
+				domain:'weather.com'
+			});
+		}
+	} else  {
+		fv = 1;
+		YAHOO.util.Cookie.set('fv', fv, {
+		path:'/',
+		domain:'weather.com'
+		});
+	}
+	wx.config.page.fv = fv;  //Update value in PCO
+	
+	 // Create TWCI.BEACONS with the fireBeacon and firePageletError methods
+      TWCI.namespace("BEACONS");
+      TWCI.BEACONS.fireBeacon = function(config){
+        var bDomain = "http://b.imwx.com/b/";
+           var _o = document.createElement("img");
+        _o.setAttribute("class","yui-hidden");
+        _o.src=bDomain+config;
+        document.body.appendChild(_o);
+      }
+      TWCI.BEACONS.firePageletError = function(pageid,pagelet,status){
+          var config = ["error?type=pagelet","&pageID=",pageid,"&pagelet=",pagelet,"&statusCode=",status].join('');
+          TWCI.BEACONS.fireBeacon(config);
+      }
+	
+	
+	//Local Search
+	Event.onAvailable("headerSearchForm", function() {
+		// Setup TypeAhead
+	    var _tab = Dom.get("typeaheadBox");
+		YAHOO.weather.searchBox = new YAHOO.weather.TextBox(_tab);
+		YAHOO.namespace("weather.typeahead");
+		var YUE = Event = YAHOO.util.Event,
+		YUD = Dom = YAHOO.util.Dom;
+		
+		var oDS = new YAHOO.util.ScriptNodeDataSource("http://wxdata.weather.com/wxdata/ta/");
+		oDS.scriptCallbackParam = "cb";
+		//Set number of cached entries
+		oDS.maxCacheEntries = 200;
+	
+		// Set the responseType
+		oDS.responseType = YAHOO.util.DataSourceBase.TYPE_JSON;
+		oDS.responseSchema = {
+			resultsList: "results",
+			fields: ["name", "key", "type", "country", "class", "state", "countryName"]
+		};
+	
+		// Instantiate the AutoComplete
+		var oAC = new YAHOO.widget.AutoComplete("typeaheadBox","twc-weather-typeahead-results",oDS);
+		oAC.minQueryLength = 3;
+		//Prevents the autocomplete from flattening the data into an array
+		oAC.resultTypeList = false;
+	
+		//Number of maximum results to show
+		oAC.maxResultsDisplayed = 10;
+		//Prevent auto highlighting of first result
+		oAC.autoHighlight = false;
+		oAC.animSpeed = 0;
+		oAC.useShadow = true;
+		// The webservice needs custom parameters
+		oAC.generateRequest = function(sQuery) {
+			return sQuery + ".js?max=10&key=e88d1fec-a740-102c-bafd-001321203584&locType=1,9,5,11,13,19,20";
+		};
+	    
+		// Formats results for displaying
+		oAC.formatResult = function(oResultData, sQuery, sResultMatch) {
+			var url;
+			var locationDisplayString;
+			if (typeof(oResultData.name) != 'undefined') {
+				locationDisplayString = oResultData.name;
+			}
+			if (typeof(oResultData.state) != 'undefined' && oResultData.state != '*' && (oResultData.country == 'US' || oResultData.country == 'CA')) {
+				locationDisplayString = locationDisplayString + ", " + oResultData.state;
+			}
+			if (typeof(oResultData.countryName) != 'undefined' && oResultData.countryName != '*') {
+				locationDisplayString = locationDisplayString + ", " + oResultData.countryName ;
+			}
+			if(locationDisplayString.length > 40) {
+				locationDisplayString = locationDisplayString.substring(0,40)+'...';
+			}
+			if (oResultData !== null) {
+				url = "/weather/today/" + oResultData.key + ":" + oResultData.type;
+				return locationDisplayString;
+			} else {
+				return null;
+			}
+	        
+	    	};
+	    	    	
+	    	oAC._selectItem = function(selectedItem) {
+	    		var localSearchForm = document.forms["headerSearchForm"];
+				var searchTextBox = localSearchForm.elements["where"];
+				//searchTextBox.blur();
+			  var oResultData = selectedItem._oResultData;
+			  YAHOO.util.Cookie.set("fromStr","searchbox_typeahead",{"path":"/","domain":".weather.com"});
+			  if (oResultData.type == 1) {
+			    document.location = "/weather/today/" + oResultData.key;
+			  } else if (oResultData.type == 5) {
+			    document.location = "/outlook/recreation/golf/weather/weekend/?clubId=" + oResultData.key;
+			  } else if (oResultData.type == 9) {
+			    document.location = "/outlook/travel/businesstraveler/airportprofile/" + oResultData.key + ":" + oResultData.type;
+			  } else {
+			    document.location = "/weather/today/" + oResultData.key + ":" + oResultData.type;
+			  }
+		   };
+	
+	
+	    YAHOO.weather.typeahead = oAC;
+		YAHOO.register("wx-typeahead", YAHOO.weather.typeahead, {version: "1.0", build: "1"});
+		Event.on("headerSearchForm", "submit", function(e) {
+			var localSearchForm = YAHOO.util.Dom.get("headerSearchForm");
+			var searchTextBox = YAHOO.util.Dom.get("typeaheadBox");
+			Event.stopEvent(e);
+			if (searchTextBox.value == searchTextBox.getAttribute("title") || searchTextBox.value=="") {
+				YAHOO.util.Dom.addClass(searchTextBox,'twc-error-state');
+			} else {
+				localSearchForm.submit();
+			}
+   		});
+	});
+	
+	Event.onAvailable("twc-weather-search-submit-id", function() {
+		Event.on("twc-weather-search-submit-id", "click", function(e) {
+			var localSearchForm = document.forms["headerSearchForm"];
+			var searchTextBox = localSearchForm.elements["where"];
+			Event.stopEvent(e);
+			if (searchTextBox.value.toLowerCase() == searchTextBox.title.toLowerCase() || searchTextBox.value=="") {
+				Dom.addClass(searchTextBox,'twc-error-state');
+			} else {
+				localSearchForm.submit();
+			}
+		});
+	});
+
+	
+
+	
+		var _recentSearch = (wx.config.user.signature.match(/^0\^noId/)) ? '/pagelet/rs/' : '/pagelet/rs/?i='+wx.config.user.signature,
+				
+				_reqType = 'GET',
+				_fromString = wx.config.page.fromStr,
+				_locationId = "USAK0025";
+		
+				if (_locationId != "") {
+					if (_fromString == "searchbox_typeahead" || _fromString == "hdr_localsearch" || _fromString == "enhsearch" || _fromString == "enhsearch_didyoumean" || _fromString == "enhsearch_drilldown") {
+						_recentSearch = '/pagelet/rs/USAK0025:1:US';
+						_reqType = 'POST';
+					}
+				}
+				
+				if (_fromString == "hdr_trptsearch") {
+					_recentSearch = '/pagelet/rs/USAK0025';
+					_reqType = 'POST';
+				}
+		
+		
+			
+				Event.onAvailable("typeaheadBox",function(){
+					var RSID = 'twc-weather-recent-search-results'; 
+					
+					if (_locationId != "") {
+						if (_fromString == "searchbox_typeahead" || _fromString == "hdr_localsearch" || _fromString == "enhsearch" || _fromString == "enhsearch_didyoumean" || _fromString == "enhsearch_drilldown") {
+							_recentSearch = '/pagelet/rs/USAK0025:1:US';
+							_reqType = 'POST';
+							
+						}
+					}
+					
+					if(_reqType=="POST") {
+						Connect.asyncRequest(_reqType, _recentSearch, {
+							success:function(o) {
+								 if(o.status.toString().match("2[0-9][0-9]")!=null) {
+								  	_reqType='GET';
+								    _recentSearch = (wx.config.user.signature.match(/^0\^noId/)) ? '/pagelet/rs/' : '/pagelet/rs/?i='+wx.config.user.signature
+								  } else {
+									  TWCI.BEACONS.firePageletError(wx.config.page.pageId,"recentsearch",o.status);
+								  }
+							  },
+							failure:function(o) {
+								// Failure handler
+								TWCI.BEACONS.firePageletError(wx.config.page.pageId,"recentsearch",o.status);
+							}
+						});
+					}
+					
+					Event.on("typeaheadBox","focus",function(e, matchedEl, container){
+						Connect.asyncRequest(_reqType, _recentSearch, {
+							success:function(o) {
+								 if(o.status.toString().match("2[0-9][0-9]")!=null) {
+									  O = o.responseText;
+									  Dom.get(RSID).innerHTML = O;
+								      Dom.replaceClass(RSID, "twc-hide", "twc-show");
+							    	  Event.delegate(RSID,"mousedown",function(e, matchedEL,container){
+							    	    //try{console.log("recentSearch-Mousedown")}catch(e){}
+							    	  	window.location.href=matchedEL.getAttribute("url");
+							    	  },".twc-clickable");
+								  } else {
+									  TWCI.BEACONS.firePageletError(wx.config.page.pageId,"recentsearch",o.status);
+								  }
+								  
+								  
+							     
+							  },
+			
+							failure:function(o) {
+								// Failure handler
+								TWCI.BEACONS.firePageletError(wx.config.page.pageId,"recentsearch",o.status);
+							}
+						});
+					},"input[type=text]");
+					Event.on("typeaheadBox","blur",function(e, matchedEl, container){
+						setTimeout(function (){
+							Dom.replaceClass(RSID, "twc-show", "twc-hide");
+						}, 100);
+		
+					},"input[type=text]");
+					Event.on("typeaheadBox","keydown",function(e, matchedEl, container){
+						Dom.replaceClass(RSID, "twc-show", "twc-hide");
+		
+					},"input[type=text]");
+					
+		});
+
+		
+		var _pageletLoc = (wx.config.user.signature.match(/^0\^noId/)) ? '/pagelet/loc/' : '/pagelet/loc/?i='+wx.config.user.signature,
+				_reqType = 'GET',
+				_fromString = wx.config.page.fromStr,
+				_locationId = "USAK0025";
+		
+		YAHOO.util.Connect.asyncRequest(_reqType, _pageletLoc, {
+			success:function(o) {
+				if(o.status.toString().match("2[0-9][0-9]")!=null) {
+					  var E = Event,
+					      Dom = YAHOO.util.Dom,
+					      O = o.responseText;
+					    E.onAvailable("save-locations",function(){
+					      Dom.get("save-locations").innerHTML = O;
+					    });
+				  } else {
+					  TWCI.BEACONS.firePageletError(wx.config.page.pageId,"loc",o.status);
+				  }
+
+			  },
+
+			failure:function(o) {
+				// Failure handler
+				TWCI.BEACONS.firePageletError(wx.config.page.pageId,"loc",o.status);
+			}
+		});
+
+
+
+//v.20100719.135915
+Get.script("/pagelet/metrics/?pageID=62288&modeID="+wx.config.user.modeid+"&cb=YAHOO.metrics.createMetrics",{
+  onSuccess: function(o){
+    o.purge();
+    Get.script("http://d.imwx.com/js/wx-metrics.js",{
+      onSuccess: function(o){
+      	wx.config.page.metricsCallMade = true;
+        o.purge();
+      }
+    });
+  },
+  onFailure: function(o){
+    alert("Failed to load metrics json");
+  },
+  scope: this
+});
+
+
+})();
+
+
+
+
+	wx.config.page.severe = "false";
+
+
+
+</script>
+
+
+
+<script type="text/javascript" src="http://s.imwx.com/global/common/elements/javascript/a21_2_1.js"></script>
+
+<script type="text/javascript" src="http://s.imwx.com/v.20100922.092821/js/wx-a21-plugthis.js"></script>
+
+
+<script>
+if (typeof(wx.config.page.pageId)!="undefined"){
+YAHOO.util.Get.css("http://d.imwx.com/css/highlight.css?pageId="+wx.config.page.pageId);
+}
+</script>
+</head>
+<body class="no-js">
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="wx-page"> 
+    	<div id="wx-page-inner">
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	<img src="http://b.imwx.com/b/page?type=top&pageID=62288" width="1" height="1" alt="" style="position:absolute;top:0px;left:0px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="wx-header-wrapper">
+		<div id="wx-header">
+			
+
+<div id="WX_PageCounter" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_PageCounter');
+	
+ </script></div>
+			
+			
+			
+			
+			
+		
+			<div id="wx-header-title">
+				<a href="/" title="The Weather Channel - weather.com" from="hdr_logo" 
+					
+					>The Weather Channel - weather.com</a>
+			</div>
+					<ul id="wx-header-tools" class="twc-tier-1">
+				<li id="wx-header-tools-site-search" class="twc-first">
+					<span class="twc-drop-down" href="#google-search" from="hdr_sitesearch"><strong>Site
+							Search</strong>
+					</span>
+						<ul class="twc-tier-2">
+							<li>
+							<form class="twc-google-search" action="/info/sitesearch" id="twc-google-site-search" onSubmit="return false;">
+								<input class="twc-google-query" title="Enter words or phrase" type="text" name="q" value="">													
+								<input class="twc-google-submit" title="Search the Web" type="submit" value="Search the Web">
+							</form>						</li>
+					</ul>
+				</li>
+
+	
+				
+ 
+
+
+<li id="wx-header-tools-languages" title="Select non-U.S. weather.com website"><span class="twc-drop-down"><strong>United States <em>(English)</em></strong></span>
+<ul class="twc-tier-2">
+
+
+	
+	
+	
+	
+	
+		     
+		  
+			<li class="twc-active"><strong>United States (English)</strong></li>
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://espanol.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">United States (Spanish)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://uk.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">UK &amp; Ireland (English)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://fr.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">France (French)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://br.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">Brazil (Portuguese)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://de.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">Germany (German)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://in.weather.com/" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">India (English)</a></li>
+			
+			
+		     
+		
+	
+
+	
+	
+	
+	
+	
+		
+			
+				
+				
+				<li><a href="http://www.classmeteo.com" onmousedown="setClick();" onMouseUp="this.href=intelliTrak({'href':this.href,'cm_ven' : 'weathercom','cm_cat' : 'header','cm_ite' : 'brand','cm_pla' : 'text'});" target="_blank">Italia (Italiano)</a></li>
+			
+			
+		     
+		
+	
+  
+</ul></li>
+				
+<li class="twc-separator wx-signin-mypage twc-first"><a href="/weather/my">My Page</a></li>
+<li id="wx-header-tools-sign-in" class="twc-separator"><span href="#" class="twc-down-icon twc-clickable">Sign In</span>
+<ul class="twc-tier-2">
+	<form class="twc-sign-in" action="https://registration.weather.com/ursa/login" method="post">						
+		<label for="twc-header-uid">Email Address</label>
+		<input class="twc-email twc-text-box" id="twc-header-uid" type="text" name="username" value="" title="">
+		<label for="twc-header-pwd">Password</label>
+		<input class="twc-password twc-text-box" id="twc-header-pwd" type="password" name="password" value="" title="">
+		<input class="twc-sign-in-button" title="Sign In" type="submit" value="Sign In">
+		<ul>
+			<li><a href="/common/help/urssignin.html" target="_blank">Help</a></li>
+			<li><a href="https://registration.weather.com/ursa/changePassword" refer="hat_password">Forgot password?</a></li>
+			<li><a href="https://registration.weather.com/ursa/profile/new">Register</a></li>
+		</ul>
+	</form>
+</ul></li>
+<li class="twc-separator wx-signin-register"><a href="https://registration.weather.com/ursa/profile/new">Register</a></li>
+<li class="twc-separator wx-signin-gold twc-hide"><a href="http://gold.weather.com/weather/wxgold/mypage">Weather.com Gold</a></li>
+<li class="twc-separator wx-signin-notify twc-hide"><a href="http://notify.weather.com/weather/local/">Notify</a></li>
+<li class="twc-separator wx-signin-myprofile twc-hide"><a href="https://registration.weather.com/ursa/profile">My Profile</a></li>
+<li class="twc-separator wx-signin-signout twc-hide"><a href="https://registration.weather.com/ursa/logout?iswebsignout=true">Sign Out</a></li>
+
+		
+						
+						<li class="twc-last">
+							
+						
+								
+							<div id="wx-temperature-toggle"
+								class="twc-js-disabled twc-temperature-fahrenheight">
+								<label>
+									<input type="radio" name="wx-temperature-unit" value="e"
+										id="wx-temperature-fahrenheight" from="hp_unitF" checked title="Fahrenheit is Selected">
+									Fahrenheit
+								</label>
+								<label>
+									<input type="radio" name="wx-temperature-unit" value="m"
+										id="wx-temperature-celcius" from="hp_unitC" title="Change to Celsius">
+									Celcius
+								</label>
+							</div>
+								
+					
+				</li>
+			</ul>
+			<!-- wx-header-tools -->
+		
+			<!--NAVIGATION-->
+			
+<!-- start nav --><ul class="twc-tier-1" id="wx-navigation">
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-home"  pageId="62287"><a href="/" from="nav_primary"><span>Home</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-forecasts"  pageId="62289"><a href="/forecast/" from="nav_primary"><span>Forecasts</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" ><a
+						href="/outlook/weather-news/news/articles/regional-national-forecast_2010-09-02" from="nav_secondary"  >National & Regional Forecasts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58998"><a
+						href="/activities/health/achesandpains/" from="nav_secondary"  >Aches & Pains Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61599"><a
+						href="/outlook/agriculture/farming-forecast/" from="nav_secondary"  >Agricultural  Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59002"><a
+						href="/activities/health/airquality/" from="nav_secondary"  >Air Quality Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59119"><a
+						href="/activities/recreation/boatandbeach/" from="nav_secondary"  >Beach & Marine Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="62264"><a
+						href="/weather/health/beauty/" from="nav_secondary"  >Beauty Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56950"><a
+						href="/activities/health/fitness/" from="nav_secondary"  >Fitness Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56935"><a
+						href="/activities/driving/interstate/" from="nav_secondary"  >Interstate Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56926"><a
+						href="/activities/homeandgarden/schoolday/" from="nav_secondary"  >Mom's Daily Planner&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59036"><a
+						href="/activities/health/allergies/" from="nav_secondary"  >Pollen Forecast&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="/activities/health/coldandflu/" from="nav_feature">Cold and Flu Maps&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Forecast Spotlight</strong>
+							<ul>
+								
+									<li><a href="/activities/recreation/ski/" from="nav_spotlight">Snow and Ski Conditions&nbsp;</a></li>
+								
+									<li><a href="/outdoors/home-improvement/" from="nav_spotlight">Home Improvement Forecast&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-severe-weather"  pageId="56445"><a href="/newscenter/hurricanecentral/update/index.html" from="nav_primary"><span>Severe Weather</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="59114"><a
+						href="/newscenter/alerts/national/severeWxAlertsNational.html" from="nav_secondary"  >Alerts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58953"><a
+						href="/newscenter/hurricanecentral/" from="nav_secondary"  >Hurricane Central&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58973"><a
+						href="/ready/" from="nav_secondary"  >Safety - WeatherReady&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="/services/notify.html" from="nav_feature">Notify! Voice Alerts&nbsp;</a></li>
+								
+									<li><a href="/outlook/wxready/articles/id-33" from="nav_feature">Emergency Supply List&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Severe Weather Spotlight</strong>
+							<ul>
+								
+									<li><a href="/outlook/weather-news/severe-weather/articles/hurricane-main_2010-05-21" from="nav_spotlight">Hurricanes&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-maps"  pageId="60247"><a href="/weather/map/interactive/" from="nav_primary"><span>Maps</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="59976"><a
+						href="/weather/map/interactive/" from="nav_secondary"  >Radar Map&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/currentweatherusnational/uscurrenttemperatures_large.html   " from="nav_secondary"  >US Current Temperatures&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/currentweatherusnational/uscurrentweather_large.html   " from="nav_secondary"  >US Current Weather&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/currentweatherusnational/usdopplerradar_large.html   " from="nav_secondary"  >US Doppler Radar&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/forecastsusnational/usweathertoday_large.html   " from="nav_secondary"  >US Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/currentweatherusnational/usinfraredsatellite_large.html   " from="nav_secondary"  >US Satellite&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/maps/maptype/severeusnational/ussevereweatheralerts_large.html   " from="nav_secondary"  >US Severe Weather Alerts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="60247"><a
+						href="/maps/travel.html" from="nav_secondary"  >All Maps&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="/maps/activity/garden/usnationalnormalfirstfreeze_large.html" from="nav_featue">First Freeze Indicator&nbsp;
+										<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+									</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Map Spotlight</strong>
+							<ul>
+								
+									<li><a href="/activities/driving/fallfoliage/" from="nav_feature">Fall Foliage Maps&nbsp;
+										<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+									</a></li>
+								
+									<li><a href="/maps/news/atlstorm11/stormtrack_large.html" from="nav_spotlight">Hurricane Maps&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-weather-apps"  pageId="62293"><a href="/weather-apps/" from="nav_primary"><span>Weather Apps</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="59907"><a
+						href="/outlook/travel/vacationplanner/compare" from="nav_secondary"  >Climate Comparison&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56967"><a
+						href="/activities/driving/rushhour/" from="nav_secondary"  >Traffic Report&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56938"><a
+						href="/activities/events/special/" from="nav_secondary"  >Event Finder&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59568"><a
+						href="/outlook/health/fitness/tools/bmi" from="nav_secondary"  >Fitness Calculators&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56955"><a
+						href="/activities/travel/businesstraveler/welcome.html" from="nav_secondary"  >Flight Status&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59003"><a
+						href="/activities/health/coldandflu/" from="nav_secondary"  >Flu Report&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="62344"><a
+						href="/outdoors/home-improvement/" from="nav_secondary"  >Home Improvement Helper&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56964"><a
+						href="/activities/homeandgarden/pets/" from="nav_secondary"  >Pet Care Advisor&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56913"><a
+						href="/activities/homeandgarden/garden/" from="nav_secondary"  >Watering Need Indicator&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="/activities/driving/drivingsafety/vehiclesafety/" from="nav_feature">Car Safety Reviews&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>App Spotlight</strong>
+							<ul>
+								
+									<li><a href="/activities/driving/slideshow/bridge.html" from="nav_spotlight">Breathtaking Bridges&nbsp;</a></li>
+								
+									<li><a href="/activities/homeandgarden/schoolday/" from="nav_spotlight">Bus Stop Weather&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-video"  pageId="61898"><a href="/outlook/videos/todays-top-forecast-4276" from="nav_primary"><span>Video</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="0"><a
+						href="/outlook/videos/todays-top-forecast-4276?link=most_recent" from="nav_secondary"  >Most Recent&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/outlook/videos/todays-top-forecast-4276?link=most_popular" from="nav_secondary"  >Most Popular&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/outlook/videos/a-national-look-at-the-next-3-days-364" from="nav_secondary"  >National Forecast&nbsp;</a></li>
+				
+				
+				
+				
+					<li  ><a
+						href="/outlook/videos/?subcatid=166" from="nav_secondary"  >Regional Forecasts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  ><a
+						href="/outlook/videos/latest-forecast-for-severe-weather-365" from="nav_secondary"  >Storm Watch&nbsp;</a></li>
+				
+				
+				
+				
+					<li  ><a
+						href="/outlook/videos/todays-top-forecast-6584" from="nav_secondary"  >Tropical Update&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured</strong>
+							<ul>
+								
+									<li><a href="/outlook/videos/todays-top-forecast-18326" from="nav_feature">Top 5 Video&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Video Spotlight</strong>
+							<ul>
+								
+									<li><a href="/outlook/videos/?subcatid=389" from="nav_spotlight">Storm Riders&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-iwitness-weather"  pageId="62304"><a href="http://iwitness.weather.com/service/displayHomePageExperience.kickAction?page=Homepage&as=148597" from="nav_primary"><span>iWitness Weather</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="0"><a
+						href="http://iwitness.weather.com/service/displayPhotoUpload.kickAction?as=148597" from="nav_secondary" target="_blank" >Submit Photos&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="http://iwitness.weather.com/service/displayVideoUpload.kickAction?as=148597" from="nav_secondary"  >Submit Video&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/outlook/weather-news/news/articles/live-chat-archive_2010-02-17" from="nav_secondary"  >Live Chats&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58091"><a
+						href="/blog/weather/" from="nav_secondary"  >Blogs&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="62308"><a
+						href="/outlook/weather-news/news/articles/twc-social-media-contacts_2010-01-22" from="nav_secondary"  >Facebook & Twitter&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="http://iwitness.weather.com/service/searchEverything.kickAction?keywords=&adminTags=&u=&tags=&as=148597&sortType=rating&includeVideo=on&includePhoto=on" from="nav_feature">Highest Rated Photos&nbsp;
+										<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+									</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>iWitness Spotlight</strong>
+							<ul>
+								
+									<li><a href="http://iwitness.weather.com/service/searchEverything.kickAction?keywords=halloweenkidcast&includeVideo=on&as=148597&sortType=relevance" from="nav_spotlight">Halloween Kidcast&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-travel"  pageId="61645"><a href="/outlook/travel/" from="nav_primary"><span>Travel</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="61889"><a
+						href="/outlook/travel/destination-guides/drilldown/world-map" from="nav_secondary"  >Vacation Destinations&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58160"><a
+						href="/activities/events/weddings/honeymoon/index.html" from="nav_seconary"  >Honeymoon Destinations&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58384"><a
+						href="/activities/travel/vacationplanner/destination/top10/" from="nav_secondary"  >Top 10s&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58954"><a
+						href="/localguides/" from="nav_secondary"  >City Guides&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56955"><a
+						href="/activities/travel/businesstraveler/" from="nav_secondary"  >Flight Tracker&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61644"><a
+						href="/outlook/driving/" from="nav_secondary"  >Driving&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool</strong>
+							<ul>
+								
+									<li><a href="/activities/recreation/ski/" from="nav_feature">Resort Ski Conditions&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Travel Spotlight</strong>
+							<ul>
+								
+									<li><a href="http://www.weather.com/activities/travel/vacationplanner/destination/top10/family.html?id=1" from="nav_spotlight">Top 10 Family Trips&nbsp;</a></li>
+								
+									<li><a href="/activities/driving/fallfoliage/slideshow/fall_foliage_09.html" from="nav_spotlight">Photos: Fall Beauty&nbsp;</a></li>
+								
+									<li><a href="/activities/driving/fallfoliage/index.html" from="nav_spotlight">Fall Foliage&nbsp;
+										<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+									</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-outdoors"  pageId="61649"><a href="/outlook/outdoor/" from="nav_primary"><span>Outdoors</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="56913"><a
+						href="/activities/homeandgarden/garden/" from="nav_secondary"  >Lawn & Garden&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="1"><a
+						href="/outdoors/home-improvement/" from="nav_secondary"  >Home Improvement&nbsp;
+						<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+					</a></li>
+				
+				
+				
+				
+					<li  pageId="57997"><a
+						href="/activities/homeandgarden/home/picnic/" from="nav_secondary"  >Picnic & Grilling&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56958"><a
+						href="/activities/recreation/outdoors/" from="nav_secondary"  >Camping & Hiking&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="58312"><a
+						href="/activities/recreation/outdoors/fishing/" from="nav_secondary"  >Fishing Reports&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56915"><a
+						href="/activities/recreation/golf/" from="nav_secondary"  >Golf Conditions&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56928"><a
+						href="/activities/recreation/ski/" from="nav_secondary"  >Ski Conditions&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61523"><a
+						href="/outlook/events/college-football-weather/" from="nav_secondary"  >College Football&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56961"><a
+						href="/activities/events/mlb/" from="nav_secondary"  >MLB&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61472"><a
+						href="/activities/events/nfl/football-weather.html" from="nav_secondary"  >NFL&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured Tool </strong>
+							<ul>
+								
+									<li><a href="/activities/recreation/outdoors/slideshow/park.html" from="nav_feature">Amazing Natural Wonders&nbsp;</a></li>
+								
+									<li><a href="/activities/health/allergies/" from="nav_feature">Pollen Reports&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Outdoor Spotlight</strong>
+							<ul>
+								
+									<li><a href="/outlook/recreation/outdoors/overview/MTGLAC" from="nav_spotlight">Glacier National Park&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-mobile-downloads" class="twc-right-nav" pageId="62292"><a href="/services/mobile-downloads.html" from="nav_primary"><span>Mobile & Downloads</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="61091"><a
+						href="/mobile/" from="nav_secondary"  >Mobile&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59233"><a
+						href="/services/desktop.html " from="nav_secondary"  >Desktop Weather&nbsp;</a></li>
+				
+				
+				
+				
+					<li  ><a
+						href="https://registration.weather.com/ursa/alerts/step1" from="nav_secondary"  >Email/SMS Alerts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59237"><a
+						href="/services/notify.html" from="nav_secondary"  >Notify! Voice Alerts&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="60022"><a
+						href="/weather/rss/subscription" from="nav_secondary"  >RSS Feeds&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61129"><a
+						href="/services/screensaver/screensaver_email_lp.html" from="nav_secondary"  >Screensavers&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="/services/" from="nav_secondary"  >Toolbars and More&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="57157"><a
+						href="/services/oap.html" from="nav_secondary"  >Weather on Your Website&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="59294"><a
+						href="/services/weathergold.html" from="nav_secondary"  >weather.com Gold&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61568"><a
+						href="/services/weather-gadgets/" from="nav_secondary"  >Widgets & Gadgets&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured  Tool</strong>
+							<ul>
+								
+									<li><a href="/mobile/textmessaging.html" from="nav_feature">Mobile Text Alerts&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>Spotlight</strong>
+							<ul>
+								
+									<li><a href="/services/desktop.html" from="nav_secondary">Get weather on your desktop&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+		
+		
+		
+		
+		
+		
+		
+		<li id="wx-on-tv" class="twc-right-nav twc-no-separator" pageId="59132"><a href="/tv/" from="nav_primary"><span>On TV</span></a> 
+		
+		
+		
+		
+		
+		
+		
+		
+		    
+			<ul class="twc-tier-2">
+				
+				
+				
+				
+					<li class="twc-first" pageId="61607"><a
+						href="/tv/programs/" from="nav_secondary"  >Shows&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61543"><a
+						href="/tv/personalities/" from="nav_secondary"  >Personalities&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61547"><a
+						href="/tv/schedule/" from="nav_secondary"  >Schedule&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="61550"><a
+						href="/tv/music/" from="nav_secondary"  >On Air Music&nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="56498"><a
+						href="/aboutus/radio/" from="nav_secondary"  >TWC Radio &nbsp;</a></li>
+				
+				
+				
+				
+					<li  pageId="0"><a
+						href="http://store.weather.com/" from="nav_secondary" target="_blank" >TWC Store&nbsp;</a></li>
+				
+				
+					<li class="twc-subnav-block twc-last">
+					<ul class="twc-tier-3">
+						
+							<li><strong>Featured</strong>
+							<ul>
+								
+									<li><a href="/tv/programs/Open-Mike.html" from="nav_feature">Open Mike&nbsp;</a></li>
+								
+							</ul>
+							</li>
+						
+						
+							
+							<li
+								 class="twc-separator"><strong>On TV Spotlight</strong>
+							<ul>
+								
+									<li><a href="/tv/programs/weatherproof.html" from="nav_spotlight">Weather Proof&nbsp;
+										<img width="29" height="13" src="http://s.imwx.com/v.20100719.135915/img/common/icon-new.png" alt="NEW">
+									</a></li>
+								
+							</ul>
+							</li>
+						
+					</ul>
+					</li>
+				
+			</ul>
+		</li>
+	
+</ul><!-- end nav -->
+
+			<!-- End Navigation -->
+		
+		
+			<div id="wx-weather-search">
+				<div class="twc-weather-search-content">
+					<div class="twc-weather-search-form" id="twc-weather-search-form-id">
+						<form action="/search/enhancedlocalsearch" method="get"
+							id="headerSearchForm" onSubmit="return false;">
+							<input class="twc-weather-search-query twc-text-box" title="Enter Zip, City or Place (e.g. Disney World)" type="text"
+		name="where" id="typeaheadBox" value="Enter Zip, City or Place (e.g. Disney World)" pageLoaded="false">
+		                    <input class="twc-weather-search-submit twc-find-weather-button" id="twc-weather-search-submit-id" title="Find Weather" type="submit" value="Find Weather">
+		                    <input type="hidden" value="1003,1001,1000,1,9,5,11,13,19,20" name="loctypes">
+		                    <input type="hidden" value="hdr_localsearch" name="from">
+		                </form>
+		                
+		                <div id="twc-weather-recent-search-results" class="yui-ac-container twc-hide">
+		                </div>
+						
+						<div id="twc-weather-typeahead-results">
+						</div>
+		
+						<p>
+							<span class="twc-tru-point">Powered by TruPoint</span> Exact weather for any address or landmark in the U.S.
+						</p>
+						<span class="twc-more-link twc-weather-tru-point-search-button twc-clickable" id="twc-trupoint-tryit">Try It</span>
+					</div>
+					<!-- twc-weather-search-form -->
+		
+		
+					<div class="twc-weather-search-locations"
+						id="twc-weather-search-locations-id">
+						<h4>
+							My
+							<br>
+							Saved
+							<br>
+							Locations
+						</h4>
+						<div id="save-locations"></div>
+					</div>
+		
+		
+				</div>
+				<!-- twc-weather-search-content -->
+			</div>
+			<!-- wx-weather-search -->
+		
+		
+		</div><!-- wx-header -->
+	</div><!-- wx-header-wrapper -->
+
+<div class="twc-panels">
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.8.1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.8.1/build/container/container-min.js"></script>
+
+<style type="text/css">
+#overlay1 {width:392px;background:#333;}
+.twc-panels .twc-non-modal-popup-ie6 {display: none;font-family:arial,helvetica,clean,sans-serif}
+.yui-panel-container .twc-non-modal-popup-ie6 {display: block;font-family:arial,helvetica,clean,sans-serif}
+#overlay1 .hd {background: transparent url(http://s.imwx.com/v.20100719.135915/img/layout/modal-popup-ie6.gif) 5px 6px no-repeat;height: 25px;padding: 40px 48px 0}
+#overlay1 .hd h3 {color: #004c98;font-size: 16px;margin: 0}
+#overlay1 .bd {background: transparent url(http://s.imwx.com/v.20100719.135915/img/layout/modal-popup-ie6.gif) -375px 0 repeat-y;padding: 6px 48px;overflow: hidden}
+#overlay1 .ft {background: transparent url(http://s.imwx.com/v.20100719.135915/img/layout/modal-popup-ie6.gif) -755px -36px no-repeat;height: 18px;padding: 0 48px 11px}
+#overlay1 .ft a.twc-more-link {float: right}
+#overlay1 .twc-modal-popup-buttons {height: 24px;margin-top: 12px;text-align: center}
+#overlay1 .container-close {background: transparent url(http://s.imwx.com/v.20100719.135915/img/layout/modal-popup-ie6.gif) right top no-repeat;display: block;height: 0;overflow: hidden;padding-top: 18px;position: absolute;right: 38px;top: 38px;width: 18px;cursor:pointer;}
+.twc-ie6-message-icons {height:116px;padding-top:11px;}
+.twc-ie6-message-icons div {float:left;}
+.twc-ie6-message-icons .twc-first {margin-left:4px;width:132px;}
+.twc-ie6-message-icons .twc-last {margin-left:15px;clear:none;width:132px;}
+.twc-reminder {font-size:12px;text-align:center;}
+
+</style>
+<script>
+YAHOO.namespace("iesix.container");
+
+		function initIE6() {
+			 // Move panel to body
+			 (function(){
+			    var Y = YAHOO.util,
+			      YUD = Y.Dom,
+			      YUE = Y.Event;
+			
+			    YUE.onDOMReady(function(){
+			        var ph = YUD.get('overlay1'),
+			             b = document.body;
+			        b.appendChild(ph);
+			    });
+			})();			
+			
+			// Build overlay1 based on markup, initially hidden, fixed to the center of the viewport, and 300px wide
+			YAHOO.iesix.container.overlay1 = new YAHOO.widget.Overlay("overlay1", { fixedcenter:true,
+													visible:true,
+				         								  width:"392px",
+				         								  zIndex:999999 } );
+			YAHOO.iesix.container.overlay1.render();
+			YAHOO.util.Event.addListener("show1", "click", YAHOO.iesix.container.overlay1.show, YAHOO.iesix.container.overlay1, true);
+			YAHOO.util.Event.addListener("twc-clickable", "click", YAHOO.iesix.container.overlay1.hide, YAHOO.iesix.container.overlay1, true);
+			YAHOO.util.Event.addListener("container-close", "click", YAHOO.iesix.container.overlay1.hide, YAHOO.iesix.container.overlay1, true);
+
+
+		}
+
+		if(wx.config.page.fv==1) {
+			YAHOO.util.Event.addListener(window, "load", initIE6);
+		}
+
+</script>
+	<div id="overlay1" style="visibility:hidden;">
+		<div class="hd">
+			<h3>
+				Problems Viewing weather.com?
+			</h3>
+			<div class="container-close" id="container-close">
+			</div>
+		</div>
+		<div class="bd">
+			<p>
+				<b>As of July 1, weather.com no longer supports your browser (IE 6.0).</b>
+			</p>
+			<p>
+				For the best experience upgrade to the newest web browser.
+			</p>
+			<div class="twc-ie6-message-icons" style="height:116px;padding-top:11px;">
+				<div class="twc-first"><a href="http://www.microsoft.com/windows/Internet-explorer/default.aspx"><img src="http://s.imwx.com/v.20100719.135915/img/module/upgrade-ie-md.jpg" alt="Internet Explorer" width="132" height="96"></a></div>
+				<div class="twc-last"><a href="http://www.mozilla.com/en-US/firefox/ie.html"><img src="http://s.imwx.com/v.20100719.135915/img/module/upgrade-firefox-md.jpg" alt="Firefox" width="132" height="96"></a></div>
+			</div>
+			<p>
+			<span class="twc-clickable" id="twc-clickable">Continue to weather.com</span>
+			</p>
+		</div>
+		<div class="ft"></div>
+	</div>
+
+
+<![endif]-->
+
+
+
+	<div id="wx-edit-location" class="twc-modal-popup">
+		<div class="hd">
+			<h3>
+				Add a Location
+			</h3>
+		</div>
+		<div class="bd">
+			<div class="twc-edit-location-form" id="twc-edit-location-form-id">
+				<form action="" name="twc-wx-location-form"
+					id="twc-wx-location-form" method="get">
+					<fieldset class="twc-edit-location-location">
+						<h4>
+							Your Location
+						</h4>
+						<div class="twc-error-msg">
+							No Results Found. Please search again.
+						</div>
+						<input name="wx-street" id="wx-street-id" class="twc-text-box"
+							type="text" title="Enter Street Address">
+						<input name="wx-zip" id="wx-zip-id" class="twc-text-box"
+							type="text" title="Enter ZIP, City or Place">
+
+						<div class="edit-location-results-container">
+							<div class="edit-location-results-wrapper">
+								<div class="edit-location-results-top"></div>
+								<div class="edit-location-results-mid">
+									<div class="edit-location-results-scroll">
+										<div class="edit-location-results-list"
+											id="edit-location-results-container-id">
+										</div>
+										<div class="edit-location-results-list"
+											id="tp-edit-location-results-container-id">
+										</div>
+									</div>
+								</div>
+								<div class="edit-location-results-btm"></div>
+						</div>
+						</div>
+
+						<div id="tpresults"></div>
+						<div class="twc-edit-location-tru-point">
+							<span class="twc-plus-icon twc-edit-location-add-street-button twc-clickable">Add Street Address</span>
+							<span class="twc-minus-icon twc-edit-location-hide-street-button twc-clickable">Remove Street Address</span>
+							<span class="twc-tru-point">Powered by TruPoint</span>
+						</div>
+					</fieldset>
+					<fieldset class="twc-edit-location-options">
+						<h4>
+							Optional
+						</h4>
+						<label>
+							Nickname
+						</label>
+						<div class="twc-error-msg yui-hidden" id="nickNameFieldID">
+							Nickname too long.
+						</div>
+						<input name="wx-nickname" id="wx-nickname-id" class="twc-text-box"
+							type="text" title="Home, Office, etc.">
+					</fieldset>
+					<div class="twc-modal-popup-buttons">
+						<button name="cancel-button" class="twc-secondary-cancel-button"
+							title="Cancel" type="button"></button>
+						<button name="save-edit-button" class="twc-save-button"
+							title="Save" type="submit"></button>
+					</div>
+					</form>
+				</div>
+
+					</div>
+		<div class="ft"></div>
+					</div>
+	<!-- wx-edit-location -->
+	<div id="wx-delete-location" class="twc-modal-popup">
+		<div class="hd">
+			<h3>
+				Delete This Location?
+			</h3>
+				</div>
+		<div class="bd">
+			<p>
+                    Are you sure you want to delete this location?
+			</p>
+			<div class="twc-modal-popup-buttons">
+				<button name="cancel-button" class="twc-secondary-cancel-button"
+					title="Cancel">
+					Cancel
+				</button>
+				<button name="submit-delete-button" class="twc-delete-button"
+					id="twc-delete-button-id" title="Delete">
+					Delete
+				</button>
+                    <input type="hidden" id="twc-delete-button-locid" value="">
+			</div>
+		</div>
+		<div class="ft"></div>
+	</div>
+	<!-- wx-delete-location -->
+        <!--  Trupoint search JME -->
+	<div id="wx-tru-point-search" class="twc-modal-popup">
+		<div class="hd">
+		<span onclick="window.open('/common/help/trupoint.html','TruPointHelp','location=0,status=0,scrollbars=1,width=466,height=280');" class="tru-point-learn-more twc-clickable">Learn More</span>
+			<h3 class="twc-tru-point">
+				<span>Powered by TruPoint</span>
+			</h3>
+		</div>
+		<div class="bd">
+			<div class="twc-state-default">
+				<p id="twc-tpsearch-message">
+					Accurate down to one-square mile area.
+				</p>
+				<form class="twc-tru-point-search-form"
+					id="twc-tru-point-search-form-id" action="" method="get"
+					onSubmit="return false;">
+					<fieldset class="twc-tru-point-search-location">
+						<!--<legend>
+							Your Location
+						</legend> -->
+						<input name="wx-tp-street" id="wx-tp-street-id"
+							class="twc-tru-point-search-street twc-text-box" type="text"
+							title='Enter Street/Place &quot;23 Eileen Drive&quot'>
+						<input name="wx-tp-zip" id="wx-tp-zip-id"
+							class="twc-tru-point-search-zip twc-text-box" type="text"
+							title='Enter ZIP or City, State'>
+						<div id="twc-trupoint-search-submit-div">
+							<input class="twc-tru-point-search-submit twc-find-weather-button"
+								title="Find Weather" type="submit" value="Find Weather"
+								id="twc-search-submit-button">
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+		</div>
+		<div class="ft">
+		</div>
+		<div class="twc-hide" id="gs-tp-search-container">
+			<div class="edit-location-results-wrapper" id="select-locations-tpsearch">
+					<div class="edit-location-results-top"></div>
+				<div class="edit-location-results-mid">
+					<div class="edit-location-results-scroll">
+						<div class="edit-location-results-list" id="twc-trupoint-search-results">
+							</div>
+						</div>
+					</div>
+					<div class="edit-location-results-btm"></div>
+				</div>
+			<div class="twc-modal-popup-buttons">
+				<!--  <button name="tp-cancel-search-button" class="twc-cancel-button"
+					title="Cancel"></button> -->
+			</div>
+		</div>
+
+	</div>
+	<!-- wx-tru-point-search -->
+	<div id="wx-panel-mylocfull" class="twc-modal-popup yui-hidden">
+		<div class="hd"><h3>My Saved Locations Full</h3></div>
+		<div class="bd">
+			You have three locations saved. To save this location, you must first delete one of your locations within &quot;My Saved Locations&quot;.
+			<div id="wx-panel-mylocfull-inner-id" class="twc-modal-popup-buttons"><button name="cancel-myloc-full" class="twc-ok-button" title="OK">OK</button></div>
+		</div>
+		<div class="ft">
+		</div>
+	</div>
+	
+	
+	<div id="wx-panel-search-unavailable" class="twc-modal-popup">
+		<div class="hd"><h3>Search Unavailable</h3></div>
+		<div class="bd">
+			<div class="twc-unavailable-msg">
+				<p>We're sorry. Search is currently unavailable.<br>Please come back and try again later.</p>
+			</div>
+			<div class="twc-modal-popup-buttons">
+				<button name="ok-button" class="twc-ok-button"
+					title="OK">
+					OK
+				</button>
+			</div>
+		</div>
+		<div class="ft">
+		</div>
+	</div>
+	
+</div>
+<!-- twc-panels -->
+
+
+
+<div id="wx-header-ph"></div><!-- wx-header-ph -->
+<div id="wx-content"> 
+	
+	<div id="WX_BrandingBar" class="adDiv">
+	    <script type="text/javascript">
+	    	   A21.notifyRegistered('WX_BrandingBar');
+	    </script>
+	</div>
+	<div id="WX_Leaderboard" class="adDiv">
+	     <script>
+		A21.notifyRegistered('WX_Leaderboard');
+	    </script>
+	</div>
+	<div id="WX_WindowShade" class="adDiv">
+	
+	    <script type="text/javascript">
+	        A21.notifyRegistered('WX_WindowShade');
+	        function validatesearch (e)
+	        {
+				alert("validate");
+				 if(e&&e.preventDefault){
+			           e.preventDefault();
+			       }
+			     return false;
+				
+			    }
+	    </script>
+	</div>
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="wx-info-row">
+  <div class="wx-info-row-left">
+	 <ul id="wx-breadcrumb">
+
+	
+	
+	
+	
+		
+		
+			<li class="twc-first"><a from="sameWindow" href="/">Home</a></li>
+		
+		
+	
+
+	
+	
+	
+	
+		
+		
+			<li ><a from="sameWindow" href="/forecast/">Forecasts</a></li>
+		
+		
+	
+
+	
+	
+	
+	
+		
+		<li class="twc-last">Barrow Weather</li>
+	
+
+     </ul> <!-- wx-breadcrumb end -->    
+  </div>
+<div class="wx-info-row-right">
+<ul id="wx-page-tools">
+	<li><a class="twc-rss-icon" href="http://www.weather.com/weather/rss/subscription/" from="pageoptions_rss">RSS</a></li>
+	<li><span id="twc-share-link" class="twc-share-icon twc-clickable">Share</span></li>
+	<li><span id="twc-email-link" class="twc-email-icon twc-clickable">Email</span></li>
+	<li><span id="twc-bookmark-link" class="twc-bookmark-icon twc-clickable">Bookmark</span></li>
+	<li><a class="twc-alerts-icon" href="http://registration.weather.com/ursa/alerts/step1" from="pageoptions_alerts">Alerts</a></li>
+	<li><span id="twc-print-link" class="twc-print-icon twc-clickable">Print</span></li>
+</ul>
+</div>
+<div class="clear-content"></div>
+</div>
+
+<div class="twc-panels">
+
+
+                <div id="wx-page-tools-bookmark-pop" class="twc-modal-popup">
+                                <div class="hd"><h3>Bookmark This Page</h3></div>
+                                <div class="bd">
+                                <p>To Bookmark this page in Firefox:</p>
+                                <ol>
+                                                <li>Select Bookmarks -> Bookmark this page.</li>
+                                                <li>The "Add Bookmark" dialog will open, asking you where you want to save the new bookmark.</li>
+                                                <li>Select the folder that you want to save the bookmark to from the dropdown menu and click on OK. If you want to save the bookmark to the Bookmarks Toolbar, select Bookmarks Toolbr folder as the target.</li>
+                                </ol>
+                                </div>
+                                <div class="ft">
+                                </div>
+                </div>
+
+                <div id="wx-page-tools-share-panel" class="twc-non-modal-popup-181">
+                                <div class="hd">
+                                </div>
+                                <div class="bd">
+                                                <h3>Share</h3>
+                                                <ul id="twc-page-tools-share">
+                                                                <li id="twc-share-delicious" class="twc-clickable"><span>Delicious</span></li>
+                                                                <li id="twc-share-newsvine" class="twc-clickable"><span>Newsvine</span></li>
+                                                                <li id="twc-share-digg" class="twc-clickable"><span>Digg</span></li>
+                                                                <li id="twc-share-fb" class="twc-clickable"><span>Facebook</span></li>
+                                                                <li id="twc-share-reddit" class="twc-clickable"><span>Reddit</span></li>
+            </ul>
+                                </div>
+                                <div class="ft">
+                                </div>
+                </div><!-- wx-tooltip-addthis -->
+                
+</div>
+
+
+
+				
+				
+
+
+
+
+
+	 	
+	
+	
+	
+		
+	
+
+
+
+
+
+
+
+	
+	
+	
+ 	
+		
+		
+			
+			
+				
+			
+			
+		
+		<div class="la-box la-alert-orange" id="alertScrollBoxOuter">	
+		  <div class="la-bg-gradient">
+		    <div class="la-bg-shadow">
+		      <div class="la-left-side"> 
+		        <div class="la-text-bg">
+		          <div class="la-text">
+		            <h3 class="la-text-title">Local Weather Alerts</h3>
+		            <div class="la-all-link">&gt; <a from="state_alert" href="/weather/newscenter/alerts/nswxcategory/AK">See all AK alerts</a></div>
+		          </div> <!-- END la-text -->
+		        </div> <!-- END la-text-bg -->
+		      </div> <!-- END la-left-side -->
+		      <div class="la-right-side">
+		        <div class="la-btnbg-trans">
+		          <div class="la-btnbg-trans-inner">
+		            <div >
+		            </div>
+		            <div class="la-scroll-box">
+		              <div class="la-scroll-box-inner" id="alertScrollBoxInner">
+				  		
+				  			
+							  
+							    
+							    
+							    	
+							    
+							    
+							    
+							  
+								
+								
+								
+									
+				                <div class="la-textbtn">
+				                  <div class="la-textbtn-inner">
+								  	<div class="la-alert-bullet alert-bullet-orange"></div>
+									<div class="la-alert-btn-text twc-clickable ellipsis" onmousedown="setClick();" onmouseup="intelliTrak({'href':this.href,'from':'local_alert'});" onclick="intelliTrak({'href':location.href,'from':'local_alert'});location.href='/weather/alerts/localalerts/USAK0025:1?phenomena=WW&significance=Y&areaid=AKZ202&office=PAFG&etn=0044'" title="Winter Weather Advisory until 12:00 am AKDT, Fri., Nov. 05, 2010">Winter Weather Advisory</div>
+				                  </div>
+				                </div>				                
+																			 
+					    
+					    
+					    
+					    		 
+						<div class="la-textbtn twc-clickable la-desktop-alert-btn">
+						  <div class="la-textbtn-inner">
+							<div class="la-desktop-alert-img" onmousedown="setClick();" onmouseup="intelliTrak({'href':this.href,'from':'local_alert_desktoppromo_button'});" onclick="intelliTrak({'href':location.href,'from':'local_alert_desktoppromo_button'});location.href='/services/desktop.html'" title="Put Alerts on my Desktop"></div>
+						  </div>
+						</div>						                                  
+		              </div><!-- la-scroll-box-inner -->
+		            </div><!-- la-scroll-box-->
+		            <div >
+		            </div>
+		          </div><!-- la-btnbg-trans-inner -->
+		          <div class="clear_content"></div>
+		        </div> <!-- END la-btnbg-trans -->
+		      </div> <!-- END la-right-side -->
+		    </div> <!-- END la-bg-shadow -->
+		  </div> <!-- END la-bg-gradient -->
+		</div> <!-- END la-box -->
+	
+
+
+	
+
+
+
+
+				
+
+
+
+
+
+
+<div class="wx-laplinker">
+	<ul>	
+
+												
+	
+		    
+		   			   
+		
+		<li class="twc-first">
+		
+		
+		
+		
+		    
+		<span class="wx-laplinker-label"></span>
+		<a href="/outlook/weather-news/news/articles/eastern-chill_2010-11-04" from="%timeframe%_newslinker1_%undeclared%"  >Winter hits East Coast</a>
+		<span class="none">&nbsp;</span>	
+		</li>
+	
+
+												
+	
+		    
+		   			   
+		
+		
+		
+		
+		
+		<li>
+		    
+		<span class="wx-laplinker-label">Driving: </span>
+		<a href="/activities/driving/drivingsafety/vehiclesafety/" from="%timeframe%_newslinker2_%undeclared%"  >Crash test ratings</a>
+		<span class="none">&nbsp;</span>	
+		</li>
+	
+
+												
+	
+		    
+		   			   
+		
+		
+		
+		
+		
+		<li>
+		    
+		<span class="wx-laplinker-label">Outdoors: </span>
+		<a href="/activities/recreation/outdoors/safety/" from="%timeframe%_newslinker3_feedback"  >Hiking safety tips</a>
+		<span class="none">&nbsp;</span>	
+		</li>
+	
+
+												
+	
+		    
+		   			   
+		
+		
+		
+		<li class="twc-last">
+		
+		
+		    
+		<span class="wx-laplinker-label">Travel: </span>
+		<a href="/activities/recreation/ski/index.html" from="%timeframe%_newslinker4_feedback"  >Ski conditions</a>
+		<span class="none">&nbsp;</span>	
+		</li>
+	
+
+	</ul>
+</div>
+<div class="clear-content"></div>
+
+ 
+	            <div id="wx-content-2"> 
+  		       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	
+		
+		
+		
+			
+		
+	
+
+
+
+
+
+
+
+
+
+	
+		
+		
+		
+		
+ 		
+		
+		
+				
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+
+
+
+
+	
+	
+	
+	
+
+
+
+
+
+	
+	
+		
+	 	
+
+
+
+
+<div class="twc-module twc-full-module twc-forecast-module twc-folded-module" id="twc-forecast-module-id">
+	<div class="twc-module-bkgd">
+		<span onclick="sc_trackAction(this,'today_addthis_widget_click',null);"  id="addThis36hour" class="twc-module-options-link twc-clickable">View Options</span>
+		<div class="twc-module-header" id="twc-module-header-id">
+            <h1>Barrow Weather</h1>
+            <span onclick="sc_trackAction(this,'today_saveloc_link_click',null);" class="twc-plus-icon twc-module-header-link twc-weather-save-location-button twc-clickable" href="#" pn="Barrow" lid="USAK0025" lt="1" ll="" pa="" nb="">Save This Location</span>
+            <div class="twc-update-refresh"><h3 class="twc-module-sub-header twc-timestamp">Updated: 
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+Nov 4, 2010, 12:53pm AKDT</h3>
+            <span id="updateD" class="yui-hidden"><a href="" from="today_refreshnow"><img src="http://s.imwx.com/v.20100719.135915/img/layout/icon-refresh.png" width="16" height="16" alt="Refresh" /></a><a href="" from="today_refreshnow"><span class="twc-clickable" id="update-data-id" value="1200000">UPDATE DATA</span></a></span></div>
+	     	
+		</div>
+
+		
+<style type="text/css">
+/* Timeframe Nav */
+.tnTimeNav {font-size:11px;font-family:verdana;height:26px;border:2px solid #039;position:relative;clear:both;margin-top:0px !important;}
+.tnTimeNav ul {margin:0;padding:0;}
+.tnTimeNav li {list-style:none;line-height:1em;display:block;position:relative;bottom:-9px;float:left;padding:0;margin:0 1px 0 0;}
+.tnTimeNav li.tnRadarMap {margin:0;}
+.tnTimeNav li a, .tnTimeNav li span {display:block;height:17px;background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -31px;border:1px solid #039;border-width:0 1px;text-decoration:none;cursor:pointer;outline:0;}
+#tnBot640 li a, #tnBot640 li span {background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -130px;}
+.tnTimeNav li span {cursor:default;}
+.tnTimeNav li a:hover, .tnTimeNav li a:focus {background:#36c url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -62px;color:white;text-decoration:none;}
+#tnBot640 li a:hover, #tnBot640 li a:focus {background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -160px;}
+.tnTimeNav li.tnSelected {bottom:-6px;}
+.tnTimeNav li.tnSelected span {background:#fff url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left 0;height:22px;}
+#tnBot640 li.tnSelected span {background:#fff url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -93px;}
+.tnTimeNav li a em, .tnTimeNav li span em {display:block;position:relative;bottom:1px;border-top:1px solid #039;font-style:normal;color:white;text-align:center;padding-top:2px;}
+.tnTimeNav li.tnSelected span em {color:#333;font-weight:bold;padding-top:5px;}
+.tnTimeNav li.tnYesterday {margin-left:5px;}
+#tnTop640, #tnBot640 {width:640px;margin:-5px 0 16px;}
+#tnTop640 {border-width:0 0 2px 0;margin:0 0 -3px 7px;padding-top:15px}
+#tnTop640 li.tnToday, #tnBot640 li.tnToday {margin-left:0;}
+#tnBot640 li {bottom:0px;}
+#tnBot640 li.tnSelected {top:-2px;}
+#tnBot640 li a em, #tnBot640 li span em {bottom:0px;border-bottom:1px solid #039;border-top:none;padding:2px 0 4px 0;}
+#tnBot640  li.tnSelected span em {padding:5px 0 6px 0;}
+#tnBot640 {border-width:2px 0 0 0;}
+#tnTop640 li.tnToday a, #tnTop640 li.tnToday span, #tnBot640 li.tnToday a, #tnBot640 li.tnToday span {width:89px;}
+#tnTop640 li.tnHour a, #tnTop640 li.tnHour span, #tnBot640 li.tnHour a, #tnBot640 li.tnHour span {width:89px;}
+#tnTop640 li.tnTomorrow a, #tnTop640 li.tnTomorrow span, #tnBot640 li.tnTomorrow a, #tnBot640 li.tnTomorrow span {width:89px;}
+#tnTop640 li.tnWeekend a, #tnTop640 li.tnWeekend span, #tnBot640 li.tnWeekend a, #tnBot640 li.tnWeekend span {width:89px;}
+#tnTop640 li.tn10day a,#tnTop640 li.tn10day span, #tnBot640 li.tn10day a,#tnBot640 li.tn10day span {width:88px;}
+#tnTop640 li.tnMonth a,#tnTop640 li.tnMonth span, #tnBot640 li.tnMonth a,#tnBot640 li.tnMonth span {width:88px;}
+#tnTop640 li.tnRadarMap a,#tnTop640 li.tnRadarMap span, #tnBot640 li.tnRadarMap a,#tnBot640 li.tnRadarMap span {width:88px;}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+	
+
+
+
+  			
+  				<div id="tnTop640" class="tnTimeNav">
+					<div>
+						<ul>
+							<li class="tnToday tnSelected"><span><em>Overview</em></span></li>
+							<li class="tnHour "><a href="/weather/hourbyhour/graph/USAK0025" from="today_topnav"><em>Hourly</em></a></li>
+							<li class="tnTomorrow "><a href="/weather/wxdetail/USAK0025?dayNum=1" from="today_topnav"><em>Tomorrow</em></a></li>
+							<li class="tnWeekend "><a href="/weather/weekend/USAK0025" from="today_topnav"><em>Weekend</em></a></li>
+							<li class="tn10day "><a href="/weather/tenday/USAK0025" from="today_topnav"><em>10-Day</em></a></li>
+							<li class="tnMonth "><a href="/weather/monthly/USAK0025" from="today_topnav"><em>Month</em></a></li>
+							<li class="tnRadarMap ">
+							
+					                
+					          
+					           
+					           <a href="/weather/map/interactive/USAK0025" from="today_topnav">
+					         
+				                 
+							<em>Map</em></a></li>
+						</ul>
+						<div style="clear:both;"></div>
+					</div>
+				</div>			
+  			
+  			
+
+
+
+
+<div class="twc-module-content twc-blue-tabview">
+	<div class="twc-module-tab-containers">
+		<div class="twc-module-tab-content">
+			<table class="twc-forecast-table twc-first ">
+				<tr>
+					<th class="twc-col-1">Right Now</th>
+					<th class="twc-col-234" colspan="3">Next 36 Hours</th>
+				</tr>
+			</table>
+			<table class="twc-forecast-table twc-second">
+				<tr>
+					<td class="twc-col-1 twc-animated-icon" rowspan="2"><img src="http://s.imwx.com/v.20100719.135915/img/wxicon/130/14.png" alt="Light Snow / Windy" width="130" height="130"></td><!-- Column 1 -->
+					<td class="twc-col-2 twc-forecast-when">Today</td><!-- Column 2 -->
+					<td class="twc-col-3 twc-forecast-when">Tonight</td><!-- Column 3 -->
+					<td class="twc-col-4 twc-forecast-when">Tomorrow</td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-2 twc-forecast-icon"><a href="/weather/tenday/USAK0025" from="today_daypartforecast_icon"><img src="http://s.imwx.com/v.20100719.135915/img/wxicon/72/14.png" width="72" height="72" alt="Snow Shower / Wind" ></a></td><!-- Column 2 -->
+					<td class="twc-col-3 twc-forecast-icon"><a href="/weather/tenday/USAK0025" from="today_daypartforecast_icon"><img src="http://s.imwx.com/v.20100719.135915/img/wxicon/72/14.png" width="72" height="72" alt="Snow Shower / Wind" ></a></td><!-- Column 3 -->
+					<td class="twc-col-4 twc-forecast-icon"><a href="/weather/tenday/USAK0025" from="today_daypartforecast_icon"><img src="http://s.imwx.com/v.20100719.135915/img/wxicon/72/14.png" width="72" height="72" alt="Snow Shower / Wind" ></a></td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1">Light Snow / Windy</td>
+					<td class="twc-col-2">Snow Shower / Wind</td><!-- Column 2 -->
+					<td class="twc-col-3">Snow Shower / Wind</td><!-- Column 3 -->
+					<td class="twc-col-4">Snow Shower / Wind</td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-forecast-temperature"><strong>11&deg;F</strong></td>
+					<td class="twc-col-2 twc-forecast-temperature"><strong>16&deg;</strong></td><!-- Column 2 -->
+					<td class="twc-col-3 twc-forecast-temperature"><strong>12&deg;</strong></td><!-- Column 3 -->
+					<td class="twc-col-4 twc-forecast-temperature"><strong>14&deg;</strong></td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-forecast-temperature-info">Feels Like: <strong>-11&deg;</strong></td><!-- Column 1 -->
+					<td class="twc-col-2 twc-forecast-temperature-info">High</td><!-- Column 2 -->
+					<td class="twc-col-3 twc-forecast-temperature-info">Low</td><!-- Column 3 -->
+					<td class="twc-col-4 twc-forecast-temperature-info">High</td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-precip">
+						
+							
+							
+							<strong>Past 24-hr precip is only available for the contiguous U.S.</strong>
+							
+						
+					</td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-precip">Chance of Precip:<br><strong>40%</strong></td><!-- Column 2 -->
+					<td class="twc-col-3 twc-line-precip">Chance of Precip:<br><strong>50%</strong></td><!-- Column 3 -->
+					<td class="twc-col-4 twc-line-precip">Chance of Precip:<br><strong>60%</strong></td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-wind">Wind:<br><strong>
+					
+                    	
+                      		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+					
+		
+		From NE at
+		
+			
+			 30mph
+		
+		
+			
+			 gusting to 37mph
+		
+	
+        
+
+ 
+                    	 
+                    	 
+                    
+                    </strong></td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-wind">Wind:<br><strong>
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+					
+		
+		NE at
+		
+			
+			 28 mph
+		
+	
+        
+
+</strong></td><!-- Column 2 -->
+					<td class="twc-col-3 twc-line-wind">Wind:<br><strong>
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+					
+		
+		NE at
+		
+			
+			 28 mph
+		
+	
+        
+
+</strong></td><!-- Column 3 -->
+					<td class="twc-col-4 twc-line-wind">Wind:<br><strong>
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+					
+		
+		NE at
+		
+			
+			 25 mph
+		
+	
+        
+
+</strong></td><!-- Column 4 -->
+				</tr>
+			</table>
+			<table class="twc-forecast-table twc-last">
+				<tr>
+					<td class="twc-col-1 twc-line-details twc-first"><span class="twc-line-details">Humidity:</span> 86%</td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-details twc-first">96%</td><!-- Column 2 -->
+					<td class="twc-col-3 twc-line-details twc-first">95%</td><!-- Column 3 -->
+					<td class="twc-col-4 twc-line-details twc-first">97%</td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-details"><span class="twc-line-details">Dew Point:</span>8&deg;</td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-details">&nbsp;<!-- no dewpoint for forecasts --></td><!-- Columns 2 -->
+					<td class="twc-col-3 twc-line-details">&nbsp;<!-- no dewpoint for forecasts --></td><!-- Columns 3 -->
+					<td class="twc-col-4 twc-line-details">&nbsp;<!-- no dewpoint for forecasts --></td><!-- Columns 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-details"><span class="twc-line-details">Pressure:</span>
+						
+						
+							
+							
+								
+								
+								29.50							
+								in
+							
+							
+													
+								
+									
+									
+													
+													
+							
+							<img src="http://s.imwx.com/v.20100719.135915/img/common/icon-pressure-down.gif" alt="Falling Pressure" width="5" height="8" />							
+						
+					</td>
+					<td class="twc-col-2 twc-line-details">&nbsp;<!-- no pressure for forecasts --></td><!-- Columns 2 -->
+					<td class="twc-col-3 twc-line-details">&nbsp;<!-- no pressure for forecasts --></td><!-- Columns 3 -->
+					<td class="twc-col-4 twc-line-details">&nbsp;<!-- no pressure for forecasts --></td><!-- Columns 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-details"><span class="twc-line-details">Visibility:</span>
+					
+					
+						
+						
+						
+							1.3							
+							mi
+						
+					
+					</td>
+					<td class="twc-col-2 twc-line-details">&nbsp;<!-- no visibility for forecasts --></td><!-- Columns 2 -->
+					<td class="twc-col-3 twc-line-details">&nbsp;<!-- no visibility for forecasts --></td><!-- Columns 3 -->
+					<td class="twc-col-4 twc-line-details">&nbsp;<!-- no visibility for forecasts --></td><!-- Columns 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-details twc-last"><span class="twc-line-details">UV Index:</span>
+					
+						
+						
+						0 - Low
+					
+					</td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-details twc-last">
+					
+						
+						
+						0 - Low
+					
+					</td><!-- Column 2 -->
+					<td class="twc-col-3 twc-line-details twc-last">
+					
+						--
+						
+						
+					
+					</td><!-- Column 3 -->
+					<td class="twc-col-4 twc-line-details twc-last">
+					
+						
+						
+						0 - Low
+					
+					</td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1 twc-line-daylight">
+
+
+
+
+
+
+
+
+
+
+	
+		
+			
+		
+		
+	
+	
+		
+		
+			
+		
+	
+	
+		
+			Daylight Remaining: <strong>2 hrs 52 min</strong>
+		
+		
+	
+
+	 </td><!-- Column 1 -->
+					<td class="twc-col-2 twc-line-daylight">Sunrise: <strong>
+
+
+
+
+
+
+	
+	
+		
+		
+		11:34 am
+	
+
+</strong></td><!-- Column 2 -->
+					<td class="twc-col-3 twc-line-daylight">Sunset: <strong>
+
+
+
+
+
+
+	
+	
+		
+		
+		4:47 pm
+	
+
+</strong></td><!-- Column 3 -->
+					<td class="twc-col-4 twc-line-daylight">Sunrise: <strong>
+
+
+
+
+
+
+	
+	
+		
+		
+		11:40 am
+	
+
+</strong></td><!-- Column 4 -->
+				</tr><tr>
+					<td class="twc-col-1">
+					
+						
+						
+						Short-term forecast summary is only available for the contiguous U.S.
+						
+					
+					</td><!-- Column 1 -->
+					<td class="twc-col-2">Occasional snow showers. Quite windy. High 16F. Winds NE at 25 to 35 mph. Chance of snow 40%.</td><!-- Column 2 -->
+					<td class="twc-col-3">Occasional snow showers. Quite windy. Low 12F. Winds NE at 25 to 35 mph. Chance of snow 50%.</td><!-- Column 3 -->
+					<td class="twc-col-4">Occasional snow showers. Quite windy. High 14F. Winds NE at 25 to 35 mph. Chance of snow 60%. About one inch of snow expected.</td><!-- Column 4 -->
+				</tr>
+			</table>
+			<table class="twc-forecast-table twc-forecast-links-table">
+				<tr>
+					<td class="twc-col-1 twc-forecast-links"><!-- Column 1 -->
+						
+                        <ul class="twc-forecast-links">
+                          		
+									
+									
+										
+										
+										
+											
+										
+									
+									
+										
+											<li class="twc-first"><a href="/weather/hourbyhour/USAK0025" from="today_rightnow_hrlyforecast_details">Hourly</a></li>
+										
+										
+										
+									
+                     			
+									
+									
+										
+											
+										
+										
+										
+									
+									
+										
+										
+										
+											<li><a href="/outlook/videos/" from="today_video_link_current">Video</a></li>	
+										
+									
+                     			
+									
+									
+										
+										
+										
+									
+									
+										
+										
+											<li class="twc-last"><a href="/services/desktop.html" from="today_rightnow_desktoppromo">Desktop Weather</a></li>
+										
+										
+									
+                     			
+                        </ul>
+					</td>
+					<td class="twc-col-2 twc-forecast-links"><!-- Column 2 -->
+						
+                         <ul>
+                         
+                            
+							
+							
+							
+							
+								
+							
+							
+               				
+                				
+            						<li class="twc-first"><a href="/weather/hourbyhour/graph/USAK0025" from="today_hrlyforecast_summary">Hourly Forecast</a></li>
+                				
+             					
+               					
+               						
+                         
+                         </ul>	
+					</td>
+					<td class="twc-col-3 twc-forecast-links">&nbsp;</td><!-- Column 3 -->
+					<td class="twc-col-4 twc-forecast-links"><!-- Column 4 -->
+						
+                     <ul>
+                  	
+						
+						
+							
+							
+							
+								
+							
+						
+           				
+           					
+								<li class="twc-first"><a href="/weather/tenday/USAK0025" from="today_10dayforecast_details">10-Day Forecast</a></li>
+           					
+           					
+	             			
+             			
+                  	                                
+                     </ul>
+					</td>
+				</tr>
+			</table>
+			<div class="twc-forecast-toggler-wrapper"><div class="twc-forecast-toggler" id="twc-forecast-toggler-id">Click for more weather info</div></div>
+		</div><!-- twc-module-tab-content -->
+	</div><!-- twc-module-tab-containers -->
+</div><!-- twc-module-content twc-blue-tabview -->
+
+
+   </div><!-- twc-module-bkgd -->
+</div><!-- twc-forecast-module -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+<!--  -->
+ 
+
+
+
+        
+
+
+
+
+	<!-- Horizontal Video Module Load -->
+	    <div class="twc-module twc-full-module twc-video-module"><!-- Note the addition of twc-module-604 -->
+			<div class="twc-module-bkgd"><!-- new div for background -->
+			<div class="twc-module-header">
+				<h3>Video</h3>
+			</div>
+			<div class="twc-module-content twc-tabview">
+				<ul class="twc-module-tabs yui-nav" style="">  
+					
+					
+					
+						<li class="twc-first selected"><a href="#" onClick="sc_trackAction(this,'today_videomodule_mostpopular_tab_click','twciwx');">Most Popular</a></li>
+						
+							<li class="twc-last"><a href="#" onClick="sc_trackAction(this,'today_videomodule_mostrecent_tab_click','twciwx');">Most Recent</a></li>
+						
+					
+					
+					
+					
+					
+						
+						
+							
+							
+								
+								
+									<li class="twc-last"><a href="#" onClick="sc_trackAction(this,'today_videomodule_rawvideo_tab_click','twciwx');">Raw Video</a></li>
+								
+							
+							
+						
+							
+				</ul>
+				
+				
+				
+				<div class="twc-module-tab-containers yui-content twc-first">
+					
+					
+					
+					
+						<div class="twc-module-tab-content"><!-- First Content Well -->
+					
+						
+						
+						
+							
+							
+								
+								
+								
+								
+							
+							
+							
+								
+								
+								
+								
+							
+							
+							
+						
+							
+							<div class="twc-video-block twc-first">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/northeast-regional-forecast-361" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/northeast_122.jpg')" from="today_videomodule_thumbnail1"></a>
+									<a href="/outlook/videos/northeast-regional-forecast-361" class="twc-video-play-button" from="today_videomodule_1">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+	
+									<h4><a href="/outlook/videos/northeast-regional-forecast-361" from="today_videomodule_link1">Northeast Regional Forecast</a></h4>
+									<p class="twc-video-text">
+										 A look at weather conditions in the Northeast, updated throughout...
+									</p>
+								</div>
+							</div>
+							
+							
+						
+						
+							
+							
+							
+							
+								
+							
+							
+						
+							<div class="twc-video-block">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/bear-chases-bison-down-highway-18685" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101102bearchase_122.jpg')" from="today_videomodule_thumbnail2"></a>
+									<a href="/outlook/videos/bear-chases-bison-down-highway-18685" class="twc-video-play-button" from="today_videomodule_2">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+	
+									<h4><a href="/outlook/videos/bear-chases-bison-down-highway-18685" from="today_videomodule_link2">Bear chases bison down highway</a></h4>
+									<p class="twc-video-text">
+										<!--A bizzare scene unfolded in Yellowstone National Park in April 2009:  A grizzly bear chased a bison down a paved highway. -->
+										 A bizzare scene unfolded in Yellowstone National Park in April...
+									</p>
+								</div>
+							</div>
+							
+						
+							
+							
+							
+							
+								
+							
+							
+						
+							<div class="twc-video-block">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/dog-catches-fish-in-flood-18694" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101103flooddog_122.jpg')" from="today_videomodule_thumbnail3"></a>
+									<a href="/outlook/videos/dog-catches-fish-in-flood-18694" class="twc-video-play-button" from="today_videomodule_3">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+	
+									<h4><a href="/outlook/videos/dog-catches-fish-in-flood-18694" from="today_videomodule_link3">Dog catches fish in flood</a></h4>
+									<p class="twc-video-text">
+										<!--Heavy rains pushed a river in Mason County, Washington over its banks, along with some migrating salmon, and Honey the dog went fishing.   A KIRO photographer caught Honey on video as she caught a fish and headed home.-->
+										 Heavy rains pushed a river in Mason County, Washington over its...
+									</p>
+								</div>
+							</div>
+							
+						
+							
+							
+							
+								
+							
+							
+							
+						
+							<div class="twc-video-block twc-last">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/tomas-moves-towards-haiti-6584" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/tropical_122.jpg')" from="today_videomodule_thumbnail4"></a>
+									<a href="/outlook/videos/tomas-moves-towards-haiti-6584" class="twc-video-play-button" from="today_videomodule_4">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+	
+									<h4><a href="/outlook/videos/tomas-moves-towards-haiti-6584" from="today_videomodule_link4">Tomas moves towards Haiti</a></h4>
+									<p class="twc-video-text">
+										<!--Tropical Storm Tomas is strengthening as it moves towards Haiti.-->
+										 Tropical Storm Tomas is strengthening as it moves towards Haiti.
+									</p>
+								</div>
+							</div>
+							
+						
+						</div>
+					
+					
+					
+						<div class="twc-module-tab-content yui-hidden" ><!-- Second Content Well -->
+						
+							
+							
+								
+							
+							
+							
+							
+							<div class="twc-video-block twc-first">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/passenger-jet-engine-explodes-in-the-air-18703" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101104jet_122.jpg ')" from="today_videomodule_thumbnail5"></a>
+									<a href="/outlook/videos/passenger-jet-engine-explodes-in-the-air-18703" class="twc-video-play-button" from="today_videomodule_5">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+									<h4><a href="/outlook/videos/passenger-jet-engine-explodes-in-the-air-18703" from="today_videomodule_link5">Passenger jet engine explodes in the air</a></h4>
+									<p class="twc-video-text">
+										 One of the world's largest passenger plane, a Quantas Airbus 380,...
+									</p>
+								</div>
+							</div>
+							
+						
+							
+							
+							
+							
+								
+							
+							
+							<div class="twc-video-block">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/starving-horse-rescued-by-teen-18700" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101104horse_122.jpg')" from="today_videomodule_thumbnail6"></a>
+									<a href="/outlook/videos/starving-horse-rescued-by-teen-18700" class="twc-video-play-button" from="today_videomodule_6">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+									<h4><a href="/outlook/videos/starving-horse-rescued-by-teen-18700" from="today_videomodule_link6">Starving horse rescued by teen</a></h4>
+									<p class="twc-video-text">
+										 18 year old Kelsey Allonge and her mom were driving in a rural...
+									</p>
+								</div>
+							</div>
+							
+						
+							
+							
+							
+							
+								
+							
+							
+							<div class="twc-video-block">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/record-heat-sends-people-to-beach-18701" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101104lahot_122.jpg')" from="today_videomodule_thumbnail7"></a>
+									<a href="/outlook/videos/record-heat-sends-people-to-beach-18701" class="twc-video-play-button" from="today_videomodule_7">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+									<h4><a href="/outlook/videos/record-heat-sends-people-to-beach-18701" from="today_videomodule_link7">Record heat sends people to beach</a></h4>
+									<p class="twc-video-text">
+										 It still feels like summer in parts of the West. Los Angeles...
+									</p>
+								</div>
+							</div>
+							
+						
+							
+							
+							
+								
+							
+							
+							
+							<div class="twc-video-block twc-last">
+								<div class="twc-video-image">
+									<a class="twc-video-th" href="/outlook/videos/live-cantore-awaits-tomas-in-haiti-328" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101104Cantoreday_122.jpg')" from="today_videomodule_thumbnail8"></a>
+									<a href="/outlook/videos/live-cantore-awaits-tomas-in-haiti-328" class="twc-video-play-button" from="today_videomodule_8">Play Video</a>
+								</div>
+								<div class="twc-video-inner">
+									<h4><a href="/outlook/videos/live-cantore-awaits-tomas-in-haiti-328" from="today_videomodule_link8">Live: Cantore awaits Tomas in Haiti</a></h4>
+									<p class="twc-video-text">
+										 The Weather Channel's Jim Cantore where there is concern for...
+									</p>
+								</div>
+							</div>
+							
+						
+						</div><!-- Second Content Well -->
+					
+					
+					
+					
+						
+						<div class="twc-module-tab-content yui-hidden"><!-- Third Content Well -->
+							
+								
+								
+									
+								
+								
+								
+								
+								<div class="twc-video-block twc-first">
+									<div class="twc-video-image">
+										<a class="twc-video-th" href="/outlook/videos/texas-tornado-caught-on-cam-18607" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101025twister_122.jpg')" from="today_videomodule_thumbnail9"></a>
+										<a href="/outlook/videos/texas-tornado-caught-on-cam-18607" class="twc-video-play-button" from="today_videomodule_9">Play Video</a>
+									</div>
+									<div class="twc-video-inner">
+										<h4><a href="/outlook/videos/texas-tornado-caught-on-cam-18607" from="today_videomodule_link9">Texas tornado caught on cam</a></h4>
+										<p class="twc-video-text">
+											 Jason Mclaughin shot these amazing scenes of a tornado ripping...
+										</p>
+									</div>
+								</div>
+								
+							
+								
+								
+								
+								
+									
+								
+								
+								<div class="twc-video-block">
+									<div class="twc-video-image">
+										<a class="twc-video-th" href="/outlook/videos/were-in-the-tornado-18613" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101025txtornado_122.jpg')" from="today_videomodule_thumbnail10"></a>
+										<a href="/outlook/videos/were-in-the-tornado-18613" class="twc-video-play-button" from="today_videomodule_10">Play Video</a>
+									</div>
+									<div class="twc-video-inner">
+										<h4><a href="/outlook/videos/were-in-the-tornado-18613" from="today_videomodule_link10">"We're in the tornado!"</a></h4>
+										<p class="twc-video-text">
+											 Eric Meyers shot this EF2 tornado ripping up parts of Rice,...
+										</p>
+									</div>
+								</div>
+								
+							
+								
+								
+								
+								
+									
+								
+								
+								<div class="twc-video-block">
+									<div class="twc-video-image">
+										<a class="twc-video-th" href="/outlook/videos/tornado-captured-by-security-camera-18630" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101027intor2_122.jpg')" from="today_videomodule_thumbnail11"></a>
+										<a href="/outlook/videos/tornado-captured-by-security-camera-18630" class="twc-video-play-button" from="today_videomodule_11">Play Video</a>
+									</div>
+									<div class="twc-video-inner">
+										<h4><a href="/outlook/videos/tornado-captured-by-security-camera-18630" from="today_videomodule_link11">Tornado captured by security camera  </a></h4>
+										<p class="twc-video-text">
+											 A tornado touched down in Wanatah, IN. Workers at Hoosier...
+										</p>
+									</div>
+								</div>
+								
+							
+								
+								
+								
+									
+								
+								
+								
+								<div class="twc-video-block twc-last">
+									<div class="twc-video-image">
+										<a class="twc-video-th" href="/outlook/videos/raw-wind-makes-lake-look-like-ocean-18645" style="background-image:url('http://i.imwx.com/web/multimedia/images/miscellaneous/101028waves_122.jpg ')" from="today_videomodule_thumbnail12"></a>
+										<a href="/outlook/videos/raw-wind-makes-lake-look-like-ocean-18645" class="twc-video-play-button" from="today_videomodule_12">Play Video</a>
+									</div>
+									<div class="twc-video-inner">
+										<h4><a href="/outlook/videos/raw-wind-makes-lake-look-like-ocean-18645" from="today_videomodule_link12">Raw: Wind makes lake look like ocean  </a></h4>
+										<p class="twc-video-text">
+											 High winds over Lake Michigan caused some pretty big waves along...
+										</p>
+									</div>
+								</div>
+								
+							
+						</div><!-- next Content well -->
+					
+				
+				</div>
+			</div><!-- twc-module-content -->
+			<div class="twc-module-footer">
+				
+				
+					
+					
+						<a href="/outlook/videos" class="twc-more-link" from="today_videomodule_morevideo_link">More Video</a>
+					
+				
+			</div>
+		</div><!-- twc-module-bk -->
+    </div><!-- twc-module -->
+	
+
+
+
+
+
+ 
+       
+
+<div class="twc-group">
+
+	<div class="twc-module twc-my-apps-module" style="z-index: 999;">
+		<div class="twc-module-header">
+			<h3>
+				My Apps
+			</h3>
+			<span class="twc-customize-apps-button twc-select-apps-button twc-clickable">Customize</span>
+		</div>
+		<div id="twc-apps-module" class="twc-module-content" style="overflow: visible !important;"></div>
+		<div class="twc-module-footer">
+			<span class="twc-add-app-button twc-select-apps-button twc-clickable">Add Another App</span>
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css">
+/* Clear calendar's float, using dialog inbuilt form element */
+#container .bd form {
+	clear: left;
+}
+
+/* Have calendar squeeze upto bd bounding box */
+#container .bd {
+	padding: 0;
+}
+
+#container .hd {
+	text-align: left;
+}
+
+/* Center buttons in the footer */
+#container .ft .button-group {
+	text-align: center;
+}
+
+/* Prevent border-collapse:collapse from bleeding through in IE6, IE7 */
+#container_c.yui-overlay-hidden table { *
+	display: none;
+}
+
+/* Remove calendar's border and set padding in ems instead of px, so we can specify an width in ems for the container */
+#cal {
+	border: none;
+	padding: 1em;
+}
+
+/* Datefield look/feel */
+.datefield {
+	position: relative;
+	white-space: nowrap;
+}
+
+.datefield input,.datefield button,.datefield label {
+	vertical-align: middle;
+}
+
+.datefield button {
+	padding: 0 5px 0 5px;
+	margin-left: 2px;
+}
+
+.datefield button img {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+
+/* Example box */
+.box {
+	position: relative;
+	height: 30em;
+}
+</style>
+<div class="twc-panels">
+<div id="wx-app-select" class="twc-modal-popup twc-big-modal-popup">
+
+</div>
+</div>
+                <div class="twc-ad twc-ad-double-promo">
+                    <div class="twc-ad-promo">
+                        
+
+<div id="WX_MiniDriver1" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_MiniDriver1');
+	
+ </script></div>
+                    </div>
+                    <div class="twc-ad-promo">
+                        
+
+<div id="WX_MiniDriver2" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_MiniDriver2');
+	
+ </script></div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+<style type="text/css">
+/**
+ * Mappane2 styles
+ * Be sure to set .MapPane_Updated width to correct width
+ **/
+.MapPane{position:relative;top:0px;left:0px;overflow:hidden;border:1px #000 inset;}
+.MapPane_TileSets{position:absolute;top:0px;left:0px;}
+.MapPane_Tiles{position:absolute;top:0px;left:0px;}
+.MapPane_Tile{position:absolute;margin:0px;padding:0px;}
+.MapPane_PointTile{position:absolute;margin:0px;padding:0px;overflow:visible;}
+.MapPane_Frame{position:absolute;top:0px;left:0px;}
+.MapPane_FrameElement{position:absolute;margin:0px;padding:0px;}
+.MapPane_Updated{position:absolute;margin:0px;padding:2px;width:190px;height:11px;background-color:#000;color:#FFF;font-size:9px;font-family:Arial;text-align:center;}
+#mappane0{position:absolute;top:119px;left:0px;visibility:hidden}
+#mappane1{position:absolute;top:80px;left:0px;visibility:hidden}
+</style>
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+	
+
+
+
+
+<div class="wxYUITabs" id="vtMediaModule" style="margin-top:40px;">
+  <h4>Maps &amp; Media</h4>
+  <div class="yui-skin-sam">
+    <div id="mediaTabs" class="yui-navset yui-navset-top">
+      <ul class="yui-nav">  
+		  
+	      <li id="tab1" title="" class="selected"><a id="aTab1" onclick="sc_trackAction(this,'today_map_tab','twciwx');" href="#"><em>Map</em></a></li>
+	      <li id="tab2" title="" class=""><a id="aTab2" onclick="sc_trackAction(this,'today_video_tab','twciwx');" href="#"><em>Video</em></a></li>
+     	  
+	        <li id="tab3" title="" class=""><a id="aTab3" onclick="sc_trackAction(this,'today_iwitness_tab','twciwx');" href="#"><em><span>i</span>Witness Weather</em></a></li>
+         
+      </ul><!-- yui-nav -->
+      <div class="yui-content">
+
+
+
+
+
+
+<div id="tabContent1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+	
+
+
+
+
+
+
+<span id="addThisiMap" href="#" onclick="sc_trackAction(this,'today_addthis_widget_click',null);" 	class="twc-module-options-link twc-clickable">View Options</span>
+<div class="mediaModContainer"> 
+
+
+
+
+
+
+
+<div class="mediaModSecTop">
+<div class="rdSattBtns">
+<div id="road" class="rdButtonActive"></div>
+<div id="satellite" class="sattButton"></div>
+</div>
+<div class="mediaModSecTopRt">
+<div class="whatsThis"><a
+	href="/common/help/citypageflashhelp.html"
+	onclick="window.open(this.href,'Help','width=466,height=490,resizable,scrollbars,nostatus');return false;">What's This?</a></div>
+<div id="timestamp" class="ccWeatherTimeStamp twc-timestamp">Updated Nov 4, 2010, 1:40pm AKDT</div>
+</div>
+</div>
+<div class="mediaModContent">
+
+
+
+
+
+
+
+
+<div id="mappane" class="MapPane twc-clickable" style="height:374px; width:598px;">
+<div class="MapPane_TileSets" style="height:374px; width:598px;">
+<div class="MapPane_Tiles" style="height:374px; width:598px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r2.ortho.tiles.virtualearth.net/tiles/r00230202.png?g=1" style="height:256px; width:256px; top:-202px; left:172px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r3.ortho.tiles.virtualearth.net/tiles/r00230203.png?g=1" style="height:256px; width:256px; top:-202px; left:428px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r3.ortho.tiles.virtualearth.net/tiles/r00221313.png?g=1" style="height:256px; width:256px; top:-202px; left:-84px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r2.ortho.tiles.virtualearth.net/tiles/r00230222.png?g=1" style="height:256px; width:256px; top:310px; left:172px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r3.ortho.tiles.virtualearth.net/tiles/r00230223.png?g=1" style="height:256px; width:256px; top:310px; left:428px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r1.ortho.tiles.virtualearth.net/tiles/r00221331.png?g=1" style="height:256px; width:256px; top:54px; left:-84px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r0.ortho.tiles.virtualearth.net/tiles/r00230220.png?g=1" style="height:256px; width:256px; top:54px; left:172px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r1.ortho.tiles.virtualearth.net/tiles/r00230221.png?g=1" style="height:256px; width:256px; top:54px; left:428px;">
+<img class="MapPane_Tile MapPane_Base" src="http://r3.ortho.tiles.virtualearth.net/tiles/r00221333.png?g=1" style="height:256px; width:256px; top:310px; left:-84px;">
+</div> <!-- tile/base/road-->
+<div class="MapPane_Tiles" style="height:374px; width:598px; opacity:0.5; filter:alpha(opacity=50);">
+<img class="MapPane_Tile" src="http://g2.imwx.com/TileServer/imgs/radar/u1288921200000/00230202.png" style="height:256px; width:256px; top:-202px; left:172px;">
+<img class="MapPane_Tile" src="http://g3.imwx.com/TileServer/imgs/radar/u1288921200000/00230203.png" style="height:256px; width:256px; top:-202px; left:428px;">
+<img class="MapPane_Tile" src="http://g3.imwx.com/TileServer/imgs/radar/u1288921200000/00221313.png" style="height:256px; width:256px; top:-202px; left:-84px;">
+<img class="MapPane_Tile" src="http://g2.imwx.com/TileServer/imgs/radar/u1288921200000/00230222.png" style="height:256px; width:256px; top:310px; left:172px;">
+<img class="MapPane_Tile" src="http://g3.imwx.com/TileServer/imgs/radar/u1288921200000/00230223.png" style="height:256px; width:256px; top:310px; left:428px;">
+<img class="MapPane_Tile" src="http://g1.imwx.com/TileServer/imgs/radar/u1288921200000/00221331.png" style="height:256px; width:256px; top:54px; left:-84px;">
+<img class="MapPane_Tile" src="http://g0.imwx.com/TileServer/imgs/radar/u1288921200000/00230220.png" style="height:256px; width:256px; top:54px; left:172px;">
+<img class="MapPane_Tile" src="http://g1.imwx.com/TileServer/imgs/radar/u1288921200000/00230221.png" style="height:256px; width:256px; top:54px; left:428px;">
+<img class="MapPane_Tile" src="http://g3.imwx.com/TileServer/imgs/radar/u1288921200000/00221333.png" style="height:256px; width:256px; top:310px; left:-84px;">
+</div> <!-- tile/ginsu/radar-->
+</div> <!-- TileSets-->
+<div class="MapPane_Frame" style="height:374px; width:598px;">
+<img class="MapPane_Overlay MapPane_FrameElement" src="http://i.imwx.com/v.20100811.0/web/common/icons/logo_powered_by.png" alt="Bing" style="top: 334px; left: 11px; width: 93px; height: 29px;">
+<img class="MapPane_Overlay MapPane_FrameElement" src="http://i.imwx.com/v.20100811.0/web/common/icons/twcLogo.png" alt="TWC" style="top: 328px; left: 552px; width: 35px; height: 35px;">
+<img class="MapPane_Overlay MapPane_FrameElement" src="http://i.imwx.com/v.20090611.0/web/common/icons/radarLegend.png" alt="Legend" style="top: 4px; left: 414px; width: 173px; height: 18px;">
+</div> <!-- MapFrame-->
+</div> <!-- Main-->
+ 
+</div>
+
+	<div class="mediaModMapLinks"> 
+		<span>Other Views:</span>
+		
+		
+
+		
+		
+		
+
+					
+						
+							
+							
+								
+
+							
+						
+					
+
+
+					
+					
+						
+						
+				<a id=mapTabLink1 href="/weather/map/interactive/USAK0025" from="today_media_maplinksub1">Full-Feature Map</a>
+						
+					
+
+					
+				       
+
+		<span>|</span>
+
+
+	
+
+		
+		
+		
+
+					
+
+
+					
+					
+						
+						
+				<a id=mapTabLink2 href="/weather/map/USAK0025" from="today_media_maplinksub2">Classic Map</a>
+						
+					
+
+					
+				       
+
+		<span>|</span>
+
+
+	
+
+		
+		
+		
+
+					
+						
+							
+							
+								
+
+							
+						
+					
+
+
+					
+					
+						
+						
+				<a id=mapTabLink3 href="/weather/map/interactive/USAK0025?animation=true" from="today_media_maplinksub3">Weather in Motion&reg;</a>
+						
+					
+
+					
+				       
+
+		
+
+
+	</div>
+ 
+
+	
+		  	
+
+
+
+		
+				
+					
+			
+				
+					
+				
+				
+
+				
+				
+				<span>More Maps for Your Region</span>
+				    <div class="moreMapLinks">
+
+					<div class="moreMapLinksBox firstLinkBox">
+					<ul class="twc-related-links">
+				
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/maptype/satelliteworld/caribbeansatellite_large.html" from="today_media_maplink1">Caribbean Satellite Map</a>
+						
+					 </li>
+						
+						
+		
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/maptype/earthquakereports/alaskaearthquakereport_large.html" from="today_media_maplink2">Alaska Earthquake Reports</a>
+						
+					 </li>
+						
+						
+		
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/geography/alaskaus/alaskasatellite_large.html" from="today_media_maplink3">Alaska Satellite Map</a>
+						
+					 </li>
+						
+						 	</ul>
+						 	</div>
+						
+						
+							<div class="moreMapLinksBox">
+						 	<ul class="twc-related-links">
+						
+		
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/geography/hawaiius/hawaiisatellite_large.html" from="today_media_maplink4">Hawaii Satellite Map</a>
+						
+					 </li>
+						
+						
+		
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/maptype/satelliteworld/pacificoceansatellite_large.html" from="today_media_maplink5">Pacific Satellite Map</a>
+						
+					 </li>
+						
+						
+		
+						
+						
+						
+							
+							
+							
+						
+					
+					<li>
+						
+						
+							<a href="http://www.weather.com/maps/activity/boatbeach/currenthawaiiwinds_large.html" from="today_media_maplink6">Hawaii Winds</a>
+						
+					 </li>
+						
+						 	</ul>
+						 	</div>
+						
+						
+		</div>
+  
+</div>
+<div class="clear_content"></div>
+ </div>
+
+
+<div id="tabContent2" class="yui-hidden">
+</div>
+
+
+<div id="tabContent3" class="yui-hidden"></div>
+
+
+<div style="visibility: hidden; top: 80px;" id="mappane1" class="wxClickable"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wxModDivider clear_content"></div>
+
+
+
+<div id="horVideo">
+</div>
+
+
+
+
+<style type="text/css">
+/* Timeframe Nav */
+.tnTimeNav {font-size:11px;font-family:verdana;height:26px;border:2px solid #039;position:relative;clear:both;margin-top:0px !important;}
+.tnTimeNav ul {margin:0;padding:0;}
+.tnTimeNav li {list-style:none;line-height:1em;display:block;position:relative;bottom:-9px;float:left;padding:0;margin:0 1px 0 0;}
+.tnTimeNav li.tnRadarMap {margin:0;}
+.tnTimeNav li a, .tnTimeNav li span {display:block;height:17px;background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -31px;border:1px solid #039;border-width:0 1px;text-decoration:none;cursor:pointer;outline:0;}
+#tnBot640 li a, #tnBot640 li span {background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -130px;}
+.tnTimeNav li span {cursor:default;}
+.tnTimeNav li a:hover, .tnTimeNav li a:focus {background:#36c url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -62px;color:white;text-decoration:none;}
+#tnBot640 li a:hover, #tnBot640 li a:focus {background:#039 url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -160px;}
+.tnTimeNav li.tnSelected {bottom:-6px;}
+.tnTimeNav li.tnSelected span {background:#fff url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left 0;height:22px;}
+#tnBot640 li.tnSelected span {background:#fff url('http://i.imwx.com/v.20100810.123000/web/common/images/tab_sprite.jpg') repeat-x left -93px;}
+.tnTimeNav li a em, .tnTimeNav li span em {display:block;position:relative;bottom:1px;border-top:1px solid #039;font-style:normal;color:white;text-align:center;padding-top:2px;}
+.tnTimeNav li.tnSelected span em {color:#333;font-weight:bold;padding-top:5px;}
+.tnTimeNav li.tnYesterday {margin-left:5px;}
+#tnTop640, #tnBot640 {width:640px;margin:-5px 0 16px;}
+#tnTop640 {border-width:0 0 2px 0;margin:0 0 -3px 7px;padding-top:15px}
+#tnTop640 li.tnToday, #tnBot640 li.tnToday {margin-left:0;}
+#tnBot640 li {bottom:0px;}
+#tnBot640 li.tnSelected {top:-2px;}
+#tnBot640 li a em, #tnBot640 li span em {bottom:0px;border-bottom:1px solid #039;border-top:none;padding:2px 0 4px 0;}
+#tnBot640  li.tnSelected span em {padding:5px 0 6px 0;}
+#tnBot640 {border-width:2px 0 0 0;}
+#tnTop640 li.tnToday a, #tnTop640 li.tnToday span, #tnBot640 li.tnToday a, #tnBot640 li.tnToday span {width:89px;}
+#tnTop640 li.tnHour a, #tnTop640 li.tnHour span, #tnBot640 li.tnHour a, #tnBot640 li.tnHour span {width:89px;}
+#tnTop640 li.tnTomorrow a, #tnTop640 li.tnTomorrow span, #tnBot640 li.tnTomorrow a, #tnBot640 li.tnTomorrow span {width:89px;}
+#tnTop640 li.tnWeekend a, #tnTop640 li.tnWeekend span, #tnBot640 li.tnWeekend a, #tnBot640 li.tnWeekend span {width:89px;}
+#tnTop640 li.tn10day a,#tnTop640 li.tn10day span, #tnBot640 li.tn10day a,#tnBot640 li.tn10day span {width:88px;}
+#tnTop640 li.tnMonth a,#tnTop640 li.tnMonth span, #tnBot640 li.tnMonth a,#tnBot640 li.tnMonth span {width:88px;}
+#tnTop640 li.tnRadarMap a,#tnTop640 li.tnRadarMap span, #tnBot640 li.tnRadarMap a,#tnBot640 li.tnRadarMap span {width:88px;}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+	
+
+
+
+  			
+  			
+  				<div id="tnBot640" class="tnTimeNav">
+					<ul>
+						<li class="tnToday tnSelected"><span><em>Overview</em></span></li>
+						<li class="tnHour "><a href="/weather/hourbyhour/graph/USAK0025" from="today_bottomnav"><em>Hourly</em></a></li>
+						<li class="tnTomorrow "><a href="/weather/wxdetail/USAK0025?dayNum=1" from="today_bottomnav"><em>Tomorrow</em></a></li>
+						<li class="tnWeekend "><a href="/weather/weekend/USAK0025" from="today_bottomnav"><em>Weekend</em></a></li>
+						<li class="tn10day "><a href="/weather/tenday/USAK0025" from="today_bottomnav"><em>10-Day</em></a></li>
+						<li class="tnMonth "><a href="/weather/monthly/USAK0025" from="today_bottomnav"><em>Month</em></a></li>
+						<li class="tnRadarMap ">
+						
+					         
+					     
+					     
+					     <a href="/weather/map/interactive/USAK0025" from="today_bottomnav">
+					     
+				             
+						<em>Map</em></a></li>
+					</ul>
+				</div><!-- tnTimeNav -->
+  			
+
+
+
+	                <div class="twc-group">
+
+
+
+
+		<div class="twc-module" id="twc-apps-services">
+		<div class="twc-module-bkgd"><!-- new div for background -->
+			<div class="twc-module-header">
+				<h3>Mobile & Downloads</h3>
+			</div>
+			<div class="twc-module-content">
+				<div class="twc-content-block">
+				<div class="twc-content-image"><a href="/services/desktop.html" from="hp_apps"><img  alt="Mobile &amp; Downloads" src="http://s.imwx.com/img/images/image-apps-and-services.jpg" height="41" width="140"></a></div> <p class="twc-content-text">Get storm alerts and The Weather Channel local forecasts <a href="/services/desktop.html" from="hp_apps">free on your desktop</a></p> <div class="twc-content-inner "> <ul class="twc-related-links"> <li><a href="/services/ie7.html" from="hp_apps">Weather toolbar for IE8</a></li><li><a href="/mobile/" from="hp_apps">weather.com on your mobile phone</a></li><li><a href="/services/screensaver/screensaver_email_lp.html" from="hp_apps">Free weather screensaver</a></li><li><a href="/services/oap.html" from="hp_apps">Put weather on your website</a></li></ul></div> <!--  blob -->
+				</div>
+			</div><!-- twc-module-content -->
+			
+			<div class="twc-module-footer">
+	        	
+	            <a href="/services/mobile-downloads.html" from="hp_apps" class="twc-more-link">More Mobile & Downloads</a> <!-- footer link from links table -->
+	            
+	        </div>
+        </div>
+	</div><!-- twc-module -->
+
+		
+
+
+
+
+
+
+
+
+
+    <div class="twc-module" id="twc-ontv">
+        <div class="twc-module-bkgd">
+	        <div class="twc-module-header">
+	            <h3>On TV</h3>
+	        </div>
+	        <div class="twc-module-content">
+			    
+			    <!-- scheduled severe = [] -->
+	        	
+		        	
+		        	
+		        	
+				
+					 
+								
+								
+								
+		        		<!-- num = 1,  scheduled promos = 1 -->
+						      
+				      
+			        	
+				        	
+				        	    		<a href="/outlook/videos/live-cantore-awaits-tomas-in-haiti-328" from="hp_tvmodule"><img  title="Weather Center" alt="Weather Center" src="http://i.imwx.com/web/tv/programs/wc_topical_jc_haiti_274x66.jpg" width="274" height="66"></a>
+				        	
+				        	
+				        	
+			        	
+			            <ul class="twc-list-table">
+			                
+			                	
+			                	
+			                	
+				                	
+				                		<li class="twc-first">
+				                	
+				                	
+				                	
+			                	
+			                	
+				                    <div class="twc-tv-show-block">
+				                        <div class="twc-tv-show-schedule">
+				                        
+				                        	
+				                        		<span class="twc-tv-show-time">On Now</span>
+				                            	<span class="twc-tv-show-timezone">&nbsp;</span>
+				                            
+				                            
+				                        			                            
+				                        </div>
+				                        <div class="twc-tv-show-info">
+				                        	
+				                        		
+					                        	
+					                        		<h4>Day Planner</h4>
+					                        	
+					                        
+				                        </div>
+				                    </div>
+				                </li>
+			                
+			                	
+			                	
+			                	
+				                	
+				                	
+				                	
+				                		<li>
+				                	
+			                	
+			                	
+				                    <div class="twc-tv-show-block">
+				                        <div class="twc-tv-show-schedule">
+				                        
+				                        	
+				                            	
+				                            	<span class="twc-tv-show-time">6:00 pm</span>
+				                            	<span class="twc-tv-show-timezone">ET</span>
+				                            
+				                        			                            
+				                        </div>
+				                        <div class="twc-tv-show-info">
+				                        	
+				                        		
+					                        	
+					                        		<h4>Weather Center</h4>
+					                        	
+					                        
+				                        </div>
+				                    </div>
+				                </li>
+			                
+			                	
+			                	
+			                	
+				                	
+				                	
+				                		<li class="twc-last">
+				                	
+				                	
+			                	
+			                	
+				                    <div class="twc-tv-show-block">
+				                        <div class="twc-tv-show-schedule">
+				                        
+				                        	
+				                            	
+				                            	<span class="twc-tv-show-time">10:00 pm</span>
+				                            	<span class="twc-tv-show-timezone">ET</span>
+				                            
+				                        			                            
+				                        </div>
+				                        <div class="twc-tv-show-info">
+				                        	
+				                        		
+					                        	
+					                        		<h4>Weather Center</h4>
+					                        	
+					                        
+				                        </div>
+				                    </div>
+				                </li>
+			                
+			            </ul>
+		            
+	        	
+	        </div>
+	        <div class="twc-module-footer">
+	            <a href="/tv/schedule" class="twc-more-link" from="hp_tvmodule">Full Schedule</a>
+	        </div>
+	    </div>
+    </div>
+
+	                </div> 
+	            </div><!-- wx-content-2 -->
+	            <div id="wx-content-3"> 
+	            		
+
+
+
+
+
+
+
+
+
+	
+
+	                    <div class="twc-ad twc-ad-island"> 
+	                        
+
+<div id="WX_Top300Variable" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_Top300Variable');
+	
+ </script></div>
+	                    </div> 
+
+
+
+
+
+
+		    <div class="twc-module">
+                        <div class="twc-module-bkgd">
+                            <div class="twc-module-header">
+                                <h3>Today's Top Picks</h3>
+                            </div>
+                            <div class="twc-module-content">
+                                <div class="twc-content-block">
+                                    <div class="twc-content-inner">
+                                        <ul class="twc-related-links">
+										
+									            <li><a href="/outlook/weather-news/news/articles/slideshow-last-season-best-snow-pics_2010-11-04" from="%timeframe%_locallinker6_%undeclared%" >Last season's best snow photos</a></li>
+									        
+									            <li><a href="/outlook/videos/save-energy-and-your-wallet-this-winter-18687" from="%timeframe%_locallinker2_%undeclared%" >Save energy and your wallet this winter</a></li>
+									        
+									            <li><a href="/outlook/weather-news/news/articles/5-grateful-child_2010-11-02" from="%timeframe%_locallinker1_%undeclared%" >5 Ways to Raise a Grateful Child</a></li>
+									        
+									            <li><a href="/activities/recreation/outdoors/extreme/readingwxintro.html" from="%timeframe%_locallinker3_%undeclared%" >Learn how to 'read' the weather</a></li>
+									        
+									            <li><a href="/activities/recreation/ski/ski_deepstuffdomestic.html" from="%timeframe%_locallinker5_%undeclared%" >Skiers, find the deepest snow</a></li>
+									        
+									            <li><a href="/activities/recreation/outdoors/slideshow/park.html" from="TopPicks" >Slideshow: Stunning Nature Scenes</a></li>
+									        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+	
+                            <div class="twc-module-footer">
+			    
+                            	<a href="/outlook/weather-news/news/articles/tropical-storm-hurricane-tomas-future_2010-11-01" 
+                            		><img src="http://i.imwx.com/web/marketing/tomasLive2.jpg" border="0" height="100" width="274" alt="Tomas Cantore Live"></a>
+			     
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+
+
+	                    <div class="twc-ad twc-ad-island"> 
+	                        
+
+<div id="WX_PaidSearch" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_PaidSearch');
+	
+ </script></div>
+	                    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	
+	
+	
+		
+		
+			
+			
+		
+		
+		
+	
+    
+		
+		
+			
+		
+	
+
+	
+		
+		
+		
+		
+			
+			
+			
+
+
+		
+		
+	
+
+
+
+
+	
+		
+		
+			
+
+
+			
+				
+				
+				
+					
+							
+
+						
+				
+			
+
+			
+			
+				
+				
+					
+							
+						
+				
+				
+			
+
+
+			
+
+			
+			
+
+			
+			
+
+
+			
+
+			
+			
+
+			
+			
+			
+			
+				
+			
+
+			
+			
+
+		
+	
+
+	
+
+	
+		
+		
+
+
+	
+
+	
+
+		
+		
+			
+						
+		
+
+
+
+	
+
+	
+
+
+	
+		
+		
+			
+			
+				
+				
+				
+					
+							
+						
+				
+			
+
+
+				
+				
+
+			
+				
+				 
+					
+							
+						
+								
+						
+					
+				
+				
+
+			
+
+
+
+
+
+			
+
+
+			
+			
+			
+			
+
+
+			
+			
+
+
+			
+
+			
+			
+			
+				
+			
+
+			
+			
+
+		
+	
+
+	
+
+	
+
+	
+	
+	
+
+
+
+
+
+
+    <div class="twc-module">
+	<div class="twc-module-bkgd">
+	    <div class="twc-module-header">
+		<h3>Today's Averages &amp; Records</h3>
+	    </div>
+	    <div class="twc-module-content twc-tabview">
+		<div id="avgRecSWF" style="margin-bottom:10px;width:274px;height:225px" class="twc-content-block"></div>
+	    </div>
+	    <div class="twc-module-footer">
+		<a href="/outlook/health/fitness/wxclimatology/daily/USAK0025" from="today_avgrec_link" class="twc-more-link">Historical Data</a>
+	    </div>
+	</div>
+    </div>
+
+
+                        
+	                    <div class="twc-ad twc-ad-island"> 
+	                        
+
+<div id="WX_Mid300" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_Mid300');
+	
+ </script></div>
+	                    </div> 
+
+                    <div class="twc-ad twc-ad-double-promo">
+                        <div class="twc-ad-promo">
+                            
+
+<div id="WX_Tile1" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_Tile1');
+	
+ </script></div>
+                        </div>
+
+                        <div class="twc-ad-promo">
+                            
+
+<div id="WX_Tile2" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_Tile2');
+	
+ </script></div>
+                        </div>
+                    </div>
+
+
+
+
+
+<div class="twc-module" id="twc-otd">
+    <div class="twc-module-bkgd">
+        <div class="twc-module-header">
+            <h3>On This Date</h3>
+        </div>
+        <div class="twc-module-content">
+            <div class="twc-content-block">
+                <div class="twc-otd-calendar">
+                    <div class="twc-otd-month">
+	                     November
+					</div>
+                    <div class="twc-otd-day">4</div>
+                </div>
+                
+                <div class="twc-content-inner">
+                    <p class="twc-content-text">
+                        In 1935, the so-called "Yankee Hurricane" hit <a href="/weather/today/Miami+FL+USFL0316" from="OTD">Miami, Florida</a> with winds up to 95 mph.  The storm was unusual since it moved into the area from the northeast. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="twc-module-footer"></div>
+    </div>
+</div>
+
+	            </div><!-- wx-content-3 -->
+	        </div><!-- wx-content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="twc-panels">
+<div id="wx-panel-addthis36hour" class="twc-modal-popup twc-addthis-panel">
+	<div class="hd"><h3>Share</h3></div>
+	<div class="bd">
+		<div class="twc-addthis-panel-box">
+			<p class="twc-above"><span>Pick a Place:</span></p>
+				
+			<div id="div36hour"></div>
+
+<textarea rows="1" cols="1" id="TEXTAREA_36hour" style="display: none">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="twc-widget-wrapper-36hour" width="300" height="250" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+<param name="movie" value="http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-wrapper.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="wmode" value="transparent" />
+<param name="allowScriptAccess" value="always" />
+<embed src="http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-wrapper.swf" quality="high" bgcolor="#ffffff" wmode='transparent' width="300" height="250" name="twc-widget-wrapper-36hour" align="middle" play="true" loop="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" FlashVars="site=weather&moduleSrc=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-36hour.swf&preview=http://s.imwx.com/v.20100719.135915/img/common/twc-widget-node-36hour.png&origin=true&locationId=USAK0025&tempUnits=f&country=US">
+</embed>
+<param name="FlashVars" value="site=weather&moduleSrc=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-36hour.swf&preview=http://s.imwx.com/v.20100719.135915/img/common/twc-widget-node-36hour.png&origin=true&locationId=USAK0025&tempUnits=f&country=US" />
+</object>		       
+</textarea>
+			<p class="twc-below"><span>Send to Mobile:</span><br>
+			<a onclick="intelliTrak({href:location.href,from:'addthis'});window.open('http://www.weather.com/mobile/swap/send_sms_to_phone.html','addtoPhoneWindow','width=450,height=478,status=no,scrollbars=no,resizable=yes')">Get weather on your phone</a>. It's fast! It's free!</p>
+
+		</div><!-- twc-addthis-panel-box -->
+		<div class="twc-modal-popup-buttons"><button name="cancel-addthis36hour-button" class="twc-cancel-button" title="Cancel"></button></div>
+	</div>
+	<div class="ft"></div>
+</div><!-- wx-panel-addthis36hour -->
+</div><!-- twc-panels -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="twc-panels">
+<div id="wx-panel-addthisiMap" class="twc-modal-popup twc-addthis-panel">
+	<div class="hd"><h3>Share</h3></div>
+	<div class="bd">
+		<div class="twc-addthis-panel-box">
+			<p class="twc-above"><span>Pick a Place:</span></p>
+				
+			<div id="diviMap"></div>
+
+<textarea rows="1" cols="1" id="TEXTAREA_iMap" style="display: none">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="twc-widget-wrapper-iMap" width="300" height="250" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+<param name="movie" value="http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-wrapper.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="wmode" value="transparent" />
+<param name="allowScriptAccess" value="always" />
+<embed src="http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-wrapper.swf" quality="high" bgcolor="#ffffff" wmode='transparent' width="300" height="250" name="twc-widget-wrapper-iMap" align="middle" play="true" loop="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" FlashVars="site=weather&moduleSrc=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-map.swf&preview=http://s.imwx.com/v.20100719.135915/img/common/twc-widget-node-map.png&mapsClient=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-map-flexcontainer.swf&origin=true&locationId=USAK0025&tempUnits=f&country=US">
+</embed>
+<param name="FlashVars" value="site=weather&moduleSrc=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-map.swf&preview=http://s.imwx.com/v.20100719.135915/img/common/twc-widget-node-map.png&mapsClient=http://s.imwx.com/v.20100719.135915/img/swf/twc-widget-map-flexcontainer.swf&origin=true&locationId=USAK0025&tempUnits=f&country=US" />
+</object>		       
+</textarea>
+			<p class="twc-below"><span>Send to Mobile:</span><br>
+			<a onclick="intelliTrak({href:location.href,from:'addthis'});window.open('http://www.weather.com/mobile/swap/send_sms_to_phone.html','addtoPhoneWindow','width=450,height=478,status=no,scrollbars=no,resizable=yes')">Get weather on your phone</a>. It's fast! It's free!</p>
+
+		</div><!-- twc-addthis-panel-box -->
+		<div class="twc-modal-popup-buttons"><button name="cancel-addthisiMap-button" class="twc-cancel-button" title="Cancel"></button></div>
+	</div>
+	<div class="ft"></div>
+</div><!-- wx-panel-addthisiMap -->
+</div><!-- twc-panels -->
+
+
+
+<div class="twc-panels">
+	<div id="wx-tooltip-addthis" class="twc-non-modal-popup-209">
+		<div class="hd"></div>
+		<div class="bd"><span>Click here to share with a friend or insert The 
+		Weather Channel widget in your favorite site.</span>
+		</div>
+		<div class="ft"></div>
+	</div>
+</div><!-- twc-panels -->
+<!-- wx-tooltip-addthis -->
+
+
+
+
+<!--  Will need to change based on severe  -->
+       <div id="wx-footer">
+       
+       <div id="wx-footer-content">
+         <div id="wx-footer-search">
+            <form class="twc-google-search" id="twc-google-web-search" action="/info/websearch" onSubmit="return false;">
+                <input class="twc-google-query" title="Enter Search Term" type="text" name="q" >	
+			    <input class="twc-search-web-button twc-google-submit" title="Search the Web" type="submit" value="Search the Web">
+            </form>
+         </div>
+        	<div id="wx-footer-links"> <dl> <dt>Explore:</dt> <dd class="twc-first"><a href="/encyclopedia/" from="footer">Encyclopedia</a></dd> <dd><a href="/glossary/" from="footer">Glossary</a></dd> <dd><a href="/common/drilldown/US/top100.html" from="footer">Top 100 Cities</a></dd> <dd><a href="/outlook/weatherbystate/" from="footer">Search by State</a></dd> <dd><a href="/localguides/index.html" from="footer">City Guides</a></dd> <dd><a href="/outlook/weather-news/severe-weather/articles/hurricane-main_2010-05-21" from="footer">Hurricane</a></dd> <dd class="twc-last"><a href="/services/desktop.html" from="footer">Desktop Weather</a></dd></dl> <dl> <dt>The Weather Channel Sites:</dt> <dd class="twc-first"><a href="http://store.weather.com/" target="_blank">The Weather Channel Store</a></dd> <dd><a href="http://www.theweatherchannelkids.com/" target="_blank">TWC Kids</a></dd> <dd><a href="http://weatherbonk.com/" target="_blank">WeatherBonk</a></dd> <dd><a href="/common/welcomepage/world.html" from="footer">International Sites</a></dd> <dd class="twc-last"><a target="_blank" href="http://espanol.weather.com" from="cm_ven=weathercom&cm_cat=footer&cm_ite=brand&cm_pla=text">En Espanol&nbsp; <br></a></dd><dt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <br></dt></dl> <dl> <dt>Partners:</dt> <dd class="twc-first"><a from="footer" href="/outdoors/home-improvement/">The Home Depot Project of the Week</a></dd> <dd><a title="America's Event And Attraction Search Engine - Festivals, Arts And Crafts, Fairs And Many Other Local Events And Attractions" href="http://www.eventcrazy.com" target="_blank">EventCrazy.com Events</a></dd> <dd><a href="http://www.webmd.com/allergies/default.htm" target="_blank">WebMD Asthma &amp; Allergy Center</a></dd> <dd><a href="http://www.godaddy.com/default.aspx?isc=gdweather2" target="_blank">Web Hosting at GoDaddy.com</a></dd> <dd><a href="http://www.forgetaway.com" target="_blank"><br></a></dd> </dl></div><!-- wx-footer-links -->
+        </div>
+            <div id="wx-footer-misc">
+	        	<div id="wx-footer-other-links"> <ul> <li class="twc-first"><a href="/sitemap/" from="footer">Site Map</a></li><li><a href="/common/survey/feedback.html" from="footer">Feedback</a></li><li><a href="/interact/contactus/" from="footer">Help/FAQs<br></a></li><li><a href="/careers/" from="footer">Careers</a></li><li><a href="/aboutus/" from="footer">About Us</a></li><li><a href="http://press.weather.com/default.asp" target="_blank">Press Room</a></li><li><a target="_blank" href="http://twcmediakit.com/" from="footer">Advertising</a></li></ul></div>
+                <div id="wx-footer-legal">
+                    <p id="wx-copyright">&copy; 1995 - 2010, The Weather Channel Interactive, Inc. weather.com&reg; Licensed by TRUSTe</p>
+                    <ul>
+                        <li class="twc-first"><a href="/common/home/legal.html" from="footer">Terms of Service</a></li>
+                        <li><a href="/common/home/privacy.html" from="footer">Privacy Statement</a></li>
+                        <li class="twc-last"><a href="http://www.controlyourtv.org/Intro.aspx" target="_blank" from="footer">Parental Controls</a></li>
+                    </ul>
+                </div><!-- wx-footer-legal -->
+            </div><!-- wx-footer-misc -->
+            
+
+<div id="WX_Hidden" class="adDiv">
+    <script type="text/javascript">
+        A21.notifyRegistered('WX_Hidden');
+	
+ </script></div>
+        </div><!-- wx-footer -->
+
+
+		</div><!-- wx-page-inner -->
+    </div><!-- wx-page -->
+<!--YUI Loader code -->
+<script type="text/javascript">
+(function() { var loader = new YAHOO.util.YUILoader({ base:"http://s.imwx.com/js/2.8.0r4/", loadOptional:false, combine:false, filter:"MIN", allowRollup:true,
+require: ["animation","button","connection","container","containercore","cookie","dom","event-mouseenter","event-delegate","selector","tabview","yahoo","datasource","autocomplete","element","event","calendar","swf"], onSuccess: function() {
+
+/* Inserted by wx-bind */
+try {
+YAHOO.namespace("weather");
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-savedlocations */
+try {
+// Setup tab views
+            var tabContainers = YAHOO.util.Selector.query(".twc-tabview");
+            for (var i = 0; i < tabContainers.length; i++) {
+                new YAHOO.widget.TabView(tabContainers[i]);
+            }
+            var body = new YAHOO.util.Element(YAHOO.util.Selector.query('body')[0]);
+            body.addClass("has-js");
+            body.removeClass("no-js");
+
+			(function(){
+				var Y = YAHOO.util,
+				  YUD = Y.Dom,
+				  YUE = Y.Event;
+				
+/* Moved header.jspf include to direct descendant of body, so this code is no longer necessary */
+/*
+				YUE.onDOMReady(function(){
+					var ph = YUD.get('wx-header-ph'),
+						wr = YUD.get('wx-header-wrapper'),
+						 b = document.body;
+					b.insertBefore(wr,b.firstChild);
+					YUD.setY(wr, YUD.getY(ph));
+				});
+*/
+			})();
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-weathersearch */
+try {
+//TODO - move this code to a seperate file
+
+			// Create the fahrenheight toggler
+			var oButtonGroup1 = new YAHOO.widget.ButtonGroup("wx-temperature-toggle");
+			var temperatureToggle = YAHOO.util.Dom.get("wx-temperature-toggle");
+			var unwantedLabels = YAHOO.util.Selector.query('#wx-temperature-toggle label');
+			
+			// Remove the unwanted labels left over by YUI
+			for (var i = 0; i < unwantedLabels.length; i++) {
+			    temperatureToggle.removeChild(unwantedLabels[i]);
+			}
+
+			//Add event to temperature toggles
+			YAHOO.util.Event.delegate("wx-temperature-toggle","click",function(e, matchedEl, container){
+				YAHOO.util.Event.stopEvent(e);
+				var unitPref = matchedEl.innerHTML;
+				// Added for addition tracking since YUI strips from button tag.
+				YAHOO.weather.intelliTrak.isLinkClicked = true;
+				if(typeof wx.config.page != "undefined") {
+					if(unitPref=='m')
+						YAHOO.weather.intelliTrak({'href': wx.config.page.pageURL,'from':'hp_unitC'});
+					else 
+						YAHOO.weather.intelliTrak({'href': wx.config.page.pageURL,'from':'hp_unitF'});
+
+				}
+				YAHOO.util.Connect.asyncRequest('POST', '/pagelet/userprefset?u='+unitPref, {
+				success:function(o) {
+					if(o.status.toString().match("2[0-9][0-9]")!=null) {
+						window.location.reload();
+					} else {
+							TWCI.firePageletError(wx.config.page.pageId,"userPref",o.status);
+					}
+				},
+				failure:function(o) {
+					TWCI.firePageletError(wx.config.page.pageId,"app",o.status);
+				}
+				});
+			},"button");
+			
+			//TODO - Move to separate file
+			var ursId = wx.config.user.ursId;
+			var products = wx.config.user.products.join(",");
+			var signedIn = wx.config.user.signedIn;
+			if (signedIn != null ) {
+				var wxMyPageLi = YAHOO.util.Selector.query(".wx-signin-mypage");
+				var wxGoldLi = YAHOO.util.Selector.query(".wx-signin-gold");
+				var wxNotifyLi = YAHOO.util.Selector.query(".wx-signin-notify");
+				var wxMyProfileLi = YAHOO.util.Selector.query(".wx-signin-myprofile");
+				var wxSignOutLi = YAHOO.util.Selector.query(".wx-signin-signout");
+				var wxRegisterLi = YAHOO.util.Selector.query(".wx-signin-register");
+				var wxSignInLi = YAHOO.util.Dom.get("wx-header-tools-sign-in"); 
+						
+				YAHOO.util.Dom.addClass(wxSignInLi, "twc-hide");
+				YAHOO.util.Dom.addClass(wxRegisterLi, "twc-hide");
+				YAHOO.util.Dom.removeClass(wxSignOutLi, "twc-hide");
+				YAHOO.util.Dom.removeClass(wxMyProfileLi, "twc-hide");
+				if (products.indexOf("MPP") != -1) {
+					YAHOO.util.Dom.removeClass(wxMyPageLi, "twc-hide");
+				}
+				if (products.indexOf("MWG") != -1) {
+					YAHOO.util.Dom.removeClass(wxGoldLi, "twc-hide");
+				}
+				if (products.indexOf("SA") != -1) {
+					YAHOO.util.Dom.removeClass(wxNotifyLi, "twc-hide");
+				}
+			}
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty1 */
+try {
+YAHOO.util.Event.on("twc-google-site-search", "submit", function(e){
+					    var siteSearchForm = document.forms["twc-google-site-search"];
+						var siteSearchTextBox = siteSearchForm.elements["q"];
+					
+						if (siteSearchTextBox.value == siteSearchTextBox.title || siteSearchTextBox.value=="") {
+							YAHOO.util.Dom.addClass(siteSearchTextBox,'twc-error-state');
+						} else {						
+							YAHOO.weather.intelliTrak.isLinkClicked = true;
+							YAHOO.weather.intelliTrak({'href': wx.config.page.pageURL,'from':'hdr_sitesearch'});
+							siteSearchForm.submit();
+						}		
+				
+						});
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty2 */
+try {
+YAHOO.namespace("weather");
+		YAHOO.weather.defaultApp = "moms-planner";
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty3 */
+try {
+YAHOO.namespace("weather.avgRecChart");
+YAHOO.weather.avgRecChart.trkChrtAction = function(which){
+	var action = (which === "Hi") ? "highs" : "lows";
+	sc_trackAction(this,"today_avgrecgraph_"+action+"_click")
+}
+YAHOO.weather.avgRecChart.params ={
+  version: 9,
+  useExpressInstall:true,
+  fixedAttributes: {
+    allowScriptAccess: "always",
+    allowNetworking: "all",
+    wmode:"transparent",
+    swliveconnect:"true"
+  },
+  
+  flashVars: {
+    XML_Low: "<chart numDivLines='2' adjustDiv='0' yAxisMaxValue='60.0' yAxisMinValue='-30.0' numberSuffix='&#176; F'><set label='Actual' value='9' color='fed55a'/><set label='Average' value='-1' color='fed55a'/><set label='Record' value='-23' color='fed55a'/> </chart>",
+    XML_Hi: "<chart  numDivLines='2' adjustDiv='0' yAxisMaxValue='90.0' yAxisMinValue='0'  numberSuffix='&#176; F'><set label='Forecast' value='16' color='fed55a'/><set label='Average' value='10' color='fed55a'/><set label='Record' value='33' color='fed55a'/></chart>",
+    chrtAttrs: "<chrtAttrs baseFont='Arial' yAxisValuesPadding='10' chartTopMargin='25' chartLeftMargin='0'  chartRightMargin='1' chartBottomMargin='10' canvasBorderThickness='1' canvasBorderColor='dddddd'  bgColor='ffffff' zeroPlaneColor='666666' zeroPlaneThickness='1'  canvasBgColor='ffffff' alternateHGridColor='f8f8f8' alternateHGridAlpha='100' plotBorderColor='ffffff'  plotBorderThickness='2' plotFillAngle='270' plotFillRatio='50' showToolTip='0'  showPlotBorder='1' plotFillAlpha='100' plotGradientColor='ffffff' showBorder='0' />",
+    chrtStyles: "<styles> <definition> <style name='dataPtStyles' type='font' font='Arial' size='14' color='333333' bold='1' /> <style name='xAxisStyles' type='font' font='Arial' size='11' color='333333' bold='1' /> <style name='yAxisStyles' type='font' font='Arial' size='11' color='666666' bold='1' /> </definition> <application> <apply toObject='DataValues' styles='dataPtStyles' /> <apply toObject='YAXISVALUES' styles='yAxisStyles' /> <apply toObject='DATALABELS' styles='xAxisStyles' /> </application> </styles>",
+    errorImage: "http://s.imwx.com/v.20100719.135915/img/images/avgrec-nodata.gif",
+    climoData:"<climo date='Thu, Nov 04' Hi='16' Lo='9' avgHi='10' avgLo='-1' HiLabel='Forecast High:' LoLabel='Actual Low:' recHi='33' recLo='-23'/>"
+  }
+};
+YAHOO.weather.avgRecChart.chart = new YAHOO.widget.SWF("avgRecSWF","http://s.imwx.com/v.20100722.144503/img/swf/wxChartCol2D.swf",YAHOO.weather.avgRecChart.params);
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty4 */
+try {
+(function(){
+    var Dom = YAHOO.util.Dom,
+        Get = YAHOO.util.Get,
+        Event = YAHOO.util.Event;
+    var ADDTHIS_PANEL = "wx-panel-addthis36hour";
+    
+    Get.script("http://d.imwx.com/js/wfapiv2.js",{
+      onSuccess: function(o){
+        o.purge();
+	    },
+	    onFailure: function(o){
+	      o.purge();
+	    }
+	  });
+    YAHOO.namespace("weather.addThis");
+    YAHOO.weather.addThis["36hour"] = false;
+    Event.on("addThis36hour","click",function(e){
+      Event.stopEvent(e);
+      if(YAHOO.weather.addThis["36hour"] == false){
+        YAHOO.weather.addThis["36hour"] = true;
+        var pconf36hour={
+          useFacebookMystuff: 'false', 
+          widgetTitle: 'The Weather Channel',
+          hideGigyaLink: 'true', 
+          defaultContent: 'TEXTAREA_36hour', 
+          cid: 'AddThis_36hrv1.1.0',
+          UIConfig: '<config baseTheme="v2"><display showEmail="false" showBookmark="false" mixNetworks="true" networksToShow="facebook,myspace,wordpress,blogger,igoogle,yahoo,netvibes,email"></display><body><background frame-color="Transparent" gradient-color-begin="Transparent" gradient-color-end="Transparent"></background></body><lang><share_this_item text=""></share_this_item></lang></config>'
+        };
+        Wildfire.initPost('1234481', 'div36hour', 250, 250, pconf36hour);
+      }
+      _addThisPanel36hour.cfg.setProperty('context',["addThis36hour","tl","bl", ["beforeShow", "windowResize"]]);
+      _addThisPanel36hour.show();
+    });
+    
+    var _addThisPanel36hour = YAHOO._addThisPanel36hour = new YAHOO.widget.Panel(
+        ADDTHIS_PANEL, {
+        constraintoviewport: true,
+        context:["addThis36hour","tl","bl", ["beforeShow", "windowResize"]],
+        modal: true,
+        underlay: "none",
+        visible: false,
+        zIndex: 2000,
+        close:true
+    });
+    _addThisPanel36hour.render();
+    Event.delegate(ADDTHIS_PANEL,"click",function(e, matchedEl, container){
+      Event.stopEvent(e);
+      _addThisPanel36hour.hide();
+    },".twc-cancel-button");
+    
+})();
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty5 */
+try {
+(function(){
+    var Dom = YAHOO.util.Dom,
+        Get = YAHOO.util.Get,
+        Event = YAHOO.util.Event;
+    var ADDTHIS_PANEL = "wx-panel-addthisiMap";
+    
+    Get.script("http://d.imwx.com/js/wfapiv2.js",{
+      onSuccess: function(o){
+        o.purge();
+	    },
+	    onFailure: function(o){
+	      o.purge();
+	    }
+	  });
+    YAHOO.namespace("weather.addThis");
+    YAHOO.weather.addThis["iMap"] = false;
+    Event.on("addThisiMap","click",function(e){
+      Event.stopEvent(e);
+      if(YAHOO.weather.addThis["iMap"] == false){
+        YAHOO.weather.addThis["iMap"] = true;
+        var pconfiMap={
+          useFacebookMystuff: 'false', 
+          widgetTitle: 'The Weather Channel',
+          hideGigyaLink: 'true', 
+          defaultContent: 'TEXTAREA_iMap', 
+          cid: 'AddThis_iMapsv1.1.0.0',
+          UIConfig: '<config baseTheme="v2"><display showEmail="false" showBookmark="false" mixNetworks="true" networksToShow="facebook,myspace,wordpress,blogger,igoogle,yahoo,netvibes,email"></display><body><background frame-color="Transparent" gradient-color-begin="Transparent" gradient-color-end="Transparent"></background></body><lang><share_this_item text=""></share_this_item></lang></config>'
+        };
+        Wildfire.initPost('1234481', 'diviMap', 250, 250, pconfiMap);
+      }
+      _addThisPaneliMap.cfg.setProperty('context',["addThisiMap","tl","bl", ["beforeShow", "windowResize"]]);
+      _addThisPaneliMap.show();
+    });
+    
+    var _addThisPaneliMap = YAHOO._addThisPaneliMap = new YAHOO.widget.Panel(
+        ADDTHIS_PANEL, {
+        constraintoviewport: true,
+        context:["addThisiMap","tl","bl", ["beforeShow", "windowResize"]],
+        modal: true,
+        underlay: "none",
+        visible: false,
+        zIndex: 2000,
+        close:true
+    });
+    _addThisPaneliMap.render();
+    Event.delegate(ADDTHIS_PANEL,"click",function(e, matchedEl, container){
+      Event.stopEvent(e);
+      _addThisPaneliMap.hide();
+    },".twc-cancel-button");
+    
+})();
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty6 */
+try {
+(function(){
+  var Event = YAHOO.util.Event,
+      Dom = YAHOO.util.Dom;
+  var ADDTHIS_TOOLTIP = "wx-tooltip-addthis";
+	_addThisToolTip = new YAHOO.widget.Panel(
+	         ADDTHIS_TOOLTIP, {
+	         close:false,
+	         //context:["test-popinto","tr","tl", ["beforeShow", "windowResize"]],
+	         constraintoviewport: false,
+	         fixedcenter: false,
+	         modal: false,
+	         underlay: "none",
+	         visible: false,
+	         zIndex: 2000
+	     }
+	 );
+	 _addThisToolTip.render();
+	 Event.delegate(document,"mouseenter",function(e, matchedEl, container){
+	   Event.stopEvent(e);
+     var el = matchedEl;
+     _addThisToolTip.cfg.setProperty("context",[el,"tr","tl", ["beforeShow", "windowResize"]]);
+     _addThisToolTip.show();
+	 },".twc-module-options-link");
+   Event.delegate(document,"mouseleave",function(e, matchedEl, container){
+     _addThisToolTip.hide();
+   },".twc-module-options-link");
+})();
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by $empty7 */
+try {
+YAHOO.util.Event.on("twc-google-web-search", "submit", function(e){							
+							var webSearchForm = document.forms["twc-google-web-search"];
+							var webSearchTextBox = webSearchForm.elements["q"];
+					
+							if (webSearchTextBox.value == webSearchTextBox.title || webSearchTextBox.value=="") {
+								YAHOO.util.Dom.addClass(webSearchTextBox,'twc-error-state');
+							} else {										
+								YAHOO.weather.intelliTrak.isLinkClicked = true;
+								YAHOO.weather.intelliTrak({'href': wx.config.page.pageURL,'from':'searchbox_footer_web'});	
+								webSearchForm.submit();
+							}				
+						});
+} catch (err) { try { console.log(err); } catch(error) {} }
+var loader = new YAHOO.util.YUILoader({ combine:false, base:"http://d.imwx.com/js/", require: ["wx-bind","wx-savedlocations","wx-dropdown","wx-locationeditor","global","wx-appspromo","wx-weathersearch","wx-pageoptions","wx-survey","wx-jp_chunker","wx-obs","wx-forecast-toggler","wx-apps","wx-mediaview"], onSuccess: function() {
+
+/* Inserted by wx-savedlocations */
+try {
+
+	// Setup textboxes
+                var textboxes = YAHOO.util.Selector.query("input[type=text]");
+                for (var i = 0; i < textboxes.length; i++) {
+                  if(textboxes[i].id !== "typeaheadBox" && textboxes[i].id !== "searchLocationTypeaheadBox"){
+                    new YAHOO.weather.TextBox(textboxes[i]);
+                   }
+                 }
+                    // Setup weather search module
+                    new YAHOO.weather.SavedLocations('wx-weather-search');
+                    
+                    
+					// Add Close Window title attribute to pop-intos
+					el = YAHOO.util.Dom.getElementsByClassName('container-close', 'a');
+					ellength = el.length;
+					for (i=0;i<ellength;i++) {
+						el[i].setAttribute('title', 'CloseWindow');
+					}
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-dropdown */
+try {
+// Clickable dropdowns
+                var clickableElements = YAHOO.util.Selector.query("#wx-header-tools > li");
+                for (var i = 0; i < clickableElements.length; i++) {
+                    new YAHOO.weather.DropDown(clickableElements[i]);
+                }
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-locationeditor */
+try {
+if((YAHOO.util.Selector.query(".twc-locs-full") != '' ) ||(wx.config.user.addedLocs == 3)){
+		YAHOO.weather.jsonCallbacks.twclocsfull = true; 
+		}else{
+		YAHOO.weather.jsonCallbacks.twclocsfull = false; 
+		}
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-appspromo */
+try {
+// Setup apps promo
+                    var appsPromos = YAHOO.util.Selector.query(".twc-apps-promo-module");
+                    for (var i = 0; i < appsPromos.length; i++) {
+                        var appsPromo = new YAHOO.weather.AppsPromo(appsPromos[i]);
+					}
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-weathersearch */
+try {
+// Setup weather search module
+		//YAHOO.util.Dom.get("typeaheadBox").setAttribute("pageLoaded","true");
+		//if(YAHOO.weather.searchFocus)clearInterval(YAHOO.weather.searchFocus);
+		new YAHOO.weather.WeatherSearch('wx-weather-search');
+
+					//Error checking for web, and site search
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-jp_chunker */
+try {
+// Setup Local Severe Alert Ticker
+					try
+					{
+						var alertScroll = new YAHOO.weather.jp_chunker(
+							"alertScrollBoxOuter", // could be the actual object OR the ID string
+							"la-scroll-box-inner", // could be the actual object OR the ID string
+							2,
+							// Left Image Div Hash
+							{
+								'c': 'la-alert-nav-left',
+								'a': 'la-textbtn-left',
+								'd': 'la-textbtn-left-off'
+							},
+							// Right Image Div Hash
+							{
+								'c': 'la-alert-nav-right',
+								'a': 'la-textbtn-right',
+								'd': 'la-textbtn-right-off'
+							},
+							578, // must be an integer, not a string
+							3, // must be an integer, not a string
+							1.5
+						).init();
+					}
+					catch (e)
+					{
+						// do nothing
+					}
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-apps */
+try {
+var Selector = YAHOO.util.Selector;
+var Connect = YAHOO.util.Connect;
+var Dom = YAHOO.util.Dom;
+var appsList = wx.config.user.apps;
+var PATH="/pagelet/apps/";
+// Setup apps
+var apps =YAHOO.weather.Apps = new YAHOO.weather.AppsConstructor("USAK0025:1:US",appsList);
+
+// Setup app selector
+
+YAHOO.util.Event.onAvailable("twc-app-select-filters-id",function(){
+	YAHOO.util.Event.delegate("twc-app-select-filters-id", "click", function(e, matchedEl, container){ 
+	  var thisapp = YAHOO.weather.Apps;
+	  YAHOO.util.Dom.addClass(matchedEl.parentNode, 'twc-active'); 
+	  if (thisapp.SELECTED_LINK !== null){
+	    YAHOO.util.Dom.removeClass(thisapp.SELECTED_LINK, 'twc-active');  
+	  }
+	  
+	  //all apps is the default filter, remove the active after someone clicks
+	  if(thisapp.INITIAL_FILTER_SELECTED == false)
+	  { 
+	    YAHOO.util.Dom.removeClass("allappsfilter", 'twc-active');  
+	    thisapp.INITIAL_FILTER_SELECTED = true;
+	  }
+	  
+	  thisapp.SELECTED_LINK = matchedEl.parentNode;
+	  var filter = matchedEl.getAttribute("filter");
+	  filter += "&i="+wx.config.user.signature;
+	  YAHOO.util.Connect.asyncRequest('GET', filter , {
+		    success:function(o) {
+		   	  if(o.status.toString().match("2[0-9][0-9]")!=null) {
+				     	 // This member is called by handleSuccess
+				      var appListContainer = document.getElementById("twc-app-select-list-id");
+				      appListContainer.innerHTML = o.responseText;
+				      var appLIs = Selector.query("li","twc-app-select-list-id");
+				      var appsOnPage = Selector.query(".twc-app-holder","twc-apps-module");
+				      var selectedApps = [];
+				      for(var i = 0;i < appsOnPage.length;i++){
+				      	selectedApps.push(appsOnPage[i].id);
+				      }
+				      if(appLIs.length===0) {
+				      	  var errDiv = document.createElement("div");
+				      	  Dom.addClass(errDiv,"twc-app-error-msg");
+				      	  var txt = document.createTextNode("You have not added any apps. Please select a category from the list at left to view and add available apps.");
+				      	  errDiv.appendChild(txt);
+				      	  appListContainer.appendChild(errDiv);
+				      }
+					for(var i = 0;i < appLIs.length;i++){
+						var appName = appLIs[i].className.match(/twc-app-(.[^ ]+)/)[1];
+						var appAdd = Selector.query("span.twc-headline-add",appLIs[i],true);
+						var appDelete = Selector.query("span.twc-headline-delete",appLIs[i],true);
+						if(thisapp._appIndex(appName,selectedApps)>0){
+							Dom.addClass(appDelete,"yui-hidden");
+							Dom.removeClass(appAdd,"yui-hidden");
+						}
+						else
+						{
+							Dom.addClass(appAdd,"yui-hidden");
+							Dom.removeClass(appDelete,"yui-hidden");
+						}
+					} 	 
+	     	} else {
+	     		TWCI.firePageletError(wx.config.page.pageId,"app",o.status);
+	     	}
+	    
+	    },
+	    failure:function(o) {
+	      // Failure handler
+	      TWCI.firePageletError(wx.config.page.pageId,"app",o.status);
+	    },
+	    scope: this,
+	    cache:false
+	  });   
+	  YAHOO.util.Event.stopEvent(e);
+	}, "span.twc-app-filters-category");
+});
+
+//var ifChangedLocation = apps.resolvedLocationApp(wx.config.page);
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by wx-mediaview */
+try {
+YAHOO.namespace("weather.media");
+		var YUE = YAHOO.util.Event;
+		var Dom = YAHOO.util.Dom;
+		// set state of road satt buttons based on userprefs
+		  Dom.replaceClass("road","rdButton","rdButtonActive");
+          Dom.replaceClass("satellite","sattButtonActive","sattButton")
+		
+			YUE.on("road","click",function(e){
+			  var target = YUE.getTarget(e);
+			  var tiles = YAHOO.util.Selector.query('img.MapPane_Base', 'mappane');
+			  for (var x = 0; x < tiles.length; x++) {
+			  	var tile = tiles[x];
+			  	var newSrc = 'http://r' + tile.src.substring(8);
+			  	newSrc = newSrc.replace('tiles/h', 'tiles/r');
+		  		tile.src = newSrc; 
+			  }
+			  
+           sc_trackAction(target,'today_mediamap_road_click',null);
+		   Dom.replaceClass("road","rdButton","rdButtonActive");
+		   Dom.replaceClass("satellite","sattButtonActive","sattButton")
+			  //  change layer,call ajax
+			  YAHOO.util.Connect.asyncRequest('POST', '/pagelet/userprefset?b=r', {
+			          success:function(o) {
+			            },
+			          failure:function(o) {
+			            // Failure handler
+			          },
+			          scope: this
+			  });
+			  YUE.stopEvent(e);
+			});
+			
+			YUE.on("satellite","click",function(e){
+			  var target = YUE.getTarget(e);
+			  var tiles = YAHOO.util.Selector.query('img.MapPane_Base', 'mappane');
+			  for (var x = 0; x < tiles.length; x++) {
+			  	var tile = tiles[x];
+			  	var newSrc = 'http://h' + tile.src.substring(8);
+			  	newSrc = newSrc.replace('tiles/r', 'tiles/h');
+		  		tile.src = newSrc; 
+			  }
+			  
+           sc_trackAction(target,'today_mediamap_satellite_click',null);
+          Dom.replaceClass("road","rdButtonActive","rdButton");
+          Dom.replaceClass("satellite","sattButton","sattButtonActive")
+				  //  change layer,call ajax  
+				  YAHOO.util.Connect.asyncRequest('POST', '/pagelet/userprefset?b=h', {
+				          success:function(o) {
+				            },
+				          failure:function(o) {
+				            // Failure handler
+				          },
+				          scope: this
+				      });
+				  
+				  YUE.stopEvent(e);
+				});
+				YUE.on("mappane","click",function(e){
+				  YUE.stopEvent(e);
+				  var locId = wx.config.page.locID;
+				  var locType = wx.config.page.locType;
+				  intelliTrak.isLinkClicked = true;
+				  
+					
+					
+					
+					
+					     
+					     window.location.href = intelliTrak({href:["/weather/map/interactive/",locId,(locType == '' ? '' : ':'+locType)].join(""),from:"today_media_map"});
+					    
+				       
+
+					
+				  				  	
+				});
+				YUE.on("mappanetrop","click",function(e){
+				  YUE.stopEvent(e);
+				  var locId = wx.config.page.locID;
+				  var locType = wx.config.page.locType;
+				  intelliTrak.isLinkClicked = true;
+				  
+					
+					
+					
+					
+					     
+					     window.location.href = intelliTrak({href:["/weather/map/interactive/",locId,(locType == '' ? '' : ':'+locType)].join(""),from:"today_media_map"});
+					    
+				       
+
+					
+				  				  	
+				});
+				
+  YAHOO.weather.media.loadTab2 = function(){
+   var locId = this.get("locId");
+   YAHOO.util.Connect.asyncRequest('GET', ['/pagelet/media/video/',locId].join(""), {
+     success:function(o) {
+     	if(o.status.toString().match("2[0-9][0-9]")!=null) {
+     		YAHOO.util.Dom.get("tabContent2").innerHTML = o.responseText;
+     	} else {
+        	TWCI.firePageletError(wx.config.page.pageId,"loc",o.status);
+        }
+     },
+     failure:function(o) {
+       // Failure handler
+       TWCI.firePageletError(wx.config.page.pageId,"loc",o.status);
+     }
+   });
+  };
+
+
+
+  YAHOO.weather.media.loadTab3 = function(){
+   YAHOO.util.Connect.asyncRequest('GET', '/pagelet/media/iwitness', {
+     success:function(o) {
+       if(o.status.toString().match("2[0-9][0-9]")!=null) {
+	       YAHOO.util.Dom.get("tabContent3").innerHTML = o.responseText;
+			var iWitnessSwf = new YAHOO.widget.SWF("iWitness-flash-container","http://s.imwx.com/v.20100719.135915/js/kickapps/widgets/KickShell.swf?referralUrl=&widgetHost=weather.com&buildVersion=1",{
+				version:9.115,
+				useExpressInstall:"false",
+				fixedAttributes:{
+					menu:"false",
+					allowScriptAccess:"always",
+					allowFullScreen:"false",
+					wmode:"transparent"
+				},
+				flashVars:{
+					affiliateSiteId:"148597",
+					widgetId:"369053",
+					width:"600",
+					height:"360",
+					revision:"55",					
+					
+						
+							mediaURL:"http://s.imwx.com/iwitnessfeeds/.xml",
+						
+						
+					
+					src:"http://s.imwx.com/v.20100722.144432/js/kickapps/widgets/widgets.js"
+				},
+				attributes: {
+					id:"kickWidget_148597_369053", name:"kickWidget_148597_369053"
+				}
+			});
+		} else {
+			TWCI.firePageletError(wx.config.page.pageId,"kickapps",o.status);
+		}
+     },
+     failure:function(o) {
+       // Failure handler
+       TWCI.firePageletError(wx.config.page.pageId,"kickapps",o.status);
+     }
+   });
+  };
+  YAHOO.weather.media.mediaContainer = YAHOO.util.Dom.get("mediaTabs");
+  YAHOO.weather.media.mediaTabs = new YAHOO.weather.MediaView(YAHOO.weather.media.mediaContainer,{
+    locId:"USAK0025:1:US",
+    
+    tab1Loader:YAHOO.weather.media.loadTab1,
+    tab2Loader:YAHOO.weather.media.loadTab2
+    ,
+    tab3Loader:YAHOO.weather.media.loadTab3
+    
+  });
+} catch (err) { try { console.log(err); } catch(error) {} }
+
+/* Inserted by  */
+try {
+YAHOO.util.Get.script("http://js.revsci.net/gateway/gw.js?csid=K06578",{
+  onSuccess: function(o){
+    o.purge();
+	var asiCountry = (typeof wx !== "undefined" && wx.config && wx.config.loc && wx.config.loc.country) || "US";
+	var asiState = (typeof wx !== "undefined" && wx.config && wx.config.loc && wx.config.loc.state) || "";
+	var asiDMA = (typeof wx !== "undefined" && wx.config && wx.config.loc && wx.config.loc.dma) || "";
+	if (wx.config.page.pif_timeframe!="undefined" && wx.config.page.pif_timeframe=="today"){
+		var asiApps = [];
+		var wcua = wx.config.user.apps;
+		for(var i=0,l=wcua.length;i<l;i++){
+			var DFPdecl = getDeclarationDFP(wcua[i]).split(";");
+			var fam = DFPdecl[0].split("=")[1];
+			var name = wcua[i];
+			K06578.DM_addToLoc("app_fam_"+fam,"yes");
+			K06578.DM_addToLoc("app_name_"+name,"yes");
+		}
+	}
+	
+	var asiCat = "";
+	
+	var asiObj=new Array();
+	var asiCategory="";
+	if (wx.config.metrics!="undefined"){
+		asiCat=wx.config.metrics.level1;
+		if (wx.config.metrics.level2!=""){
+			asiCat=asiCat+"-"+wx.config.metrics.level2;
+		}
+		if (wx.config.metrics.level3!=""){
+			asiCat=asiCat+"-"+wx.config.metrics.level3;
+		}
+		if (wx.config.metrics.level4!=""){
+			asiCat=asiCat+"-"+wx.config.metrics.level4;
+		}
+		
+	}
+	if(asiCat != undefined && asiCat != ""){
+		var asiStr=asiCat;var asiSplitUP = asiStr.split("-");
+		for (var i=0; i < asiSplitUP.length; i++){
+			asiObj[i] = asiSplitUP[i];
+		}
+		asiCategory = asiObj.join(" > ");asiCategory = asiCategory+" > ";
+		K06578.DM_addToLoc("beh_cat",asiCat);
+		K06578.DM_cat(asiCategory);
+	}
+	
+	K06578.DM_addToLoc("country",asiCountry);
+	K06578.DM_addToLoc("state",asiState);
+	K06578.DM_addToLoc("dma",asiDMA);
+	
+	K06578.DM_tag();
+  },
+  onFailure: function(o){
+    alert("Failed to load audience science");
+  }
+});
+} catch (err) { try { console.log(err); } catch(error) {} }
+}});
+loader.moduleInfo['wx-bind'] = { path:"wx-bind.js", type:"js"};
+loader.moduleInfo['wx-savedlocations'] = { path:"wx-savedlocations.js", type:"js", requires: ['wx-bind']};
+loader.moduleInfo['wx-dropdown'] = { path:"wx-dropdown.js", type:"js", requires: ['wx-bind']};
+loader.moduleInfo['wx-locationeditor'] = { path:"wx-locationeditor.js", type:"js", requires: ['wx-bind']};
+loader.moduleInfo['global'] = { path:"global.js", type:"js"};
+loader.moduleInfo['wx-appspromo'] = { path:"wx-appspromo.js", type:"js", requires: ['wx-bind']};
+loader.moduleInfo['wx-weathersearch'] = { path:"wx-weathersearch.js", type:"js", requires: ['wx-bind']};
+loader.moduleInfo['wx-pageoptions'] = { path:"wx-pageoptions.js", type:"js"};
+loader.moduleInfo['wx-survey'] = { path:"wx-survey.js", type:"js"};
+loader.moduleInfo['wx-jp_chunker'] = { path:"wx-jp_chunker.js", type:"js"};
+loader.moduleInfo['wx-obs'] = { path:"wx-obs.js", type:"js"};
+loader.moduleInfo['wx-forecast-toggler'] = { path:"wx-forecast-toggler.js", type:"js"};
+loader.moduleInfo['wx-apps'] = { path:"wx-apps.js", type:"js"};
+loader.moduleInfo['wx-mediaview'] = { path:"wx-mediaview.js", type:"js"};
+loader.insert();
+}});
+loader.insert();
+})();
+</script>
+
+</body>
+</html>
