@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.weather.com.plus" name="weather.com+" version="2.0.0" provider-name="nuka1195">
+    <requires>
+        <import addon="xbmc.python" version="1.0"/>
+        <import addon="script.module.weather" version="1.0.0"/>
+        <import addon="script.module.xbmcaddon" version="1.0.1"/>
+    </requires>
+    <extension point="xbmc.python.weather" library="addon.py"/>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <nofanart>true</nofanart>
+        <nochangelog>true</nochangelog>
+        <summary lang="en">Supplemental weather forecasts &amp; radar.</summary>
+        <disclaimer lang="en">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License *see license.txt</disclaimer>
+        <description lang="en">Get supplemental weather forecasts, radars and maps from weather.com. Requires skin support.[CR][CR]You may install optional packages from configure. (eg. map pack)</description>
+    </extension>
+</addon>

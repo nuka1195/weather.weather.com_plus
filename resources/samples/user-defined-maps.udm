@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<locations>
+    <location id="1" title="Favorite Maps">
+        <maps>
+            <map title="Doppler Radar 100 Mile">
+                <image_url>http://image.weather.com/looper/archive/us_dtw_metroradar_plus_usen/1L.jpg</image_url>
+                <image_url>http://image.weather.com/looper/archive/us_dtw_metroradar_plus_usen/2L.jpg</image_url>
+                <image_url>http://image.weather.com/looper/archive/us_dtw_metroradar_plus_usen/3L.jpg</image_url>
+                <image_url>http://image.weather.com/looper/archive/us_dtw_metroradar_plus_usen/4L.jpg</image_url>
+                <image_url>http://image.weather.com/looper/archive/us_dtw_metroradar_plus_usen/5L.jpg</image_url>
+            </map>
+            <map title="Doppler Radar 300 Mile">
+                <map_url>Doppler_Radar_300_Mile:DTW</map_url>
+            </map>
+            <map title="Doppler Radar 600 Mile">
+                <map_url>Doppler_Radar_600_Mile:DTW</map_url>
+            </map>
+            <map title="Northeast Doppler Radar 1800">
+                <map_url>Doppler_Radar_1800:NE</map_url>
+            </map>
+            <map title="Northeast Radar 2100 Mile">
+                <map_url>Radar_2100_Mile:NE</map_url>
+            </map>
+            <map title="US Doppler Radar">
+                <map_url>/maps/maptype/currentweatherusnational/usdopplerradar_large.html</map_url>
+            </map>
+            <map title="Northeast US Golf Index Day 1">
+                <map_url>/maps/activity/golf/northeastusgolfindexday1_large.html</map_url>
+            </map>
+            <map title="Northeast US Golf Index Day 2">
+                <map_url>/maps/activity/golf/northeastusgolfindexday2_large.html</map_url>
+            </map>
+            <map title="US Lightning Strikes">
+                <map_url>/maps/activity/golf/uslightningstrikes_large.html</map_url>
+            </map>
+            <map title="US Wind Chill Forecast">
+                <map_url>/maps/activity/golf/uswindchillforecast_large.html</map_url>
+            </map>
+            <map title="Northeast US Satellite">
+                <map_url>US_Satellite:NE</map_url>
+            </map>
+            <map title="Northeast US Current Weather">
+                <map_url>US_Current_Weather:NE</map_url>
+            </map>
+            <map title="Northeast US Current Temps">
+                <map_url>US_Current_Temps:NE</map_url>
+            </map>
+            <map title="Northeast US Coastal Water Temps">
+                <map_url>US_Coastal_Water_Temps:NE</map_url>
+            </map>
+            <map title="Northeast US Coastal Winds">
+                <map_url>US_Coastal_Winds:NE</map_url>
+            </map>
+            <map title="Northeast US Severe Alerts">
+                <map_url>US_Severe_Alerts:NE</map_url>
+            </map>
+            <map title="Northeast US Precip. Forecast">
+                <map_url>US_Precip._Forecast:NE</map_url>
+            </map>
+            <map title="Northeast US Thunderstorm Fcst">
+                <map_url>US_Thunderstorm_Fcst:NE</map_url>
+            </map>
+            <map title="Northeast US Snow Forecast">
+                <map_url>US_Snow_Forecast:NE</map_url>
+            </map>
+            <map title="Northeast US Weather Today">
+                <map_url>US_Weather_Today:NE</map_url>
+            </map>
+            <map title="Northeast US Weather Tonight">
+                <map_url>US_Weather_Tonight:NE</map_url>
+            </map>
+            <map title="Northeast US Weather Tomorrow">
+                <map_url>US_Weather_Tomorrow:NE</map_url>
+            </map>
+            <map title="Northeast US Weather Tom. Night">
+                <map_url>US_Weather_Tom._Night:NE</map_url>
+            </map>
+            <map title="Northeast US Highs Today">
+                <map_url>US_Highs_Today:NE</map_url>
+            </map>
+            <map title="Northeast US Lows Tonight">
+                <map_url>US_Lows_Tonight:NE</map_url>
+            </map>
+            <map title="Northeast US Highs Tomorrow">
+                <map_url>US_Highs_Tomorrow:NE</map_url>
+            </map>
+            <map title="Northeast US Lows Tom. Night">
+                <map_url>US_Lows_Tom._Night:NE</map_url>
+            </map>
+            <map title="Northeast US Winds Today">
+                <map_url>US_Winds_Today:NE</map_url>
+            </map>
+            <map title="Northeast US Winds Tonight">
+                <map_url>US_Winds_Tonight:NE</map_url>
+            </map>
+            <map title="Northeast 24 Hour Rainfall Estimate">
+                <map_url>24_Hour_Rainfall_Estimate:NE</map_url>
+            </map>
+            <map title="North Central US Fall Foliage">
+                <map_url>/maps/activity/fallfoliage/northcentralusfallfoliage_large.html</map_url>
+            </map>
+            <map title="North Central US Normal Fall Peaks">
+                <map_url>/maps/activity/fallfoliage/northcentralusnormalfallpeaks_large.html</map_url>
+            </map>
+            <map title="US Current Weather">
+                <map_url>/maps/maptype/currentweatherusnational/uscurrentweather_large.html</map_url>
+            </map>
+            <map title="US Weather Today">
+                <map_url>/maps/maptype/tendayforecastusnational/usweathertoday_large.html</map_url>
+            </map>
+            <map title="US Weather Tonight">
+                <map_url>/maps/maptype/tendayforecastusnational/usweathertonight_large.html</map_url>
+            </map>
+            <map title="US Weather Day 2">
+                <map_url>/maps/maptype/tendayforecastusnational/usweatherday2_large.html</map_url>
+            </map>
+            <map title="US Weather Night 2">
+                <map_url>/maps/maptype/tendayforecastusnational/usweathernight2_large.html</map_url>
+            </map>
+        </maps>
+    </location>
+</locations>
+

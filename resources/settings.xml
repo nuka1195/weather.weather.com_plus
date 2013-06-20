@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+
+    <!-- General -->
+    <category label="30051">
+        <setting label="30100" type="lsep" />
+        <!-- maxlocations is used by XBMC to limit selections, xbmc defaults to 1, max is 10 -->
+        <setting label="30110" type="enum" id="maxlocations" default="2" lvalues="30111|30112|30113|30114|30115"/>
+        <!-- town# are required settings (# limited by maxlocations) -->
+        <setting label="30101" type="lsep"/>
+        <setting label="$ADDON[script.weather.com.plus 30120] #1" type="action" id="town1" action="RunScript($ID,search1)" default="New York, NY" option="close"/>
+        <setting label="$ADDON[script.weather.com.plus 30120] #2" type="action" id="town2" action="RunScript($ID,search2)" default="London, United Kingdom" option="close" enable="IntegerGreaterThan(Addon.Setting(maxlocations),0)"/>
+        <setting label="$ADDON[script.weather.com.plus 30120] #3" type="action" id="town3" action="RunScript($ID,search3)" default="Tokyo, Japan" option="close" enable="IntegerGreaterThan(Addon.Setting(maxlocations),1)"/>
+        <setting label="$ADDON[script.weather.com.plus 30120] #4" type="action" id="town4" action="RunScript($ID,search4)" default="Melbourne, Australia" option="close" enable="IntegerGreaterThan(Addon.Setting(maxlocations),2)"/>
+        <setting label="$ADDON[script.weather.com.plus 30120] #5" type="action" id="town5" action="RunScript($ID,search5)" default="Honolulu, HI" option="close" enable="IntegerGreaterThan(Addon.Setting(maxlocations),3)"/>
+        <setting label="30102" type="lsep"/>
+        <setting label="30130" type="bool" id="translate_google" default="false"/>
+    </category>
+
+    <!-- Skinning -->
+    <category label="30055">
+        <setting label="30500" type="lsep" />
+        <setting label="30510" type="folder" id="icon_path_weather" default="special://xbmc/addons/script.weather.com.plus/resources/media/weather/"/>
+        <setting label="30520" type="folder" id="icon_path_moon" default="special://xbmc/addons/script.weather.com.plus/resources/media/moon/"/>
+        <setting label="30501" type="lsep" />
+        <setting label="30530" type="folder" id="fanart_path" default=""/>
+        <setting label="30540" subsetting="true" type="enum" id="fanart_type" default="0" lvalues="30541|30542" enable="!IsEmpty(Addon.Setting(fanart_path))"/>
+        <setting label="30502" type="lsep" />
+        <setting label="30550" type="enum" id="coordinate_format" default="0" values="h ddd°mm'ss&quot;|h ddd°mm.mmm'|h ddd.ddd°"/>
+    </category>
+
+    <!-- Forecasts -->
+    <category label="30052">
+        <setting label="30200" type="lsep"/>
+        <setting label="30210" type="bool" id="forecast_36hour" default="true"/>
+        <setting label="30211" type="bool" id="forecast_weekend" default="true"/>
+        <setting label="30212" type="bool" id="forecast_hourly" default="true"/>
+        <setting label="30213" type="bool" id="forecast_10day" default="true"/>
+        <setting label="30214" type="bool" id="forecast_maps" default="true"/>
+        <setting label="30215" type="bool" id="forecast_videos" default="true"/>
+        <setting label="30201" type="lsep"/>
+        <setting label="30220" type="enum" id="alert_notify_type" default="1" lvalues="30221|30222|30223|30224"/>
+        <setting label="30230" subsetting="true" type="slider" id="alert_notify_time" default="30" range="10,5,60" format="%1.f $ADDON[script.weather.com.plus 30231]"  enable="IntegerGreaterThan(Addon.Setting(alert_notify_type),0)"/>
+        <setting label="30240" subsetting="true" type="bool" id="alert_notify_once" default="false" enable="IntegerGreaterThan(Addon.Setting(alert_notify_type),0)"/>
+    </category>
+
+    <!-- Maps -->
+    <category label="30053" enable="IsTrue(Addon.Setting(forecast_maps))">
+        <setting label="30300" type="lsep"/>
+        <setting label="$ADDON[script.weather.com.plus 30310] #1" type="select" id="maplist1" default="Local" lvalues="30900|30901|30902|30903|30904|30905|30906|30907|30908|30909|30910|30911|30912|30913|30914|30915|30916|30917|30918|30919|30920|30921|30922|30923|30924|30925|30926|30927|30928|30929|30930|30931|30932|30933|30934|30935|30936|30937|30938|30939|30940|30941|30942|30943|30944|30945|30946|30947|30948|30949|30950|30951|30952|30953|30954|30955|30956|30957|30958|30959|30960|30961|30962|30963|30964"/>
+        <setting label="30311" subsetting="true" type="file" id="maplist1_user_file" default="" source="auto" mask=".udm" enable="StringCompare(Addon.Setting(maplist1),User Defined) | StringCompare(Addon.Setting(maplist1),$ADDON$LBRACKETscript.weather.com.plus 30902$RBRACKET)"/>
+        <setting label="$ADDON[script.weather.com.plus 30310] #2" type="select" id="maplist2" default="Weather Details (Current Weather)"  lvalues="30900|30901|30902|30903|30904|30905|30906|30907|30908|30909|30910|30911|30912|30913|30914|30915|30916|30917|30918|30919|30920|30921|30922|30923|30924|30925|30926|30927|30928|30929|30930|30931|30932|30933|30934|30935|30936|30937|30938|30939|30940|30941|30942|30943|30944|30945|30946|30947|30948|30949|30950|30951|30952|30953|30954|30955|30956|30957|30958|30959|30960|30961|30962|30963|30964"/>
+        <setting label="30311" subsetting="true" type="file" id="maplist2_user_file" default="" source="auto" mask=".udm" enable="StringCompare(Addon.Setting(maplist2),User Defined) | StringCompare(Addon.Setting(maplist2),$ADDON$LBRACKETscript.weather.com.plus 30902$RBRACKET)"/>
+        <setting label="$ADDON[script.weather.com.plus 30310] #3" type="select" id="maplist3" default="Outdoor Activity (Business Travel)"  lvalues="30900|30901|30902|30903|30904|30905|30906|30907|30908|30909|30910|30911|30912|30913|30914|30915|30916|30917|30918|30919|30920|30921|30922|30923|30924|30925|30926|30927|30928|30929|30930|30931|30932|30933|30934|30935|30936|30937|30938|30939|30940|30941|30942|30943|30944|30945|30946|30947|30948|30949|30950|30951|30952|30953|30954|30955|30956|30957|30958|30959|30960|30961|30962|30963|30964"/>
+        <setting label="30311" subsetting="true" type="file" id="maplist3_user_file" default="" source="auto" mask=".udm" enable="StringCompare(Addon.Setting(maplist3),User Defined) | StringCompare(Addon.Setting(maplist3),$ADDON$LBRACKETscript.weather.com.plus 30902$RBRACKET)"/>
+        <setting label="30301" type="lsep"/>
+        <setting label="30320" type="action" default="" action="RunScript($CWD/resources/lib/udm_maker.py)" option="close"/>
+    </category>
+
+    <!-- Videos -->
+    <category label="30054" enable="IsTrue(Addon.Setting(forecast_videos))">
+        <setting label="30400" type="lsep"/>
+        <setting label="30410" type="action" id="video_list_fetched" action="RunScript($CWD/resources/lib/utils.py,fetchlocalvideolist)" option="close"/>
+        <setting label="30411" type="text" default="" enable="false" visible="IsEmpty(Addon.Setting(video_list_fetched))"/>
+        <setting label="$ADDON[script.weather.com.plus 30401] #1" type="lsep"/>
+        <setting label="30420" type="enum" id="video_national1" default="0" lvalues="30421|30422|30423|30424"/>
+        <setting label="30430" type="enum" id="video_regional1" default="0" lvalues="30431|30432|30433|30434|30435|30436|30437|30438"/>
+        <setting label="30440" type="select" id="video_local1" default="" source="$PROFILE/local_video_list/" enable="!IsEmpty(Addon.Setting(video_list_fetched))"/>
+        <setting label="$ADDON[script.weather.com.plus 30401] #2" type="lsep"/>
+        <setting label="30420" type="enum" id="video_national2" default="0" lvalues="30421|30422|30423|30424"/>
+        <setting label="30430" type="enum" id="video_regional2" default="0" lvalues="30431|30432|30433|30434|30435|30436|30437|30438"/>
+        <setting label="30440" type="select" id="video_local2" default="" source="$PROFILE/local_video_list/" enable="!IsEmpty(Addon.Setting(video_list_fetched))"/>
+        <setting label="$ADDON[script.weather.com.plus 30401] #3" type="lsep"/>
+        <setting label="30420" type="enum" id="video_national3" default="0" lvalues="30421|30422|30423|30424"/>
+        <setting label="30430" type="enum" id="video_regional3" default="0" lvalues="30431|30432|30433|30434|30435|30436|30437|30438"/>
+        <setting label="30440" type="select" id="video_local3" default="" source="$PROFILE/local_video_list/" enable="!IsEmpty(Addon.Setting(video_list_fetched))"/>
+        <setting label="$ADDON[script.weather.com.plus 30401] #4" type="lsep"/>
+        <setting label="30420" type="enum" id="video_national4" default="0" lvalues="30421|30422|30423|30424"/>
+        <setting label="30430" type="enum" id="video_regional4" default="0" lvalues="30431|30432|30433|30434|30435|30436|30437|30438"/>
+        <setting label="30440" type="select" id="video_local4" default="" source="$PROFILE/local_video_list/" enable="!IsEmpty(Addon.Setting(video_list_fetched))"/>
+        <setting label="$ADDON[script.weather.com.plus 30401] #5" type="lsep"/>
+        <setting label="30420" type="enum" id="video_national5" default="0" lvalues="30421|30422|30423|30424"/>
+        <setting label="30430" type="enum" id="video_regional5" default="0" lvalues="30431|30432|30433|30434|30435|30436|30437|30438"/>
+        <setting label="30440" type="select" id="video_local5" default="" source="$PROFILE/local_video_list/" enable="!IsEmpty(Addon.Setting(video_list_fetched))"/>
+    </category>
+
+    <!-- Maintenance -->
+    <category label="30056">
+        <setting type="sep"/>
+        <setting label="[B]$ADDON[script.weather.com.plus 30750][/B]" type="text" default="nuka1195" enable="false"/>
+        <!--setting label="[B]$ADDON[script.weather.com.plus 30751][/B]" type="text" default="$VERSION" enable="false" /-->
+        <setting label="[B]$ADDON[script.weather.com.plus 30752][/B]" type="text" id="repo" default="http://xbmc-addons.googlecode.com/" enable="false"/>
+        <setting label="[B]$ADDON[script.weather.com.plus 30753][/B]" type="text" default="$ADDON[script.weather.com.plus 30002]" enable="false"/>
+        <!--setting label="[B]$ADDON[script.weather.com.plus 30754][/B]" type="text" default="nuka1195" enable="false"/-->
+        <setting type="sep"/>
+        <setting label="30600" type="lsep"/>
+        <setting label="30610" type="action" action="RunScript($CWD/resources/lib/updates.py,script.weather.com.plus)" visible="system.platform.xbox"/>
+        <setting label="30615" type="action" action="RunScript($CWD/resources/lib/utils.py,changelog)" visible="system.platform.windows"/>
+        <setting label="30620" type="action" action="RunScript($CWD/resources/lib/utils.py,readme)"/>
+        <setting label="30625" type="action" action="RunScript($CWD/resources/lib/utils.py,license)"/>
+        <setting label="30601" type="lsep"/>
+        <setting label="30650" type="action" action="RunScript($CWD/resources/lib/utils.py,properties)"/>
+        <setting label="30602" type="lsep"/>
+        <setting label="30670" type="action" id="install_mappack_large" action="RunScript($CWD/resources/lib/pkgmgr.py,id=install_mappack_large&amp;package=MapIconPack-large.zip&amp;skinsetting=TWC.MapsIconPath)" option="close"/>
+        <setting label="30675" type="action" id="install_mappack_small" action="RunScript($CWD/resources/lib/pkgmgr.py,id=install_mappack_small&amp;package=MapIconPack-small.zip&amp;skinsetting=TWC.MapsIconPath)" option="close"/>
+    </category>
+
+    <!-- Settings used by addon, no user input -->
+    <category visible="false">
+        <setting type="text" id="id1" default="USNY0996" visible="false"/>
+        <setting type="text" id="id2" default="UKXX0085" visible="false"/>
+        <setting type="text" id="id3" default="JAXX0085" visible="false"/>
+        <setting type="text" id="id4" default="ASXX0075" visible="false"/>
+        <setting type="text" id="id5" default="USHI0026" visible="false"/>
+    </category>
+
+</settings>

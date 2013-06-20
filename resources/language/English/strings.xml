@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <!-- plugin title -->
+    <string id="30000">weather.com+</string>
+    <string id="30001">%s Package Manager</string>
+    <!-- language author (translators put your name here) -->
+    <string id="30002">nuka1195</string>
+
+    <!-- category separators -->
+    <string id="30051">General</string>
+    <string id="30052">Forecasts</string>
+    <string id="30053">Maps</string>
+    <string id="30054">Videos</string>
+    <string id="30055">Skinning</string>
+    <string id="30056">Maintenance</string>
+
+    <!-- General -->
+    <string id="30100">Locations</string>
+    <string id="30101">Towns</string>
+    <string id="30102">Translation</string>
+    <!-- settings labels & options -->
+    <string id="30110">Fetch weather for</string>
+    <string id="30111">1 Town</string>
+    <string id="30112">2 Towns</string>
+    <string id="30113">3 Towns</string>
+    <string id="30114">4 Towns</string>
+    <string id="30115">5 Towns</string>
+    <string id="30120">Change town</string>
+    <string id="30130">Translate data with Google translate</string>
+
+    <!-- Forecasts -->
+    <string id="30200">Forecasts</string>
+    <string id="30201">Alerts</string>
+    <!-- settings labels & options -->
+    <string id="30210">Enable 36 hour forecast &amp; alerts</string>
+    <string id="30211">Enable weekend forecast</string>
+    <string id="30212">Enable hourly forecast</string>
+    <string id="30213">Enable 10 day forecast</string>
+    <string id="30214">Enable sattelite &amp; radar maps</string>
+    <string id="30215">Enable video forecasts</string>
+    <string id="30220">Weather alerts notification</string>
+    <string id="30221">Off</string>
+    <string id="30222">All alerts</string>
+    <string id="30223">Red alerts only</string>
+    <string id="30224">Red or orange alerts</string>
+    <string id="30230">Display notification for</string>
+    <string id="30231">seconds</string>
+    <string id="30240">Only notify on new alerts</string>
+
+    <!-- Maps -->
+    <string id="30300">Map/Radar Categories</string>
+    <string id="30301">Utilities</string>
+    <!-- settings labels & options -->
+    <string id="30310">Map list category</string>
+    <string id="30311">User defined map file</string>
+    <string id="30320">Create user defined map list</string>
+
+    <!-- Videos -->
+    <string id="30400">Utilities</string>
+    <string id="30401">Town</string>
+    <!-- settings labels & options -->
+    <string id="30410">Update local city list</string>
+    <string id="30411">  [I](This needs to be run before any local videos will work)[/I]</string>
+    <string id="30420">National forecast</string>
+    <string id="30421">Auto</string>
+    <string id="30422">USA</string>
+    <string id="30423">Canada</string>
+    <string id="30424">Mexico</string>
+    <string id="30425">None</string>
+    <string id="30430">Regional forecast</string>
+    <string id="30431">Northeast</string>
+    <string id="30432">Northwest</string>
+    <string id="30433">Southeast</string>
+    <string id="30434">Southwest</string>
+    <string id="30435">South</string>
+    <string id="30436">West</string>
+    <string id="30437">Hawaii</string>
+    <string id="30438">Alaska</string>
+    <string id="30440">Local forecast</string>
+
+    <!-- Skinning -->
+    <string id="30500">Icons</string>
+    <string id="30501">Fanart</string>
+    <string id="30502">Coordinates</string>
+    <!-- settings labels & options -->
+    <string id="30510">Path to weather icons</string>
+    <string id="30520">Path to moon icons</string>
+    <string id="30530">Path to fanart</string>
+    <string id="30540">Fanart type</string>
+    <string id="30541">Conditions</string>
+    <string id="30542">Location</string>
+    <string id="30550">Coordinate format</string>
+
+    <!-- Maintenance -->
+    <string id="30600">Status</string>
+    <string id="30601">Utilities</string>
+    <string id="30602">Packages</string>
+    <!-- settings labels & options -->
+    <string id="30610">Check for updates</string>
+    <string id="30615">View changelog</string>
+    <string id="30620">View readme</string>
+    <string id="30625">View license</string>
+    <string id="30650">Addon property list</string>
+    <string id="30670">High res map pack - approx. 30mb (720x486)</string>
+    <string id="30675">Low res map pack - approx. 10mb (256x173)</string>
+
+    <!-- universal strings -->
+    <!-- compatible messages -->
+    <string id="30700">version</string>
+    <string id="30701">This version of %s requires an</string>
+    <string id="30702">XBMC revision of %s or greater to run.</string>
+    <string id="30703">Please update your XBMC.</string>
+    <string id="30704">Your version is up to date.</string>
+    <!-- messages -->
+    <string id="30710">Downloading: %s</string>
+    <string id="30711">Saving: %s</string>
+    <string id="30712">To: %s</string>
+    <string id="30713">Extracting: %s</string>
+    <string id="30714">B</string>
+    <string id="30715">KB</string>
+    <string id="30716">MB</string>
+    <string id="30717">of</string>
+    <string id="30718">at</string>
+    <string id="30719">ETA</string>
+    <string id="30720">'%s' successfully installed.</string>
+    <string id="30721">An error occurred extracting '%s'</string>
+    <string id="30722">An error occurred downloading '%s'</string>
+    <string id="30723">Installing '%s' cancelled!</string>
+    <string id="30728">Installation Failed</string>
+    <string id="30729">Installed</string>
+    <!-- search terms -->
+    <string id="30730">Select town</string>
+    <string id="30731">Enter the nearest large town...</string>
+    <string id="30732">No results were found!</string>
+    <string id="30735">Browse for install path</string>
+    <!-- credits titles -->
+    <string id="30750">Author</string>
+    <string id="30751">Version</string>
+    <string id="30752">Subversion Repo</string>
+    <string id="30753">Language Translation</string>
+    <string id="30759">Updated</string>
+    <!-- viewer messages -->
+    <string id="30760">Checking for updates, please wait...</string>
+    <string id="30761">Fetching changelog, please wait...</string>
+    <string id="30762">Fetching readme, please wait...</string>
+    <string id="30763">Fetching license, please wait...</string>
+    <string id="30764">Getting properties list, please wait...</string>
+    <string id="30765">Updates</string>
+    <string id="30766">Changelog</string>
+    <string id="30767">Readme</string>
+    <string id="30768">License</string>
+    <string id="30769">Properties</string>
+    <string id="30770">An error occurred checking for updates!</string>
+    <string id="30771">An error occurred fetching %s!</string>
+    <!-- Misc strings -->
+    <string id="30790">Mile</string>
+    <string id="30791">Miles</string>
+    <string id="30792">Kilometer</string>
+    <string id="30793">Kilometers</string>
+    <!-- Alert messages -->
+    <string id="30799">Weather Alert</string>
+
+    <!-- user messages -->
+    <string id="30800">Fetching local video list...</string>
+    <string id="30801">Local video list updated.</string>
+    <string id="30802">Updating local video list failed!</string>
+
+    <!-- package manager strings -->
+    <string id="30840">*A copy of this was printed in xbmc's log file for easy copying.</string>
+    <string id="30841">Skin strings</string>
+    <string id="30842">Weather window properties</string>
+    <!-- package manager strings -->
+    <string id="30850">Choose Map Pack:</string>
+    <string id="30851">Large map pack app 30mb (720x486)</string>
+    <string id="30852">Small map pack app 10mb (256x173)</string>
+    <string id="30853">Large</string>
+    <string id="30854">Small</string>
+
+
+    <!-- map category list -->
+    <string id="30900">None</string>
+    <string id="30901">Local</string>
+    <string id="30902">User Defined</string>
+    <string id="30903">Weather Details (Alaska)</string>
+    <string id="30904">Weather Details (Current Weather)</string>
+    <string id="30905">Weather Details (Doppler Radar)</string>
+    <string id="30906">Weather Details (Extended Forecasts)</string>
+    <string id="30907">Weather Details (Hawaii)</string>
+    <string id="30908">Weather Details (Satellite - US)</string>
+    <string id="30909">Weather Details (Satellite - World)</string>
+    <string id="30910">Weather Details (Severe Alerts - US)</string>
+    <string id="30911">Weather Details (Severe Alerts - Regional)</string>
+    <string id="30912">Weather Details (Short Term Forecast)</string>
+    <string id="30913">Weather Details (Weekly Planner)</string>
+    <string id="30914">Weather Details (US - Current)</string>
+    <string id="30915">Weather Details (US - Forecasts)</string>
+    <string id="30916">Weather Details (US - Central)</string>
+    <string id="30917">Weather Details (US - East Central)</string>
+    <string id="30918">Weather Details (US - Midwest)</string>
+    <string id="30919">Weather Details (US - North Central)</string>
+    <string id="30920">Weather Details (US - Northeast)</string>
+    <string id="30921">Weather Details (US - Northwest)</string>
+    <string id="30922">Weather Details (US - South Central)</string>
+    <string id="30923">Weather Details (US - Southeast)</string>
+    <string id="30924">Weather Details (US - Southwest)</string>
+    <string id="30925">Weather Details (US - West)</string>
+    <string id="30926">Weather Details (US - West Central)</string>
+    <string id="30927">Weather Details (Africa &amp; Middle East)</string>
+    <string id="30928">Weather Details (Asia)</string>
+    <string id="30929">Weather Details (Australia)</string>
+    <string id="30930">Weather Details (Central America)</string>
+    <string id="30931">Weather Details (Europe)</string>
+    <string id="30932">Weather Details (North America)</string>
+    <string id="30933">Weather Details (Pacific)</string>
+    <string id="30934">Weather Details (Polar)</string>
+    <string id="30935">Weather Details (South America)</string>
+    <string id="30936">Outdoor Activity (Lawn &amp; Garden)</string>
+    <string id="30937">Outdoor Activity (Aviation)</string>
+    <string id="30938">Outdoor Activity (Boat &amp; Beach)</string>
+    <string id="30939">Outdoor Activity (Business Travel)</string>
+    <string id="30940">Outdoor Activity (Driving)</string>
+    <string id="30941">Outdoor Activity (Fall Foliage)</string>
+    <string id="30942">Outdoor Activity (Golf)</string>
+    <string id="30943">Outdoor Activity (Outdoors)</string>
+    <string id="30944">Outdoor Activity (Oceans)</string>
+    <string id="30945">Outdoor Activity (Pets)</string>
+    <string id="30946">Outdoor Activity (Ski)</string>
+    <string id="30947">Outdoor Activity (Special Events)</string>
+    <string id="30948">Outdoor Activity (Sporting Events)</string>
+    <string id="30949">Outdoor Activity (Vacation Planner)</string>
+    <string id="30950">Outdoor Activity (Weddings - Spring)</string>
+    <string id="30951">Outdoor Activity (Weddings - Summer)</string>
+    <string id="30952">Outdoor Activity (Weddings - Fall)</string>
+    <string id="30953">Outdoor Activity (Weddings - Winter)</string>
+    <string id="30954">Outdoor Activity (Holidays)</string>
+    <string id="30955">Health &amp; Safety (Aches &amp; Pains)</string>
+    <string id="30956">Health &amp; Safety (Air Quality)</string>
+    <string id="30957">Health &amp; Safety (Allergies)</string>
+    <string id="30958">Health &amp; Safety (Cold &amp; Flu)</string>
+    <string id="30959">Health &amp; Safety (Earthquake Reports)</string>
+    <string id="30960">Health &amp; Safety (Home Planner)</string>
+    <string id="30961">Health &amp; Safety (Schoolday)</string>
+    <string id="30962">Health &amp; Safety (Severe Weather Alerts)</string>
+    <string id="30963">Health &amp; Safety (Skin Protection)</string>
+    <string id="30964">Health &amp; Safety (Fitness)</string>
+
+</strings>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+
+    <!-- General -->
+    <category label="30051" id="category_general">
+        <setting label="30100" type="lsep" />
+        <!-- maxlocations is used by XBMC to limit selections, XBMC defaults to 1, max is 10 -->
+        <setting label="30110" type="enum" id="Locations" default="2" lvalues="30111|30112|30113|30114|30115"/>
+        <!-- Location# are required settings (# limited by maxlocations) -->
+        <setting label="30101" type="lsep"/>
+        <setting label="[I]$ADDON[$ID 30121][/I] " type="text" enable="false"/>
+        <setting label="$ADDON[$ID 30120] #1" type="action" id="Location1" action="RunScript($ID,search=1)" default="*"/>
+        <setting label="$ADDON[$ID 30120] #2" type="action" id="Location2" action="RunScript($ID,search=2)" default="London, United Kingdom" enable="IntegerGreaterThan(Addon.Setting(Locations),0)"/>
+        <setting label="$ADDON[$ID 30120] #3" type="action" id="Location3" action="RunScript($ID,search=3)" default="Tokyo, Japan" enable="IntegerGreaterThan(Addon.Setting(Locations),1)"/>
+        <setting label="$ADDON[$ID 30120] #4" type="action" id="Location4" action="RunScript($ID,search=4)" default="Melbourne, Australia" enable="IntegerGreaterThan(Addon.Setting(Locations),2)"/>
+        <setting label="$ADDON[$ID 30120] #5" type="action" id="Location5" action="RunScript($ID,search=5)" default="Honolulu, HI" enable="IntegerGreaterThan(Addon.Setting(Locations),3)"/>
+        <setting label="30102" type="lsep"/>
+        <setting label="30130" type="action" id="LocationGeoFallback" action="RunScript($ID,search=GeoFallback)" default="New York, NY"/>
+    </category>
+
+    <!-- Skinning -->
+    <category label="30055" id="category_skinning">
+        <setting label="30500" type="lsep" />
+        <setting label="30510" type="folder" id="icon_path_weather" default="special://temp/weather/"/>
+        <setting label="30520" type="folder" id="icon_path_moon" default="special://temp/moon/"/>
+        <setting label="30501" type="lsep" />
+        <setting label="30530" type="folder" id="fanart_path" default=""/>
+        <setting label="30540" subsetting="true" type="enum" id="fanart_type" default="0" lvalues="30541|30542" enable="!IsEmpty(Addon.Setting(fanart_path))"/>
+        <setting label="30502" type="lsep" />
+        <setting label="30550" type="enum" id="coordinate_format" default="0" values="h ddd°mm'ss&quot;|h ddd°mm.mmm'|h ddd.ddd°"/>
+    </category>
+
+	<!-- Maintenance -->
+	<category label="30056" id="category_maintenance">
+		<setting type="sep"/>
+		<setting label="[B]$ADDON[$ID 30750][/B]" type="text" default="$AUTHOR" enable="false"/>
+		<setting label="[B]$ADDON[$ID 30752][/B]" type="text" id="repo" default="http://xbmc-addons.googlecode.com/" enable="false"/>
+		<setting label="[B]$ADDON[$ID 30753][/B]" type="text" id="branch" default="svn/addons/" visible="false"/>
+		<setting label="[B]$ADDON[$ID 30754][/B]" type="text" default="$ADDON[$ID 30010]" enable="false"/>
+		<setting type="sep"/>
+		<setting label="30600" type="lsep"/>
+		<setting label="30610" type="action" action="RunScript($ID,viewer=changelog)" visible="System.HasAddon(script.module.pysvn)"/>
+		<setting label="30615" type="action" action="RunScript($ID,viewer=readme)"/>
+		<setting label="30620" type="action" action="RunScript($ID,viewer=license)"/>
+		<setting label="30625" type="action" action="RunScript($ID,viewer=properties)"/>
+		<setting label="30601" type="lsep"/>
+		<setting label="30650" type="action" action="RunScript($ID,util=check_for_updates)"/>
+	</category>
+
+    <!-- Settings used by addon, no user input -->
+    <category visible="false" id="category_internal">
+        <setting type="text" id="Location1Id" default="*"/>
+        <setting type="text" id="Location2Id" default="UKXX0085"/>
+        <setting type="text" id="Location3Id" default="JAXX0085"/>
+        <setting type="text" id="Location4Id" default="ASXX0075"/>
+        <setting type="text" id="Location5Id" default="USHI0026"/>
+        <setting type="text" id="LocationGeoFallbackId" default="USNY0996"/>
+    </category>
+
+</settings>
